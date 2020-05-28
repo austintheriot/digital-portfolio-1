@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="360 Condominiums.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg6658"
+   version="1.1"
+   viewBox="0 0 426.35693 990.29767"
+   height="990.29767mm"
+   width="426.35693mm">
+  <defs
+     id="defs6652">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path2781"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="696"
+     inkscape:window-height="1001"
+     inkscape:window-width="1206"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="2502.564"
+     inkscape:cx="1162.6574"
+     inkscape:zoom="0.175"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:object-nodes="false"
+     inkscape:object-paths="false" />
+  <metadata
+     id="metadata6655">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-153.81799,-162.28865)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       sodipodi:nodetypes="sscsscsssccssscsscsscsss"
+       d="m 181.31554,162.28865 c -0.15705,0 -0.28318,0.12665 -0.28318,0.2837 v 52.63296 h -11.81221 c -0.15704,0 -0.28318,0.12666 -0.28318,0.28371 v 46.58527 h -14.83579 c -0.15705,0 -0.28319,0.12665 -0.28319,0.2837 v 888.43311 c 0,0.157 0.12614,0.2832 0.28319,0.2832 l 425.79055,1.512 c 0.15703,0 0.28319,-0.1266 0.28319,-0.2837 V 601.02464 c 0,-0.15703 -0.12616,-0.28368 -0.28319,-0.28368 H 412.35363 V 262.35799 c 0,-0.15705 -0.12666,-0.2837 -0.28369,-0.2837 H 208.2462 v -46.58527 c 0,-0.15705 -0.12614,-0.28371 -0.28319,-0.28371 h -11.81168 v -52.63296 c 0,-0.15705 -0.12666,-0.2837 -0.28371,-0.2837 z"
+       style="fill:#000314;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+       id="rect4919" />
+  </g>
+</svg>

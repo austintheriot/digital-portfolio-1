@@ -1,0 +1,11 @@
+Website Notes: 
+
+Colors: 
+- Xiketic #000314
+- Cool grey #8f8fa4
+- Silver sand #c6c6c6
+- Ghost white # f6f3f8
+- Mustard #ffd65c
+
+Font: 
+- Roboto
