@@ -1,4 +1,4 @@
-Website Notes: 
+Website Notes: ////////////////////////////////////
 
 Colors: 
 - Xiketic #000314
@@ -11,21 +11,34 @@ Font:
 - Roboto
 
 
-To Do:
+TO DO: ////////////////////////////////////////////
 
-Home:
-- Fill in background buildings more
-
+Home: 
+- add in start/stop animations (like traffic lights) with offset
 
 About Me: 
 - add in words and description
 - animate tree leaves
+- fix bark on tree
+
+Extras:
+- Animate words with GSAP's TextPlugin
+- Skew perspective based on mouse position
+
 
 General:
+- animate scroll to with GSAP (plug in already registered at top)
 - Mobile blurry svg issue
 - Mobile 100vh resize issue
+- Computer: window resizing issue: buildings do not respect new width, and so could obscure the bench when expanding window from small to large on the about section.
 
 - change setTimeout to Promises (throughout)
 
+- Take out <h1>s in <sections> & get rid of CSS section h1 {}
 - Optimize Roboto font (get rid of every weight, etc.)
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)
+
+Super Extra: 
+- Add in smooth scrolling animations--(not possible apparently??)
+- Change color based on time of day
+- Change weather based on current weather

@@ -15,6 +15,8 @@
     <!-- Scripts -->
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+    <!-- GSAP ScrollTo Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/ScrollToPlugin.min.js"></script>
     <!-- Scroll Magic -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
     <!-- Scroll Magic Debugging Indicators -->
@@ -25,24 +27,32 @@
     <script src="script.js" defer></script>
   </head>
   <body id="home">
+    <!-- Navigation -->
     <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a href="#home" class="nav__link nav__link-home"></a>
+      <a href="#about" class="nav__link nav__link-about"></a>
+      <a href="#portfolio" class="nav__link nav__link-portfolio"></a>
+      <a href="#contact" class="nav__link nav__link-contact"></a>
+      <div class="nav__vertical-line"></div>
+      <h2 class="nav__scroll-heading">Scroll</h2>
+      <p class="nav__info nav__info-home">Home</p>
+      <p class="nav__info nav__info-about">About</p>
+      <p class="nav__info nav__info-portfolio">Portfolio</p>
+      <p class="nav__info nav__info-contact">Contact</p>
     </nav>
+
+    <!-- Animations -->
     <div class="city-container">
+      <h1 class="home__name">Austin<span> Theriot</span></h1>
+      <h2 class="home__title">Front-End Developer</h1>
       <img class="ground ground1" src="images/Ground.svg" alt="Ground" />
       <img class="ground ground2" src="images/Ground.svg" alt="Ground" />
       <img class="ground ground3" src="images/Ground.svg" alt="Ground" />
       <img class="ground ground4" src="images/Ground.svg" alt="Ground" />
       <img class="ground ground5" src="images/Ground.svg" alt="Ground" />
 
-      <img class="trees trees-left" src="images/Trees.svg" alt="Trees" />
-      <img class="trees trees-right" src="images/Trees.svg" alt="Trees" />
-
+      <img class="car car1" src="images/Car1.svg" alt="Plain car">
+      <img class="car car2" src="images/Car2.svg" alt="Plain car">
       <!-- Primary Buildings -->
       <img
         class="buildings primary-buildings state-capital move-secondary-right"

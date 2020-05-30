@@ -17,8 +17,8 @@
   --pop-color: #ffd65c;
   --shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.1),
     0rem 0rem 1rem rgba(0, 0, 0, 0.15);
-  --h1-size: 2.75rem;
-  --h2-size: 1.25rem;
+  --h1-size: 2.5rem;
+  --h2-size: 1.75rem;
   --body-size: 1rem;
   --section-height: 400vh;
 
@@ -28,6 +28,17 @@
   color: var(--dark-color);
   font-size: var(--body-size);
   background-color: var(--light-color);
+}
+
+/* Everything bigger than 900px */
+@media (min-width: 900px) {
+  /* General */
+
+  :root {
+    --h1-size: 4rem;
+    --h2-size: 2rem;
+    --body-size: 1.125rem;
+  }
 }
 
 h1,
@@ -56,28 +67,99 @@ p {
 
 nav {
   position: fixed;
-  margin: 1rem;
+  top: 65%;
+  margin: 1rem 0;
   z-index: 100;
-  height: 100px;
+  height: 30vh;
   width: 100px;
-  border: 1px solid var(--dark-color);
 }
 
-nav a {
-  display: block;
-  margin: 1rem;
+.nav__link {
+  position: absolute;
+  z-index: 100;
+  height: 15px;
+  width: 15px;
+  background-color: var(--dark-color);
+  border: 2px solid var(--dark-color);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav__link-home {
+  top: 10%;
+  opacity: 1;
+}
+.nav__link-about {
+  top: 37.6%;
+}
+.nav__link-portfolio {
+  top: 63.3%;
+}
+.nav__link-contact {
+  top: 90%;
+}
+
+.nav__link--selected {
+  background-color: var(--light-color);
+}
+
+.nav__vertical-line {
+  position: absolute;
+  z-index: 99;
+  height: 75%;
+  width: 1px;
+  background-color: var(--dark-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav__scroll-heading {
+  color: var(--light-lavender);
+  transform: translate(-50%, -50%) rotate(90deg);
+  position: absolute;
+  top: 50%;
+  left: 80%;
+}
+
+.nav__info {
+  position: absolute;
+  left: 25%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.nav__info-home {
+  top: 18%;
+}
+.nav__info-about {
+  top: 45%;
+}
+.nav__info-portfolio {
+  top: 69%;
+}
+.nav__info-contact {
+  top: 85%;
+}
+.nav__info--selected {
+  opacity: 1;
 }
 
 /* Formattting ////////////////////////////////////////////////////////////////// */
 
 section {
   height: var(--section-height);
-  border: 1px solid var(--dark-color);
   overflow: hidden;
 }
 
+section h1 {
+  display: none;
+}
+
 .home-spacer {
-  height: calc(var(--section-height) / 2);
+  height: calc((var(--section-height) * 3) / 4);
 }
 
 .city-container {
@@ -86,6 +168,37 @@ section {
 }
 
 /* Home ////////////////////////////////////////////////////////////////// */
+
+.home__name {
+  text-align: left;
+  line-height: 1rem;
+  margin: 1.5rem 0 0.5rem 0.5rem;
+  text-transform: uppercase;
+  color: var(--pop-color);
+}
+
+@supports (
+  (-webkit-text-fill-color: var(--dark-color)) and
+    (-webkit-text-stroke-width: 0.75px) and
+    (-webkit-text-stroke-color: transparent)
+) {
+  .home__name {
+    -webkit-text-stroke-width: 0.75px;
+    -webkit-text-stroke-color: var(--dark-color);
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.home__name span {
+  font-size: calc(var(--h1-size) * 0.6);
+}
+
+.home__title {
+  font-size: calc(var(--h2-size) * 0.75);
+  text-align: left;
+  margin-left: 1rem;
+  color: var(--dark-lavender);
+}
 
 .ground {
   position: absolute;
@@ -109,19 +222,12 @@ section {
   left: 80%;
 }
 
-.trees {
+.car {
   position: absolute;
   top: 50%;
-  z-index: -1;
-}
-
-.trees-left {
-  width: 60vw;
-  left: 1%;
-}
-.trees-right {
-  width: 40vw;
-  left: 60%;
+  z-index: -1; /* Puts it behind the road */
+  left: -100%;
+  height: 20vh;
 }
 
 .buildings {
