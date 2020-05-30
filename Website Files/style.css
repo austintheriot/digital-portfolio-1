@@ -3,6 +3,7 @@
 *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -19,10 +20,11 @@
   --h1-size: 2.75rem;
   --h2-size: 1.25rem;
   --body-size: 1rem;
+  --section-height: 400vh;
 
   /* General Styling ///////////////////////////////////////////////////////// */
   scroll-behavior: smooth;
-  font-family: var('--sans', sans-serif);
+  font-family: var(--sans, sans-serif);
   color: var(--dark-color);
   font-size: var(--body-size);
   background-color: var(--light-color);
@@ -48,4 +50,191 @@ h2 {
 p {
   width: 80%;
   margin: 0 auto;
+}
+
+/* Nav ////////////////////////////////////////////////////////////////// */
+
+nav {
+  position: fixed;
+  margin: 1rem;
+  z-index: 100;
+  height: 100px;
+  width: 100px;
+  border: 1px solid var(--dark-color);
+}
+
+nav a {
+  display: block;
+  margin: 1rem;
+}
+
+/* Formattting ////////////////////////////////////////////////////////////////// */
+
+section {
+  height: var(--section-height);
+  border: 1px solid var(--dark-color);
+  overflow: hidden;
+}
+
+.home-spacer {
+  height: calc(var(--section-height) / 2);
+}
+
+.city-container {
+  height: 100vh;
+  border: 1px solid var(--dark-lavender);
+}
+
+/* Home ////////////////////////////////////////////////////////////////// */
+
+.ground {
+  position: absolute;
+  top: 50%;
+  width: 20vw;
+}
+
+.ground1 {
+  left: 0;
+}
+.ground2 {
+  left: 20%;
+}
+.ground3 {
+  left: 40%;
+}
+.ground4 {
+  left: 60%;
+}
+.ground5 {
+  left: 80%;
+}
+
+.trees {
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
+
+.trees-left {
+  width: 60vw;
+  left: 1%;
+}
+.trees-right {
+  width: 40vw;
+  left: 60%;
+}
+
+.buildings {
+  position: absolute;
+  top: 50%; /* Center it (mostly vertically)--the rest is compensated for in GSAP */
+}
+
+/* Primary Buildings */
+.primary-buildings {
+  z-index: -25;
+}
+
+.state-capital {
+  height: 15%;
+  left: 58%;
+}
+
+.UT-main {
+  height: 20%;
+  left: 31.5%;
+}
+
+.frost-tower {
+  height: 50%;
+  left: 70%;
+}
+
+.independent {
+  height: 60%;
+  left: 41.5%;
+}
+
+.austonian {
+  height: 60%;
+  left: 50%;
+}
+
+.one-eleven-congress {
+  height: 25%;
+  left: 78%;
+}
+
+.condominiums {
+  height: 30%;
+  left: 91%;
+}
+
+/* Secondary Buildings */
+.secondary-buildings {
+  z-index: -50;
+}
+
+.fairmont {
+  height: 50%;
+  left: 48%;
+}
+
+.ashton {
+  height: 60%;
+  left: 64%;
+}
+
+.northshore {
+  height: 30%;
+  left: 85%;
+}
+
+/* Tertiary Buildings */
+.tertiary-buildings {
+  z-index: -75;
+}
+
+.san-jacinto {
+  height: 40%;
+  left: 36%;
+}
+
+.congress {
+  height: 75%;
+  left: 56%;
+}
+
+.shore {
+  height: 50%;
+  left: 75%;
+}
+
+.west-sixth {
+  height: 33%;
+  left: 29%;
+}
+
+.westgate {
+  height: 20%;
+  left: 95%;
+}
+
+/* Background Buildigs */
+.background-buildings {
+  width: 100%;
+  z-index: -100;
+}
+a {
+  position: absolute;
+  z-index: 100;
+}
+
+/* About ////////////////////////////////////////////////////////////////// */
+
+.bench {
+  position: absolute;
+  z-index: -50;
+  top: 50%;
+  height: 100%;
+  left: 50%;
 }

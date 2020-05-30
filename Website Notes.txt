@@ -9,3 +9,23 @@ Colors:
 
 Font: 
 - Roboto
+
+
+To Do:
+
+Home:
+- Fill in background buildings more
+
+
+About Me: 
+- add in words and description
+- animate tree leaves
+
+General:
+- Mobile blurry svg issue
+- Mobile 100vh resize issue
+
+- change setTimeout to Promises (throughout)
+
+- Optimize Roboto font (get rid of every weight, etc.)
+- Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)

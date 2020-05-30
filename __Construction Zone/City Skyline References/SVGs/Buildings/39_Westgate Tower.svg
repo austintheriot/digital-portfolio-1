@@ -7,55 +7,55 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="Westgate Tower.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg6658"
+   width="151.46684mm"
+   height="587.1571mm"
+   viewBox="0 0 151.46684 587.1571"
    version="1.1"
-   viewBox="0 0 37.952263 84.85807"
-   height="84.85807mm"
-   width="37.952263mm">
+   id="svg6658"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="39_Westgate Tower.svg">
   <defs
      id="defs6652">
     <marker
-       inkscape:stockid="Arrow1Lstart"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="Arrow1Lstart"
+       inkscape:isstock="true"
        style="overflow:visible"
-       inkscape:isstock="true">
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
       <path
-         id="path2781"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="matrix(0.8,0,0,0.8,10,0)"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         transform="matrix(0.8,0,0,0.8,10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2781" />
     </marker>
   </defs>
   <sodipodi:namedview
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="942"
-     inkscape:window-height="1001"
-     inkscape:window-width="960"
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="141.49117"
-     inkscape:cx="137.05814"
-     inkscape:zoom="1.979899"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base"
+     inkscape:object-paths="false"
      inkscape:object-nodes="false"
-     inkscape:object-paths="false" />
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.12374369"
+     inkscape:cx="402.22117"
+     inkscape:cy="1824.1233"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="960"
+     inkscape:window-height="1001"
+     inkscape:window-x="942"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata6655">
     <rdf:RDF>
@@ -64,23 +64,37 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-103.08009,-125.22925)"
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
-    <rect
-       ry="0.28348252"
-       rx="0.28348252"
-       y="125.22925"
-       x="103.08009"
-       height="84.85807"
-       width="37.952263"
-       id="rect4900"
-       style="fill:#000314;stroke-width:0.264999;stroke-linejoin:round" />
+     id="layer1"
+     transform="translate(-51.133698,140.55322)">
+    <g
+       transform="translate(4793.6586,-1112.0896)"
+       id="g4781">
+      <rect
+         transform="scale(1,-1)"
+         style="fill:#f2f0f9;fill-opacity:1;stroke-width:0.264999;stroke-linejoin:round"
+         id="rect4900-1"
+         width="151.34184"
+         height="303.34076"
+         x="-4742.5249"
+         y="-1558.6935"
+         rx="0.28348252"
+         ry="0.28348252" />
+      <rect
+         ry="0.28348252"
+         rx="0.28348252"
+         y="971.53638"
+         x="-4742.3999"
+         height="311.28351"
+         width="151.34184"
+         id="rect4900"
+         style="fill:#c6c6c6;stroke-width:0.264999;stroke-linejoin:round" />
+    </g>
   </g>
 </svg>

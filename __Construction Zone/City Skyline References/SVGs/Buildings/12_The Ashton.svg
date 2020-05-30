@@ -7,56 +7,56 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="The Ashton.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg6658"
+   width="257.63681mm"
+   height="1257.7395mm"
+   viewBox="0 0 257.63681 1257.7395"
    version="1.1"
-   viewBox="0 0 421.82125 1054.1451"
-   height="1054.1451mm"
-   width="421.82126mm">
+   id="svg6658"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="12_The Ashton.svg">
   <defs
      id="defs6652">
     <marker
-       inkscape:stockid="Arrow1Lstart"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="Arrow1Lstart"
+       inkscape:isstock="true"
        style="overflow:visible"
-       inkscape:isstock="true">
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
       <path
-         id="path2781"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="matrix(0.8,0,0,0.8,10,0)"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         transform="matrix(0.8,0,0,0.8,10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2781" />
     </marker>
   </defs>
   <sodipodi:namedview
-     inkscape:snap-bbox="false"
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="696"
-     inkscape:window-height="1001"
-     inkscape:window-width="1206"
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="1835.7427"
-     inkscape:cx="652.0542"
-     inkscape:zoom="0.175"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base"
+     inkscape:object-paths="false"
      inkscape:object-nodes="false"
-     inkscape:object-paths="false" />
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.175"
+     inkscape:cx="173.21259"
+     inkscape:cy="3275.4303"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1206"
+     inkscape:window-height="1001"
+     inkscape:window-x="696"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="false" />
   <metadata
      id="metadata6655">
     <rdf:RDF>
@@ -65,20 +65,28 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-235.46099,-78.78593)"
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
-    <path
-       sodipodi:nodetypes="sccccssssscsscssssccsscs"
-       transform="matrix(0.26458333,0,0,0.26458333,143.23458,299.87183)"
-       d="m 514.70508,-835.59375 c -101.02311,-0.40763 -166.13281,18.45117 -166.13281,18.45117 v 188.57031 h 80 c 0,1258.69076 0,2517.38147 0,3776.07227 0,0.5938 0.47673,1.0703 1.07031,1.0703 H 1941.7852 c 0.5935,0 1.0722,-0.4765 1.0722,-1.0703 V -513.21484 c 0,-0.59358 -0.4787,-1.07032 -1.0722,-1.07032 h -67.5 v -50.35742 c 0,-0.59357 -0.4768,-1.07226 -1.0704,-1.07226 h -90.3574 v -44.64258 c 0,-0.59354 -0.4787,-1.07031 -1.0722,-1.07031 h -632.1426 c -0.5936,0 -1.0703,0.47677 -1.0703,1.07031 v 44.64258 h -85.7149 v -170.35743 c 0,-0.59357 -0.4787,-1.07031 -1.0722,-1.07031 H 898.71484 c -144.5236,-78.13779 -282.42408,-98.04127 -384.00976,-98.45117 z"
-       style="fill:#000314;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-linejoin:round"
-       id="rect4956" />
+     id="layer1"
+     transform="translate(-362.1545,302.13142)">
+    <g
+       transform="translate(4226.2172,-911.50212)"
+       id="g4837">
+      <path
+         id="rect4956-5"
+         style="fill:#dad7e9;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+         d="m -3837.2207,1867.1091 c -16.3222,0.066 -26.842,-2.9693 -26.842,-2.9693 v -30.3453 h 12.9256 c 0,-202.5525 0,-405.1051 0,-607.6576 0,-0.095 0.077,-0.1721 0.1729,-0.1721 h 244.3153 c 0.095,0 0.1732,0.077 0.1732,0.1721 v 589.094 c 0,0.096 -0.077,0.1722 -0.1732,0.1722 h -10.906 v 8.1037 c 0,0.096 -0.077,0.1725 -0.1729,0.1725 h -14.5988 v 7.1841 c 0,0.096 -0.077,0.1722 -0.1734,0.1722 h -102.1346 c -0.095,0 -0.1729,-0.077 -0.1729,-0.1722 v -7.1841 h -13.8489 v 27.4145 c 0,0.096 -0.077,0.1722 -0.1732,0.1722 h -26.3471 c -23.3506,12.5742 -45.631,15.7771 -62.044,15.8431 z"
+         sodipodi:nodetypes="sccccssssscsscssssccsscs" />
+      <path
+         sodipodi:nodetypes="sccccssssscsscssssccsscs"
+         d="m -3837.1709,609.37176 c -16.3222,-0.066 -26.842,2.9812 -26.842,2.9812 v 30.4671 h 12.9256 c 0,203.3653 0,406.73064 0,610.09594 0,0.095 0.077,0.1728 0.1729,0.1728 h 244.3153 c 0.095,0 0.1732,-0.077 0.1732,-0.1728 V 661.45816 c 0,-0.096 -0.077,-0.1729 -0.1732,-0.1729 h -10.906 v -8.1362 c 0,-0.096 -0.077,-0.1732 -0.1729,-0.1732 h -14.5988 v -7.2129 c 0,-0.096 -0.077,-0.1729 -0.1734,-0.1729 h -102.1346 c -0.095,0 -0.1729,0.077 -0.1729,0.1729 v 7.2129 h -13.8489 v -27.5245 c 0,-0.096 -0.077,-0.1729 -0.1732,-0.1729 h -26.3471 c -23.3506,-12.6247 -45.631,-15.8404 -62.044,-15.9067 z"
+         style="fill:#8f8fa4;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+         id="rect4956" />
+    </g>
   </g>
 </svg>

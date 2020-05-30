@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="360 Condominiums.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg6658"
+   version="1.1"
+   viewBox="0 0 33.025159 153.11214"
+   height="153.11214mm"
+   width="33.025158mm">
+  <defs
+     id="defs6652">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path2781"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="-9"
+     inkscape:window-x="-9"
+     inkscape:window-height="1001"
+     inkscape:window-width="1920"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="682.02111"
+     inkscape:cx="398.05721"
+     inkscape:zoom="0.12374369"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:object-nodes="false"
+     inkscape:object-paths="false" />
+  <metadata
+     id="metadata6655">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-534.93637,-690.99013)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       style="stroke-width:4.56098"
+       id="g4898"
+       transform="matrix(0.21925095,0,0,0.21925095,621.39378,502.72453)">
+      <path
+         id="rect4919-1"
+         style="fill:#cdc8e0;fill-opacity:1;stroke:none;stroke-width:1.20866;stroke-linejoin:round"
+         d="m -384.62035,1557.0183 c -0.055,0 -0.1,-0.045 -0.1,-0.1001 v -18.5679 h -4.1714 c -0.055,0 -0.1,-0.045 -0.1,-0.1001 v -16.4343 h -5.2391 c -0.055,0 -0.1,-0.045 -0.1,-0.1001 V 1208.293 c 0,-0.056 0.045,-0.1 0.1,-0.1 l 150.3637,-0.5333 c 0.055,0 0.1003,0.044 0.1003,0.1001 v 194.4806 c 0,0.055 -0.045,0.1001 -0.1003,0.1001 h -59.1642 v 119.3753 c 0,0.055 -0.045,0.1001 -0.1003,0.1001 h -71.9783 v 16.4343 c 0,0.056 -0.045,0.1001 -0.1,0.1001 h -4.1713 v 18.5679 c 0,0.055 -0.045,0.1001 -0.1002,0.1001 z"
+         sodipodi:nodetypes="sscsscsssccssscsscsscsss" />
+      <path
+         sodipodi:nodetypes="sscsscsssccssscsscsscsss"
+         d="m -384.55715,858.67634 c -0.055,0 -0.1,0.0448 -0.1,0.10019 v 18.58684 h -4.1714 c -0.055,0 -0.1,0.0448 -0.1,0.10018 v 16.45116 h -5.2391 c -0.055,0 -0.1,0.0448 -0.1,0.10019 v 313.7419 c 0,0.056 0.045,0.1001 0.1,0.1001 l 150.3639,0.5339 c 0.055,0 0.1001,-0.044 0.1001,-0.1002 v -194.6787 c 0,-0.055 -0.045,-0.1002 -0.1001,-0.1002 h -59.1645 V 894.0149 c 0,-0.0555 -0.045,-0.10019 -0.1002,-0.10019 h -71.9784 v -16.45116 c 0,-0.0555 -0.045,-0.10018 -0.1,-0.10018 h -4.1712 v -18.58684 c 0,-0.0555 -0.045,-0.10019 -0.1002,-0.10019 z"
+         style="fill:#000314;fill-opacity:1;stroke:none;stroke-width:1.20866;stroke-linejoin:round"
+         id="rect4919" />
+    </g>
+  </g>
+</svg>

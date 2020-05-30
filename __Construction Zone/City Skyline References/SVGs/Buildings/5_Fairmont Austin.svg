@@ -7,55 +7,55 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="Fairmont Austin.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg6658"
+   width="155.36031mm"
+   height="1626.5217mm"
+   viewBox="0 0 155.3603 1626.5217"
    version="1.1"
-   viewBox="0 0 159.12904 848.8479"
-   height="848.8479mm"
-   width="159.12904mm">
+   id="svg6658"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="5_Fairmont Austin.svg">
   <defs
      id="defs6652">
     <marker
-       inkscape:stockid="Arrow1Lstart"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="Arrow1Lstart"
+       inkscape:isstock="true"
        style="overflow:visible"
-       inkscape:isstock="true">
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
       <path
-         id="path2781"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="matrix(0.8,0,0,0.8,10,0)"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         transform="matrix(0.8,0,0,0.8,10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2781" />
     </marker>
   </defs>
   <sodipodi:namedview
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="696"
-     inkscape:window-height="1001"
-     inkscape:window-width="1206"
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="1977.2847"
-     inkscape:cx="960.62617"
-     inkscape:zoom="0.175"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base"
+     inkscape:object-paths="false"
      inkscape:object-nodes="false"
-     inkscape:object-paths="false" />
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.175"
+     inkscape:cx="-294.35088"
+     inkscape:cy="4605.3123"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1206"
+     inkscape:window-height="1001"
+     inkscape:window-x="696"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata6655">
     <rdf:RDF>
@@ -64,20 +64,42 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-207.27209,-301.2688)"
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
-    <path
-       sodipodi:nodetypes="ssscccscsss"
-       transform="matrix(0.26458333,0,0,0.26458333,153.81799,162.28865)"
-       d="m 203.10156,525.2793 c -0.59357,0 -1.07031,0.47869 -1.07031,1.07226 V 3732.4531 c 0,0.5934 0.47674,1.0703 1.07031,1.0703 l 599.34933,-0.8499 c 3.26584,-1035.7073 -2.40987,-2080.9226 -2.40987,-3117.42936 0,-0.59357 -0.4787,-1.07226 -1.07227,-1.07226 H 460.62891 v -87.82032 c 0,-0.59357 -0.47674,-1.07226 -1.07032,-1.07226 z"
-       style="fill:#000314;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-linejoin:round"
-       id="rect4932" />
+     id="layer1"
+     transform="translate(-539.3181,394.0635)">
+    <g
+       transform="translate(4868.4123,-818.67386)"
+       id="g4829">
+      <path
+         id="rect4932-54"
+         style="fill:#dad7e9;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+         d="m -4328.8179,2051.1321 c -0.1533,0 -0.2763,-0.1231 -0.2763,-0.2758 v -824.6162 c 0,-0.1526 0.1226,-0.2753 0.2763,-0.2753 l 154.7726,0.2186 c 0.8434,266.3862 -0.6223,535.2178 -0.6223,801.8096 0,0.1526 -0.1239,0.2758 -0.2769,0.2758 h -87.371 v 22.5875 c 0,0.1527 -0.1226,0.2758 -0.2765,0.2758 z"
+         sodipodi:nodetypes="ssscccscsss" />
+      <path
+         sodipodi:nodetypes="ssscccscsss"
+         d="m -4328.7681,424.61036 c -0.1533,0 -0.2763,0.12365 -0.2763,0.27691 v 827.92513 c 0,0.1532 0.1226,0.2764 0.2763,0.2764 l 154.7726,-0.2195 c 0.8434,-267.45513 -0.6223,-537.36545 -0.6223,-805.02694 0,-0.15328 -0.1239,-0.27689 -0.2769,-0.27689 h -87.371 v -22.6782 c 0,-0.15329 -0.1226,-0.27691 -0.2765,-0.27691 z"
+         style="fill:#8f8fa4;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+         id="rect4932" />
+    </g>
+    <g
+       id="g12902"
+       transform="translate(4868.4123,-818.67386)">
+      <path
+         sodipodi:nodetypes="ssscccscsss"
+         d="m -4328.8179,2051.1321 c -0.1533,0 -0.2763,-0.1231 -0.2763,-0.2758 v -824.6162 c 0,-0.1526 0.1226,-0.2753 0.2763,-0.2753 l 154.7726,0.2186 c 0.8434,266.3862 -0.6223,535.2178 -0.6223,801.8096 0,0.1526 -0.1239,0.2758 -0.2769,0.2758 h -87.371 v 22.5875 c 0,0.1527 -0.1226,0.2758 -0.2765,0.2758 z"
+         style="fill:#dad7e9;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+         id="path12898" />
+      <path
+         id="path12900"
+         style="fill:#8f8fa4;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-linejoin:round"
+         d="m -4328.7681,424.61036 c -0.1533,0 -0.2763,0.12365 -0.2763,0.27691 v 827.92513 c 0,0.1532 0.1226,0.2764 0.2763,0.2764 l 154.7726,-0.2195 c 0.8434,-267.45513 -0.6223,-537.36545 -0.6223,-805.02694 0,-0.15328 -0.1239,-0.27689 -0.2769,-0.27689 h -87.371 v -22.6782 c 0,-0.15329 -0.1226,-0.27691 -0.2765,-0.27691 z"
+         sodipodi:nodetypes="ssscccscsss" />
+    </g>
   </g>
 </svg>
