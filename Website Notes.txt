@@ -14,19 +14,24 @@ Font:
 TO DO: ////////////////////////////////////////////
 
 Home: 
-- add in start/stop animations (like traffic lights) with offset
+- Change title name to an SVG
 
 About Me: 
+-Tree slides over and words appear from behind it
+
+
 - add in words and description
 - animate tree leaves
 - fix bark on tree
 
 Extras:
+- add in start/stop animations (like traffic lights) with offset
 - Animate words with GSAP's TextPlugin
 - Skew perspective based on mouse position
 
 
 General:
+- optimize car movement (condense to 1 function and just change the name of the selected element as a parameter)
 - animate scroll to with GSAP (plug in already registered at top)
 - Mobile blurry svg issue
 - Mobile 100vh resize issue

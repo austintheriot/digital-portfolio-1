@@ -230,7 +230,7 @@ const carTimelineMoving = new TimelineMax({
 carTimelineMoving.to('.car1', {
   ease: 'none',
   duration: width / 50,
-  left: width * 1.1,
+  left: '-100%',
 });
 
 //Pause car movement, create a new scene to move car left or right depending on position
@@ -238,7 +238,8 @@ const carTimelinePause = gsap.timeline();
 carTimelinePause.to('.car1', {
   onStart: () => {
     carTimelineMoving.pause();
-    let carPosition = gsap.getProperty('.car1', 'left');
+    let carPosition = document.querySelector('.car1').getBoundingClientRect()
+      .left;
     moveCarWithScroll(carPosition);
   },
 });
@@ -253,11 +254,12 @@ new ScrollMagic.Scene({
 //Move Car with Mouse Scrolling
 //callback function--allows car to move left or righr depending on current position
 let scrollingCarScene;
+let scrollingCarTimeline;
 function moveCarWithScroll(carPosition) {
-  const scrollingCarTimeline = gsap.timeline();
+  scrollingCarTimeline = gsap.timeline();
 
   scrollingCarTimeline.to('.car1', {
-    x: carPosition < width / 2 - width / 200 ? -width * 2.2 : width * 2.2,
+    x: carPosition < width / 2 ? -width * 2.2 : width * 2.2,
     ease: 'none',
     scale: 1,
   });
@@ -271,13 +273,14 @@ function moveCarWithScroll(carPosition) {
 }
 
 //Resume Car Movement
-//Destroy scrolling scene and begin car movement again
+//Destroy scrolling scene, destroy timeline, and begin car movement again
 new ScrollMagic.Scene({
   triggerElement: '.home',
   offset: 10,
 })
   .addTo(controller)
   .on('leave', () => {
+    scrollingCarTimeline.kill();
     scrollingCarScene.destroy();
     carTimelineMoving.resume();
   });
@@ -291,7 +294,7 @@ const carTimelineMoving2 = new TimelineMax({
 carTimelineMoving2.to('.car2', {
   ease: 'none',
   duration: width / 50,
-  left: width * 1.1,
+  left: '-100%',
   delay: 4,
 });
 
@@ -300,7 +303,8 @@ const carTimelinePause2 = gsap.timeline();
 carTimelinePause2.to('.car2', {
   onStart: () => {
     carTimelineMoving2.pause();
-    let carPosition = gsap.getProperty('.car2', 'left');
+    let carPosition = document.querySelector('.car2').getBoundingClientRect()
+      .left;
     moveCarWithScroll2(carPosition);
   },
 });
@@ -315,11 +319,12 @@ new ScrollMagic.Scene({
 //Move Car with Mouse Scrolling
 //callback function--allows car to move left or righr depending on current position
 let scrollingCarScene2;
+let scrollingCarTimeline2;
 function moveCarWithScroll2(carPosition) {
-  const scrollingCarTimeline2 = gsap.timeline();
+  scrollingCarTimeline2 = gsap.timeline();
 
   scrollingCarTimeline2.to('.car2', {
-    x: carPosition < width / 2 - width / 200 ? -width * 2.2 : width * 2.2,
+    x: carPosition < width / 2 ? -width * 2.2 : width * 2.2,
     ease: 'none',
     scale: 1,
   });
@@ -340,6 +345,7 @@ new ScrollMagic.Scene({
 })
   .addTo(controller)
   .on('leave', () => {
+    scrollingCarTimeline2.kill();
     scrollingCarScene2.destroy();
     carTimelineMoving2.resume();
   });
