@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollToPlugin);
+const controller = new ScrollMagic.Controller();
 
 let width = document.documentElement.clientWidth || window.innerWidth;
 let height = document.documentElement.clientHeight || window.innerHeight;
@@ -10,8 +11,12 @@ window.addEventListener('resize', () => {
 });
 
 const WINDOW_BREAK_POINT_SIZE = 900;
-const controller = new ScrollMagic.Controller();
-const SECTION_HEIGHT = 400;
+const SECTION_HEIGHT = Number(
+  getComputedStyle(document.documentElement)
+    .getPropertyValue('--section-height')
+    .match(/[0-9]/g)
+    .join('')
+); //retrieve section height from CSS variable
 const PIN_DURATION = `${SECTION_HEIGHT * 4}%`;
 const NAV_ORB_DURATION = `${SECTION_HEIGHT}%`;
 const ANIMATION_SCROLL_DURATION = `${SECTION_HEIGHT / 2}%`;
@@ -48,21 +53,6 @@ new ScrollMagic.Scene({
   duration: NAV_ORB_DURATION,
 })
   .setClassToggle('.nav__link-contact', 'nav__link--selected')
-  .addTo(controller);
-
-//Fade out "Scroll" indicator
-const scrollHeadingTimeline = gsap.timeline();
-
-scrollHeadingTimeline.to('.nav__scroll-heading', {
-  duration: 0.6,
-  opacity: 0,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  offset: 100,
-})
-  .setTween(scrollHeadingTimeline)
   .addTo(controller);
 
 //Change opacity of entire nav on hover (on desktop)
@@ -147,27 +137,23 @@ if (width < WINDOW_BREAK_POINT_SIZE) {
     .addTo(controller);
 }
 
-/* //Animate general scrolling of the page 
---- can't get this to work. The browser just locks up instead every time
+/* //Animate general scrolling of the page
+// --- can't get this to work. The browser just locks up instead every time
 
 controller.scrollTo(function (newpos) {
-  TweenMax.to(window, 2, { scrollTo: { y: newpos } });
+  gsap.to(window, 2, { scrollTo: { y: newpos } });
 });
 
 nav.addEventListener('click', (event) => {
   let target = event.target;
   if ([...target.classList].includes('nav__link')) {
-    let link = target.dataset.link;
+    event.preventDefault();
+    let link = target.getAttribute('href');
     controller.scrollTo(link);
   }
 });
  */
-
-// Home ////////////////////////////////////////////////////////////////
-// Home ////////////////////////////////////////////////////////////////
-// Home ////////////////////////////////////////////////////////////////
-
-//Pin City Container
+//Pin City Container for the Entire Page
 new ScrollMagic.Scene({
   triggerElement: 'body',
   duration: PIN_DURATION,
@@ -176,160 +162,118 @@ new ScrollMagic.Scene({
   .setPin('.city-container', { pushFollowers: false })
   .addTo(controller);
 
-//Fade out Name and Title
-const nameAndTitleTimeline = gsap.timeline();
-
-nameAndTitleTimeline.to('.home__name, .home__title', {
-  duration: 0.6,
-  opacity: 0,
-});
-
+//Fade out Name, Title, and Scroll title
+const fadeAtScroll = gsap.timeline();
+fadeAtScroll.to(
+  '.home__name, .home__title, .nav__scroll-heading',
+  {
+    ease: 'none',
+    duration: 0.6,
+    opacity: 0,
+  },
+  '<'
+);
 new ScrollMagic.Scene({
-  triggerElement: '.home',
-  offset: 100,
+  triggerElement: '#home',
+  triggerHook: 'onLeave',
+  offset: 1,
 })
-  .setTween(nameAndTitleTimeline)
+  .setTween(fadeAtScroll)
   .addTo(controller);
 
-// ANIMATE CARS /////////////////////////////////////////////////////////////////////////////////////////////
-
-//Place Cars
+// Home ////////////////////////////////////////////////////////////////
+// Home ////////////////////////////////////////////////////////////////
+// Home ////////////////////////////////////////////////////////////////
+// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
+const home = gsap.timeline();
+// ANIMATE CARS //////////////////////////////////////////////////////
+//Place Cars//////////////////////
 gsap.set('.car', {
   yPercent: -50,
   scale: 0.1,
 });
 
-// Car 1 /////////////////////////////////////////////////////////////
-//Animate car movement
-//Move car from 50% left to 50% past the right and then repeats
-const carTimelineMoving = new TimelineMax({
-  onComplete: () => carTimelineMoving.restart(),
-});
-carTimelineMoving.to('.car1', {
-  ease: 'none',
-  duration: width / 50,
-  left: '-100%',
-});
+//Animate Cars//////////////////////
+function animateCar(selector, delay = 0, speed = 1) {
+  //Animate car movement
 
-//Pause car movement, create a new scene to move car left or right depending on position
-const carTimelinePause = gsap.timeline();
-carTimelinePause.to('.car1', {
-  onStart: () => {
-    carTimelineMoving.pause();
-    let carPosition = document.querySelector('.car1').getBoundingClientRect()
-      .left;
-    moveCarWithScroll(carPosition);
-  },
-});
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(carTimelinePause)
-  .addTo(controller);
+  /* The General Logic: 
+  
+  On the 'home' screen, the cars animate to move right to left 
+  across the screen on their own. 
+  When the user scrolls, this animation is paused. 
+  A new animation and scene is built that enables the cars to be scaled and moved based on scroll position.
+  Once the user scrolls back up to the top, the new scene and animation are destroyed, and the default animation resumes. 
+  */
 
-//Move Car with Mouse Scrolling
-//callback function--allows car to move left or righr depending on current position
-let scrollingCarScene;
-let scrollingCarTimeline;
-function moveCarWithScroll(carPosition) {
-  scrollingCarTimeline = gsap.timeline();
-
-  scrollingCarTimeline.to('.car1', {
-    x: carPosition < width / 2 ? -width * 2.2 : width * 2.2,
+  //Move car from 100% right to -100% left (to prevent accidental peeking on small screen sizes)
+  //Starts on first load, so needs no ScrollMagic controller
+  const carTimelineMoving = gsap.timeline({
+    repeat: -1, //restarts indefinitely
+  });
+  carTimelineMoving.to(selector, {
     ease: 'none',
-    scale: 1,
+    duration: width / 50 / speed,
+    left: '-100%',
+    delay: delay,
   });
-  scrollingCarScene = new ScrollMagic.Scene({
+
+  //Pause car movement, create a new scene to move car left or right depending on position
+  //Added to home section--basically pauses as soon as any scrolling takes place
+  home.to(
+    selector,
+    {
+      onStart: () => {
+        carTimelineMoving.pause();
+        let carPosition = document
+          .querySelector(selector)
+          .getBoundingClientRect().left;
+        moveCarWithScroll(carPosition);
+      },
+    },
+    '<'
+  );
+
+  //Move Car based on scroll position
+  //callback function--allows car to move left or righr depending on current position
+  let scrollingCarScene;
+  let scrollingCarTimeline;
+  function moveCarWithScroll(carPosition) {
+    scrollingCarTimeline = gsap.timeline();
+
+    scrollingCarTimeline.to(selector, {
+      x: carPosition < width / 2 ? -width * 2.2 : width * 2.2,
+      ease: 'none',
+      scale: 1,
+    });
+    scrollingCarScene = new ScrollMagic.Scene({
+      triggerElement: '.home',
+      duration: ANIMATION_SCROLL_DURATION,
+      triggerHook: 'onEnter',
+    })
+      .setTween(scrollingCarTimeline)
+      .addTo(controller);
+  }
+
+  //Resume Car Movement
+  //Destroy scrolling scene, destroy timeline, and begin car movement again
+  //When the user scrolls up to the top (literally past "10 pixels below the top")
+  new ScrollMagic.Scene({
     triggerElement: '.home',
-    duration: ANIMATION_SCROLL_DURATION,
-    triggerHook: 'onEnter',
+    offset: 10,
   })
-    .setTween(scrollingCarTimeline)
-    .addTo(controller);
+    .addTo(controller)
+    .on('leave', () => {
+      scrollingCarScene.destroy();
+      carTimelineMoving.resume();
+    });
 }
-
-//Resume Car Movement
-//Destroy scrolling scene, destroy timeline, and begin car movement again
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  offset: 10,
-})
-  .addTo(controller)
-  .on('leave', () => {
-    scrollingCarTimeline.kill();
-    scrollingCarScene.destroy();
-    carTimelineMoving.resume();
-  });
-
-// Car 2 /////////////////////////////////////////////////////////////
-//Animate car movement
-//Move car from 50% left to 50% past the right and then repeats
-const carTimelineMoving2 = new TimelineMax({
-  onComplete: () => carTimelineMoving2.restart(),
-});
-carTimelineMoving2.to('.car2', {
-  ease: 'none',
-  duration: width / 50,
-  left: '-100%',
-  delay: 4,
-});
-
-//Pause car movement, create a new scene to move car left or right depending on position
-const carTimelinePause2 = gsap.timeline();
-carTimelinePause2.to('.car2', {
-  onStart: () => {
-    carTimelineMoving2.pause();
-    let carPosition = document.querySelector('.car2').getBoundingClientRect()
-      .left;
-    moveCarWithScroll2(carPosition);
-  },
-});
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(carTimelinePause2)
-  .addTo(controller);
-
-//Move Car with Mouse Scrolling
-//callback function--allows car to move left or righr depending on current position
-let scrollingCarScene2;
-let scrollingCarTimeline2;
-function moveCarWithScroll2(carPosition) {
-  scrollingCarTimeline2 = gsap.timeline();
-
-  scrollingCarTimeline2.to('.car2', {
-    x: carPosition < width / 2 ? -width * 2.2 : width * 2.2,
-    ease: 'none',
-    scale: 1,
-  });
-  scrollingCarScene2 = new ScrollMagic.Scene({
-    triggerElement: '.home',
-    duration: ANIMATION_SCROLL_DURATION,
-    triggerHook: 'onEnter',
-  })
-    .setTween(scrollingCarTimeline2)
-    .addTo(controller);
-}
-
-//Resume Car Movement
-//Destroy scrolling scene and begin car movement again
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  offset: 10,
-})
-  .addTo(controller)
-  .on('leave', () => {
-    scrollingCarTimeline2.kill();
-    scrollingCarScene2.destroy();
-    carTimelineMoving2.resume();
-  });
-
-// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
-const home = gsap.timeline();
+//Car animation logic is executed on specified cars at specified delays
+//selector, delay, speed
+animateCar('.car1', 0, 1);
+animateCar('.car2', 7, 1.3);
+animateCar('.car3', 11, 0.6);
+animateCar('.car4', 15, 1.75);
 
 //Placing items before animation//////////////////////////////////////////////////////
 //Animate Ground
@@ -461,7 +405,6 @@ home
 
 //Add Home animation to controller
 new ScrollMagic.Scene({
-  triggerElement: '.home',
   duration: ANIMATION_SCROLL_DURATION,
   triggerHook: 'onEnter',
 })
@@ -471,3 +414,50 @@ new ScrollMagic.Scene({
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
+
+//Animate Bench & Tree over ///////////////////////////////////
+const benchOver = gsap.timeline();
+benchOver.to('.bench', {
+  ease: 'power1.inOut',
+  duration: 1,
+  xPercent: -100,
+});
+
+//Add benchover animation to controller
+new ScrollMagic.Scene({
+  triggerElement: '#about',
+  triggerHook: 'onLeave',
+  offset: 1,
+})
+  .setTween(benchOver)
+  .addTo(controller);
+
+//About Section Scroll Animations ///////////////////////////////////
+
+document.querySelectorAll('.about__info-section').forEach((el) => {
+  const paragraph = el.dataset.paragraph;
+  const fadeInParagraph = gsap.timeline();
+
+  fadeInParagraph.to(paragraph, {
+    duration: 1,
+    opacity: 1,
+  });
+
+  new ScrollMagic.Scene({
+    triggerElement: this,
+    triggerHook: 0.15,
+  })
+    .setTween(fadeInParagraph)
+    .addTo(controller);
+});
+
+const about = gsap.timeline();
+
+new ScrollMagic.Scene({
+  triggerElement: '#about',
+  triggerHook: 'onLeave',
+  duration: ANIMATION_SCROLL_DURATION,
+  offset: 1,
+})
+  .setTween(about)
+  .addTo(controller);

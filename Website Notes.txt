@@ -16,13 +16,14 @@ TO DO: ////////////////////////////////////////////
 Home: 
 - Add "Portfolio" and "Hire Me" buttons
 - Change title name to an SVG
+- add windows to primary buildings
 
 ANIMATIONS///////////////////
 
 About Me: 
-  - Tree slides over and words appear from behind it
-  - Words Fade in and out as individual slides/sentences
-  -
+- Start with tree in the middle
+- On scroll, tree immediately slides to the left and words appear to the right
+- Words Fade in and out as individual slides/sentences
 
 Skills: 
 - Flicker on the streetlamp
@@ -32,9 +33,6 @@ Skills:
 
 
 INFO///////////////////
-
-Austin Theriot
-
 Austin is a Front-End Developer based in Austin, TX. 
 Before breaking into the tech industry, Austin was an award-winning classical composer.
 Then he got the coding bug. 

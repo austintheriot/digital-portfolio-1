@@ -151,12 +151,8 @@ nav {
 
 section {
   height: var(--section-height);
-  overflow: hidden;
-  border: 1px solid var(--dark-color);
-}
 
-section h1 {
-  display: none;
+  border: 1px solid var(--dark-color);
 }
 
 .home-spacer {
@@ -344,4 +340,8 @@ a {
   top: 50%;
   height: 100%;
   left: 50%;
+}
+
+.about__info-section {
+  height: calc(var(--section-height) / 10);
 }
