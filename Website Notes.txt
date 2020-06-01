@@ -14,10 +14,86 @@ Font:
 TO DO: ////////////////////////////////////////////
 
 Home: 
+- Add "Portfolio" and "Hire Me" buttons
 - Change title name to an SVG
 
+ANIMATIONS///////////////////
+
 About Me: 
--Tree slides over and words appear from behind it
+  - Tree slides over and words appear from behind it
+  - Words Fade in and out as individual slides/sentences
+  -
+
+Skills: 
+- Flicker on the streetlamp
+- Move to bench
+- Use some sort of graphic/imagery--cards maybe? 
+------------These flip over to reveal their descriptions
+
+
+INFO///////////////////
+
+Austin Theriot
+
+Austin is a Front-End Developer based in Austin, TX. 
+Before breaking into the tech industry, Austin was an award-winning classical composer.
+Then he got the coding bug. 
+Now he brings creativity and precision that only a composer could to the world of web development. 
+
+If Beethoven were alive today, what kind of website would he create?
+
+Skills: 
+  HTML5
+    Semantic HTML
+    SEO
+  CSS3
+    BEM Methodology
+    Advanced animations with GSAP 
+    ScrollMagic
+  JavaScript 
+    ES6+
+    OOP
+    async/await
+    Ajax
+    npm'
+    Webpack
+    Babel
+    Unit Testing
+  React
+  Git/Github/version control
+  Design Skills
+    From-scratch web design
+    Original vector asset creation
+    Mobile-first workflow
+    Photoshop
+    Photography
+    Figma
+  Excellent verbal/written Skills
+  Webmaster
+    Hosting/domain management
+    Business email management
+  3D Graphics
+    OpenGL/GLSL
+    Custom Shaders
+  Music Composition (?)
+  Algorithms & Problem Solving
+
+Qualities:
+  Passionate about coding
+  Highly creative
+    Published poet & composer
+  Unwavering commitment to excellence
+  Analytical
+  Dependable
+  Hardworking
+  Fast learner
+  Lifelong learner
+
+More Info
+  Resume
+  Github
+  CodeWars
+
 
 
 - add in words and description
@@ -25,6 +101,7 @@ About Me:
 - fix bark on tree
 
 Extras:
+- Create an SVG self portrait? 
 - add in start/stop animations (like traffic lights) with offset
 - Animate words with GSAP's TextPlugin
 - Skew perspective based on mouse position

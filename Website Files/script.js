@@ -191,29 +191,7 @@ new ScrollMagic.Scene({
   .setTween(nameAndTitleTimeline)
   .addTo(controller);
 
-// Animating the Ground ////////////////////////////////////////////////////////////////
-//Animate Ground
-
-gsap.set('.ground', {
-  yPercent: -50,
-  scaleY: 0.1,
-  scaleX: 1.5,
-});
-
-const groundTimeline = gsap.timeline();
-
-groundTimeline.to('.ground', {
-  ease: 'power.in',
-  scaleY: 0.5,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(groundTimeline)
-  .addTo(controller);
+// ANIMATE CARS /////////////////////////////////////////////////////////////////////////////////////////////
 
 //Place Cars
 gsap.set('.car', {
@@ -350,172 +328,146 @@ new ScrollMagic.Scene({
     carTimelineMoving2.resume();
   });
 
-// Move Primary ////////////////////////////////////////////////////////////////
+// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
+const home = gsap.timeline();
+
+//Placing items before animation//////////////////////////////////////////////////////
+//Animate Ground
+gsap.set(
+  '.ground',
+  {
+    yPercent: -50,
+    scaleY: 0.1,
+    scaleX: 1.5,
+  },
+  '<'
+);
 //Center buildings Completely
-gsap.set('.buildings', {
-  yPercent: -50,
-});
-
-const MOVE_PRIMARY_X = () => width * 2.2;
-const MOVE_PRIMARY_SCALE = 7;
-
-//Move Primary Left
-const movePrimaryLeft = gsap.timeline();
-
-movePrimaryLeft.to('.move-primary-left', {
-  x: -MOVE_PRIMARY_X(),
-  scale: MOVE_PRIMARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(movePrimaryLeft)
-  .addTo(controller);
-
-//Move Primary Right
-const movePrimaryRight = gsap.timeline();
-
-movePrimaryRight.to('.move-primary-right', {
-  x: MOVE_PRIMARY_X,
-  scale: MOVE_PRIMARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(movePrimaryRight)
-  .addTo(controller);
-
-// Move Secondary ////////////////////////////////////////////////////////////////
-const MOVE_SECONDARY_X = () => width * 1.2;
-const MOVE_SECONDARY_SCALE = 3;
-
-//Move Secondary Left
-const moveSecondaryLeft = gsap.timeline();
-
-moveSecondaryLeft.to('.move-secondary-left', {
-  x: -MOVE_SECONDARY_X(),
-  scale: MOVE_SECONDARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(moveSecondaryLeft)
-  .addTo(controller);
-
-//Move Secondary Right
-const moveSecondaryRight = gsap.timeline();
-
-moveSecondaryRight.to('.move-secondary-right', {
-  x: MOVE_SECONDARY_X(),
-  scale: MOVE_SECONDARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(moveSecondaryRight)
-  .addTo(controller);
-
-// Move Tertiary ////////////////////////////////////////////////////////////////
-const MOVE_TERTIARY_X = () => width * 0.5;
-const MOVE_TERTIARY_SCALE = 2;
-
-//Move Tertiary Left
-const moveTertiaryLeft = gsap.timeline();
-
-moveTertiaryLeft.to('.move-tertiary-left', {
-  x: -MOVE_TERTIARY_X(),
-  scale: MOVE_TERTIARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(moveTertiaryLeft)
-  .addTo(controller);
-
-//Move Tertiary Right
-const moveTertiaryRight = gsap.timeline();
-
-moveTertiaryRight.to('.move-tertiary-right', {
-  x: MOVE_TERTIARY_X(),
-  scale: MOVE_TERTIARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(moveTertiaryRight)
-  .addTo(controller);
-
-//move-tertiary-right-slower
-const moveTertiaryRightSlower = gsap.timeline();
-
-moveTertiaryRightSlower.to('.move-tertiary-right-slower', {
-  x: width * 0.3,
-  scale: MOVE_TERTIARY_SCALE,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(moveTertiaryRightSlower)
-  .addTo(controller);
-
-//Background Buildings
-const backgroundBuildings = gsap.timeline();
-
-backgroundBuildings.to('.background-buildings', {
-  scale: 1.5,
-});
-
-new ScrollMagic.Scene({
-  triggerElement: '.home',
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(backgroundBuildings)
-  .addTo(controller);
-
-// About ////////////////////////////////////////////////////////////////
-// About ////////////////////////////////////////////////////////////////
-// About ////////////////////////////////////////////////////////////////
-
-const benchTimeline = gsap.timeline();
-
-//Bench
+gsap.set(
+  '.buildings',
+  {
+    yPercent: -50,
+  },
+  '<'
+);
+//Set Bench,
 gsap.set('.bench', {
   yPercent: -50,
   xPercent: -50,
   scale: 0.02,
 });
 
-benchTimeline.to('.bench', {
-  scale: 1,
-  ease: 'power.in',
-});
+//Animating Home Items///////////////////////////////////////////////////////////////
+//Animation speeds for buildings
+const MOVE_PRIMARY_X = () => width * 2.2;
+const MOVE_PRIMARY_SCALE = 7;
+const MOVE_SECONDARY_X = () => width * 1.2;
+const MOVE_SECONDARY_SCALE = 3;
+const MOVE_TERTIARY_X = () => width * 0.5;
+const MOVE_TERTIARY_SCALE = 2;
+// Move Primary Buildings ////////////////////
+home
+  //Move Primary Buildings Left
+  .to(
+    '.move-primary-left',
+    {
+      x: -MOVE_PRIMARY_X(),
+      scale: MOVE_PRIMARY_SCALE,
+    },
+    '<'
+  )
+  //Move Primary Buildings Right
+  .to(
+    '.move-primary-right',
+    {
+      x: MOVE_PRIMARY_X,
+      scale: MOVE_PRIMARY_SCALE,
+    },
+    '<'
+  )
+  // Move Secondary Buildings ////////////////////
+  //Move Secondary Buildings Left
+  .to(
+    '.move-secondary-left',
+    {
+      x: -MOVE_SECONDARY_X(),
+      scale: MOVE_SECONDARY_SCALE,
+    },
+    '<'
+  )
+  //Move Secondary Buildings Right
+  .to(
+    '.move-secondary-right',
+    {
+      x: MOVE_SECONDARY_X(),
+      scale: MOVE_SECONDARY_SCALE,
+    },
+    '<'
+  )
+  // Move Tertiary Buildings /////////////////////
+  //Move Tertiary Buildings Left
+  .to(
+    '.move-tertiary-left',
+    {
+      x: -MOVE_TERTIARY_X(),
+      scale: MOVE_TERTIARY_SCALE,
+    },
+    '<'
+  )
+  //Move Tertiary Buildings Right
+  .to(
+    '.move-tertiary-right',
+    {
+      x: MOVE_TERTIARY_X(),
+      scale: MOVE_TERTIARY_SCALE,
+    },
+    '<'
+  )
+  //Move Tertiary Buildings Right (Slower)
+  .to(
+    '.move-tertiary-right-slower',
+    {
+      x: width * 0.3,
+      scale: MOVE_TERTIARY_SCALE,
+    },
+    '<'
+  )
+  // Scale Up Background Buildings //////////////
+  .to(
+    '.background-buildings',
+    {
+      scale: 1.5,
+    },
+    '<'
+  )
+  // Scale Up Ground /////////////////////////////
+  .to(
+    '.ground',
+    {
+      ease: 'power.in',
+      scaleY: 0.5,
+    },
+    '<'
+  )
+  // Scale Up Bench Into Shot ////////////////////
+  .to(
+    '.bench',
+    {
+      scale: 1,
+      ease: 'power.in',
+    },
+    '<'
+  );
 
+//Add Home animation to controller
 new ScrollMagic.Scene({
   triggerElement: '.home',
   duration: ANIMATION_SCROLL_DURATION,
   triggerHook: 'onEnter',
 })
-  .setTween(benchTimeline)
+  .setTween(home)
   .addTo(controller);
+
+// About ////////////////////////////////////////////////////////////////
+// About ////////////////////////////////////////////////////////////////
+// About ////////////////////////////////////////////////////////////////
