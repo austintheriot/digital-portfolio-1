@@ -1,10 +1,13 @@
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
-const controller = new ScrollMagic.Controller();
 
 let width = document.documentElement.clientWidth || window.innerWidth;
 let height = document.documentElement.clientHeight || window.innerHeight;
 const ground1 = document.querySelector('.ground1');
+const homeSection = document.querySelector('#home');
+const aboutSection = document.querySelector('#about');
+const portfolioSection = document.querySelector('#portfolio');
+const contactSection = document.querySelector('#contact');
 
 window.addEventListener('resize', () => {
   width = document.documentElement.clientWidth || window.innerWidth;
@@ -18,46 +21,42 @@ SECTION_HEIGHT_PERCENT = Number(
     .match(/[0-9]/g)
     .join('')
 ); //retrieve section height from CSS variable (__vh, multiply it times the vertical height)
-const SECTION_HEIGHT_PIXELS = SECTION_HEIGHT_PERCENT * height;
-const PIN_DURATION = `${SECTION_HEIGHT_PERCENT * 4}%`;
+const SECTION_HEIGHT_PIXELS = (SECTION_HEIGHT_PERCENT / 100) * height;
+const PIN_DURATION = `${SECTION_HEIGHT_PERCENT * 5}%`;
 const NAV_ORB_DURATION = `${SECTION_HEIGHT_PERCENT}%`;
 const ANIMATION_SCROLL_DURATION = `${SECTION_HEIGHT_PERCENT * 0.75}%`;
 
 // Nav ////////////////////////////////////////////////////////////////
 // Nav ////////////////////////////////////////////////////////////////
 // Nav ////////////////////////////////////////////////////////////////
+//Animate Nav highlight/info depending on location //////////////////////////////////////////
+function triggerNavClass(trigger, prefix, className, duration) {
+  ScrollTrigger.create({
+    trigger: trigger,
+    start: '=-1 top',
+    end: `${duration} top`,
+    onToggle: () =>
+      document
+        .querySelector(`${prefix}${trigger.id}`)
+        .classList.toggle(className),
+  });
+}
+
+function triggerNavContainer(prefix, className) {
+  triggerNavClass(homeSection, prefix, className, SECTION_HEIGHT_PIXELS);
+  triggerNavClass(aboutSection, prefix, className, SECTION_HEIGHT_PIXELS * 2);
+  triggerNavClass(portfolioSection, prefix, className, SECTION_HEIGHT_PIXELS);
+  triggerNavClass(contactSection, prefix, className, SECTION_HEIGHT_PIXELS);
+}
+
+//Light up navigation orbs when viewing that section//////////////////
+triggerNavContainer('.nav__link-', 'nav__link--selected');
+
+//Fade in nav info depending on scroll location (Mobile)//////////////
+triggerNavContainer('.nav__info-', 'nav__info--selected');
+
+//Change opacity of entire nav on hover (Desktop)////////////////
 const nav = document.querySelector('nav');
-
-//Light up navigation orbs when viewing that section
-new ScrollMagic.Scene({
-  triggerElement: '#home',
-  duration: NAV_ORB_DURATION,
-})
-  .setClassToggle('.nav__link-home', 'nav__link--selected')
-  .addTo(controller);
-
-new ScrollMagic.Scene({
-  triggerElement: '#about',
-  duration: `${NAV_ORB_DURATION.match(/[0-9]/g).join('') * 2}%`, //to account for skills section
-})
-  .setClassToggle('.nav__link-about', 'nav__link--selected')
-  .addTo(controller);
-
-new ScrollMagic.Scene({
-  triggerElement: '#portfolio',
-  duration: NAV_ORB_DURATION,
-})
-  .setClassToggle('.nav__link-portfolio', 'nav__link--selected')
-  .addTo(controller);
-
-new ScrollMagic.Scene({
-  triggerElement: '#contact',
-  duration: NAV_ORB_DURATION,
-})
-  .setClassToggle('.nav__link-contact', 'nav__link--selected')
-  .addTo(controller);
-
-//Change opacity of entire nav on hover (on desktop)
 if (width >= WINDOW_BREAK_POINT_SIZE) {
   gsap.to(nav, {
     duration: 2,
@@ -108,174 +107,55 @@ function fadeInOutElement(target, opacity) {
   });
 }
 
-//Change opacity of nav info on location (Mobile)
-if (width < WINDOW_BREAK_POINT_SIZE) {
-  new ScrollMagic.Scene({
-    triggerElement: '#home',
-    duration: NAV_ORB_DURATION,
-  })
-    .setClassToggle('.nav__info-home', 'nav__info--selected')
-    .addTo(controller);
-
-  new ScrollMagic.Scene({
-    triggerElement: '#about',
-    duration: `${NAV_ORB_DURATION.match(/[0-9]/g).join('') * 2}%`, //to account for skills section
-  })
-    .setClassToggle('.nav__info-about', 'nav__info--selected')
-    .addTo(controller);
-
-  new ScrollMagic.Scene({
-    triggerElement: '#portfolio',
-    duration: NAV_ORB_DURATION,
-  })
-    .setClassToggle('.nav__info-portfolio', 'nav__info--selected')
-    .addTo(controller);
-
-  new ScrollMagic.Scene({
-    triggerElement: '#contact',
-    duration: NAV_ORB_DURATION,
-  })
-    .setClassToggle('.nav__info-contact', 'nav__info--selected')
-    .addTo(controller);
-}
-
 /* //Animate general scrolling of the page
 // --- can't get this to work. The browser just locks up instead every time
-
-controller.scrollTo(function (newpos) {
-  gsap.to(window, 2, { scrollTo: { y: newpos } });
-});
 
 nav.addEventListener('click', (event) => {
   let target = event.target;
   if ([...target.classList].includes('nav__link')) {
     event.preventDefault();
     let link = target.getAttribute('href');
-    controller.scrollTo(link);
+    gsap.to(window, {
+      duration: 2,
+      scrollTo: link,
+    });
   }
-});
- */
+}); */
+
 //Pin City Container for the Entire Page
-new ScrollMagic.Scene({
-  triggerElement: 'body',
-  duration: PIN_DURATION,
-  triggerHook: 'onLeave',
-})
-  .setPin('.city-container', { pushFollowers: false })
-  .addTo(controller);
+ScrollTrigger.create({
+  trigger: '.city-container',
+  start: 'top top',
+  end: PIN_DURATION,
+  pin: true,
+  pinSpacing: false,
+});
 
 //Fade out Name, Title, and Scroll title
-const fadeAtScroll = gsap.timeline();
-fadeAtScroll.to(
-  '.home__name, .home__title, .nav__scroll-heading',
-  {
-    ease: 'none',
-    duration: 0.6,
-    opacity: 0,
+gsap.to('.home__name, .home__title, .nav__scroll-heading', {
+  scrollTrigger: {
+    triggerElement: '#home',
+    start: '10 top',
+    toggleActions: 'play play reverse reverse',
   },
-  '<'
-);
-new ScrollMagic.Scene({
-  triggerElement: '#home',
-  triggerHook: 'onLeave',
-  offset: 1,
-})
-  .setTween(fadeAtScroll)
-  .addTo(controller);
-
-// Home ////////////////////////////////////////////////////////////////
-// Home ////////////////////////////////////////////////////////////////
-// Home ////////////////////////////////////////////////////////////////
-// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
-const home = gsap.timeline();
-// ANIMATE CARS //////////////////////////////////////////////////////
-//Place Cars//////////////////////
-gsap.set('.car', {
-  yPercent: -50,
-  scale: 0.1,
+  ease: 'power2.inOut',
+  duration: 0.4,
+  opacity: 0,
 });
 
-//Animate Cars//////////////////////
-function animateCar(selector, delay = 0, speed = 1) {
-  //Animate car movement
+// Home ////////////////////////////////////////////////////////////////
+// Home ////////////////////////////////////////////////////////////////
+// Home ////////////////////////////////////////////////////////////////
 
-  /* The General Logic: 
-  
-  On the 'home' screen, the cars animate to move right to left 
-  across the screen on their own. 
-  When the user scrolls, this animation is paused. 
-  A new animation and scene is built that enables the cars to be scaled and moved based on scroll position.
-  Once the user scrolls back up to the top, the new scene and animation are destroyed, and the default animation resumes. 
-  */
+const home = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#home',
+    start: 'top top', //trigger element & viewport
+    scrub: 1, //duration for scrub to catch up to scroll
+  },
+});
 
-  //Move car from 100% right to -100% left (to prevent accidental peeking on small screen sizes)
-  //Starts on first load, so needs no ScrollMagic controller
-  const carTimelineMoving = gsap.timeline({
-    repeat: -1, //restarts indefinitely
-  });
-  carTimelineMoving.to(selector, {
-    ease: 'none',
-    duration: width / 50 / speed,
-    left: '-100%',
-    delay: delay,
-  });
-
-  //Pause car movement, create a new scene to move car left or right depending on position
-  //Added to home section--basically pauses as soon as any scrolling takes place
-  home.to(
-    selector,
-    {
-      onStart: () => {
-        carTimelineMoving.pause();
-        let carPosition = document
-          .querySelector(selector)
-          .getBoundingClientRect().left;
-        moveCarWithScroll(carPosition);
-      },
-    },
-    '<'
-  );
-
-  //Move Car based on scroll position
-  //callback function--allows car to move left or righr depending on current position
-  let scrollingCarScene;
-  let scrollingCarTimeline;
-  function moveCarWithScroll(carPosition) {
-    scrollingCarTimeline = gsap.timeline();
-
-    scrollingCarTimeline.to(selector, {
-      x: carPosition < width / 2 ? -width * 2.2 : width * 2.2,
-      ease: 'none',
-      scale: 1,
-    });
-    scrollingCarScene = new ScrollMagic.Scene({
-      triggerElement: '.home',
-      duration: ANIMATION_SCROLL_DURATION,
-      triggerHook: 'onEnter',
-    })
-      .setTween(scrollingCarTimeline)
-      .addTo(controller);
-  }
-
-  //Resume Car Movement
-  //Destroy scrolling scene, destroy timeline, and begin car movement again
-  //When the user scrolls up to the top (literally past "10 pixels below the top")
-  new ScrollMagic.Scene({
-    triggerElement: '.home',
-    offset: 10,
-  })
-    .addTo(controller)
-    .on('leave', () => {
-      scrollingCarScene.destroy();
-      carTimelineMoving.resume();
-    });
-}
-//Car animation logic is executed on specified cars at specified delays
-//selector, delay, speed
-animateCar('.car1', 0, 1);
-animateCar('.car2', 7, 1.3);
-animateCar('.car3', 11, 0.6);
-animateCar('.car4', 15, 1.75);
+// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
 
 //Placing items before animation//////////////////////////////////////////////////////
 //Animate Ground
@@ -399,32 +279,34 @@ home
   .to(
     '.bench',
     {
+      ease: 'power1.inOut',
       scale: 1,
-      ease: 'power.in',
     },
     '<'
   );
 
-//Add Home animation to controller
-new ScrollMagic.Scene({
-  duration: ANIMATION_SCROLL_DURATION,
-  triggerHook: 'onEnter',
-})
-  .setTween(home)
-  .addTo(controller);
+// About ////////////////////////////////////////////////////////////////
+// About ////////////////////////////////////////////////////////////////
+// About ////////////////////////////////////////////////////////////////
 
-// About ////////////////////////////////////////////////////////////////
-// About ////////////////////////////////////////////////////////////////
-// About ////////////////////////////////////////////////////////////////
+const about = gsap.timeline();
 
 //Animate Bench & Buildings over ///////////////////////////////////
-const benchOverAbout = gsap.timeline();
-benchOverAbout
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: '100 top', //trigger element & viewport
+      end: `90% top`,
+      toggleActions: 'play reverse play reverse',
+    },
+  })
   .to(
     '.tertiary-buildings',
     {
       ease: 'power1.inOut',
-      duration: 0.6,
+      duration: 0.4,
       xPercent: -50,
     },
     '<'
@@ -433,7 +315,7 @@ benchOverAbout
     '.primary-buildings',
     {
       ease: 'power1.inOut',
-      duration: 0.6,
+      duration: 0.4,
       xPercent: -100,
     },
     '<'
@@ -442,114 +324,44 @@ benchOverAbout
     '.bench',
     {
       ease: 'power1.inOut',
-      duration: 0.6,
+      duration: 0.4,
       left: '5%',
     },
     '<'
   );
 
-//Add benchOverAbout animation to controller
-new ScrollMagic.Scene({
-  triggerElement: '#about',
-  triggerHook: 'onLeave',
-  offset: 10,
-})
-  .setTween(benchOverAbout)
-  .addTo(controller);
-
-//Animate Text Slides ///////////////////////////////////
-gsap.set('.about__info', {
-  opacity: 0,
-});
-
+//Animate Text Slides //////////////////////////////////////////////////
 document.querySelectorAll('.about__info-section').forEach((el) => {
   const paragraph = el.dataset.paragraph;
-  const fadeInParagraph = gsap.timeline();
-
-  fadeInParagraph.to(paragraph, {
-    duration: 1,
+  gsap.to(paragraph, {
+    scrollTrigger: {
+      trigger: el,
+      start: '25% center', //trigger element & viewport
+      end: 'bottom center',
+      markers: true,
+      toggleActions: 'play reverse play reverse',
+      pin: true,
+      pinSpacing: false,
+    },
+    duration: 0.2,
     opacity: 1,
   });
-  new ScrollMagic.Scene({
-    triggerElement: el,
-    triggerHook: 'onLeave',
-    duration: el.offsetHeight / 4,
-  })
-    .setTween(fadeInParagraph)
-    .addTo(controller);
-
-  const fadeOutParagraph = gsap.timeline();
-  fadeOutParagraph.to(paragraph, {
-    duration: 1,
-    opacity: 0,
-  });
-  new ScrollMagic.Scene({
-    triggerElement: el,
-    triggerHook: 'onLeave',
-    offset: el.offsetHeight * 0.75,
-    duration: el.offsetHeight * 0.25,
-  })
-    .setTween(fadeOutParagraph)
-    .addTo(controller);
 });
 
-//General 'about' section timeline
-const about = gsap.timeline();
-
-new ScrollMagic.Scene({
-  triggerElement: '#about',
-  triggerHook: 'onLeave',
-  duration: ANIMATION_SCROLL_DURATION,
-  offset: 1,
-})
-  .setTween(about)
-  .addTo(controller);
+/*       pin: true,
+      pinSpacing: false, */
 
 // Skills ////////////////////////////////////////////////////////////////
 // Skills ////////////////////////////////////////////////////////////////
 // Skills ////////////////////////////////////////////////////////////////
+
+const skills = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#skills',
+    start: 'top top', //trigger element & viewport
+    end: () => SECTION_HEIGHT_PIXELS * 1.5,
+    scrub: 0.5, //duration for scrub to catch up to scroll
+  },
+});
 
 //Animate Bench & Buildings over ///////////////////////////////////
-const benchOverSkills = gsap.timeline();
-benchOverSkills
-  .to(
-    '.tertiary-buildings',
-    {
-      ease: 'power1.inOut',
-      duration: 0.6,
-      xPercent: 50,
-    },
-    '<'
-  )
-  .to(
-    '.primary-buildings',
-    {
-      ease: 'power1.inOut',
-      duration: 0.6,
-      xPercent: 100,
-    },
-    '<'
-  )
-  .to(
-    '.bench',
-    {
-      ease: 'power1.inOut',
-      duration: 0.6,
-      left: '93%',
-    },
-    '<'
-  )
-  .to('.bench', {
-    ease: 'power1.inOut',
-    duration: 0.6,
-    scale: 5,
-  });
-
-//Add benchOverAbout animation to controller
-new ScrollMagic.Scene({
-  triggerElement: '#skills',
-  triggerHook: 'onLeave',
-  offset: 10,
-})
-  .setTween(benchOverSkills)
-  .addTo(controller);

@@ -14,21 +14,19 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     <!-- Scripts -->
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
-    <!-- GSAP ScrollTrigger Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollTrigger.min.js"></script>
-    <!-- GSAP ScrollTo Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollToPlugin.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollTrigger.min.js" defer></script>
     <!-- Scroll Magic -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" defer></script>
     <!-- Scroll Magic Debugging Indicators -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js" defer></script>
     <!-- Scroll Magic/GSAP plug in -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js" defer></script>
     <!-- Main Script -->
     <script src="script.js" defer></script>
   </head>
-  <body id="home">
+  <body>
     <!-- Navigation -->
     <nav>
       <a href="#home" class="nav__link nav__link-home"></a>
@@ -151,39 +149,42 @@
         alt="A bench and tree under a streetlamp"
       />
 
-      <p class="about__info about__info--1">Austin is a Front-End Developer based in Austin, TX. </p>
-      <p class="about__info about__info--2">Before breaking into the tech industry, Austin was an award-winning classical composer.</p>
-      <p class="about__info about__info--3">Then he got the coding bug. </p>
-      <p class="about__info about__info--4">Now he brings a creativity and precision that only a composer could to the world of web development. </p>
-      <p class="about__info about__info--5">If Beethoven were alive today, what kind of website would he create?</p>
-
+      
+      
+      
+  
     </div>
-    <section class="home-spacer">
-      <h1>home-spacer</h1>
+    <section id="home" class="big-sections">
+      <h1>Home</h1>
     </section>
-    <section id="about">
+    <section id="about" class="big-sections">
       <h1>About</h1>
-      <section class="about__info-section about__info-section--1" data-paragraph=".about__info--1"></section>
-        <section class="about__info-section about__info-section--2" data-paragraph=".about__info--2"></section>
-        <section class="about__info-section about__info-section--3" data-paragraph=".about__info--3"></section>
-        <section class="about__info-section about__info-section--4" data-paragraph=".about__info--4"></section>
+      <section class="about__info-section--filler">
+        <!-- empty spacer section -->
+      </section>
+      <section class="about__info-section about__info-section--1" data-paragraph=".about__info--1">
+        <p class="about__info about__info--1">Austin is a Front-End Developer based in Austin, TX. </p>
+      </section>
+        <section class="about__info-section about__info-section--2" data-paragraph=".about__info--2">
+          <p class="about__info about__info--2">Before breaking into the tech industry, Austin was an award-winning classical composer.</p>
+        </section>
+        <section class="about__info-section about__info-section--3" data-paragraph=".about__info--3">
+          <p class="about__info about__info--3">Then he got the coding bug. </p>
+        </section>
+        <section class="about__info-section about__info-section--4" data-paragraph=".about__info--4">
+          <p class="about__info about__info--4">Now he brings a creativity and precision that only a composer can to the world of web development. </p>
+        </section>
         <!-- <section class="about__info-section about__info-section--5" data-paragraph=".about__info--5"></section> -->
       </section>
     </section>
-    <section id="skills">
+    <section id="skills" class="big-sections">
       <h1>Skills</h1>
     </section>
-    <section id="portfolio">
+    <section id="portfolio" class="big-sections">
       <h1>Portfolio</h1>
     </section>
-    <section id="contact">
+    <section id="contact" class="big-sections">
       <h1>Contact</h1>
-      <a href="#home"
-        >HOME Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-        amet impedit earum minus magni, aut ad fugiat, sit voluptas asperiores,
-        id fugit animi quaerat vero exercitationem placeat. Cupiditate, id
-        reiciendis!</a
-      >
     </section>
   </body>
 </html>

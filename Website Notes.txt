@@ -13,6 +13,11 @@ Font:
 
 TO DO: ////////////////////////////////////////////
 
+- fix slides timing
+- add cars back in to the home page
+
+
+
 Home: 
 - Add "Portfolio" and "Hire Me" buttons
 - Change title name to an SVG
