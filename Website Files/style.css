@@ -24,6 +24,7 @@
 
   /* General Styling ///////////////////////////////////////////////////////// */
   scroll-behavior: smooth;
+  /* scroll-snap-type: y proximity; */
   font-family: var(--sans, sans-serif);
   color: var(--dark-color);
   font-size: var(--body-size);
@@ -32,8 +33,6 @@
 
 /* Everything bigger than 900px */
 @media (min-width: 900px) {
-  /* General */
-
   :root {
     --h1-size: 4rem;
     --h2-size: 2rem;
@@ -343,5 +342,18 @@ a {
 }
 
 .about__info-section {
-  height: calc(var(--section-height) / 10);
+  height: calc(var(--section-height) / 4.5);
+  /*   scroll-snap-align: center; */
+}
+
+.about__info {
+  position: absolute;
+  z-index: 10;
+  top: 38%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  padding: 1rem;
+  font-size: calc(var(--body-size) * 1.5);
+  text-align: center;
 }

@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 const controller = new ScrollMagic.Controller();
 
 let width = document.documentElement.clientWidth || window.innerWidth;
@@ -11,15 +12,16 @@ window.addEventListener('resize', () => {
 });
 
 const WINDOW_BREAK_POINT_SIZE = 900;
-const SECTION_HEIGHT = Number(
+SECTION_HEIGHT_PERCENT = Number(
   getComputedStyle(document.documentElement)
     .getPropertyValue('--section-height')
     .match(/[0-9]/g)
     .join('')
-); //retrieve section height from CSS variable
-const PIN_DURATION = `${SECTION_HEIGHT * 4}%`;
-const NAV_ORB_DURATION = `${SECTION_HEIGHT}%`;
-const ANIMATION_SCROLL_DURATION = `${SECTION_HEIGHT / 2}%`;
+); //retrieve section height from CSS variable (__vh, multiply it times the vertical height)
+const SECTION_HEIGHT_PIXELS = SECTION_HEIGHT_PERCENT * height;
+const PIN_DURATION = `${SECTION_HEIGHT_PERCENT * 4}%`;
+const NAV_ORB_DURATION = `${SECTION_HEIGHT_PERCENT}%`;
+const ANIMATION_SCROLL_DURATION = `${SECTION_HEIGHT_PERCENT * 0.75}%`;
 
 // Nav ////////////////////////////////////////////////////////////////
 // Nav ////////////////////////////////////////////////////////////////
@@ -36,7 +38,7 @@ new ScrollMagic.Scene({
 
 new ScrollMagic.Scene({
   triggerElement: '#about',
-  duration: NAV_ORB_DURATION,
+  duration: `${NAV_ORB_DURATION.match(/[0-9]/g).join('') * 2}%`, //to account for skills section
 })
   .setClassToggle('.nav__link-about', 'nav__link--selected')
   .addTo(controller);
@@ -117,7 +119,7 @@ if (width < WINDOW_BREAK_POINT_SIZE) {
 
   new ScrollMagic.Scene({
     triggerElement: '#about',
-    duration: NAV_ORB_DURATION,
+    duration: `${NAV_ORB_DURATION.match(/[0-9]/g).join('') * 2}%`, //to account for skills section
   })
     .setClassToggle('.nav__info-about', 'nav__info--selected')
     .addTo(controller);
@@ -415,24 +417,50 @@ new ScrollMagic.Scene({
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
 
-//Animate Bench & Tree over ///////////////////////////////////
-const benchOver = gsap.timeline();
-benchOver.to('.bench', {
-  ease: 'power1.inOut',
-  duration: 1,
-  xPercent: -100,
-});
+//Animate Bench & Buildings over ///////////////////////////////////
+const benchOverAbout = gsap.timeline();
+benchOverAbout
+  .to(
+    '.tertiary-buildings',
+    {
+      ease: 'power1.inOut',
+      duration: 0.6,
+      xPercent: -50,
+    },
+    '<'
+  )
+  .to(
+    '.primary-buildings',
+    {
+      ease: 'power1.inOut',
+      duration: 0.6,
+      xPercent: -100,
+    },
+    '<'
+  )
+  .to(
+    '.bench',
+    {
+      ease: 'power1.inOut',
+      duration: 0.6,
+      left: '5%',
+    },
+    '<'
+  );
 
-//Add benchover animation to controller
+//Add benchOverAbout animation to controller
 new ScrollMagic.Scene({
   triggerElement: '#about',
   triggerHook: 'onLeave',
-  offset: 1,
+  offset: 10,
 })
-  .setTween(benchOver)
+  .setTween(benchOverAbout)
   .addTo(controller);
 
-//About Section Scroll Animations ///////////////////////////////////
+//Animate Text Slides ///////////////////////////////////
+gsap.set('.about__info', {
+  opacity: 0,
+});
 
 document.querySelectorAll('.about__info-section').forEach((el) => {
   const paragraph = el.dataset.paragraph;
@@ -442,15 +470,30 @@ document.querySelectorAll('.about__info-section').forEach((el) => {
     duration: 1,
     opacity: 1,
   });
-
   new ScrollMagic.Scene({
-    triggerElement: this,
-    triggerHook: 0.15,
+    triggerElement: el,
+    triggerHook: 'onLeave',
+    duration: el.offsetHeight / 4,
   })
     .setTween(fadeInParagraph)
     .addTo(controller);
+
+  const fadeOutParagraph = gsap.timeline();
+  fadeOutParagraph.to(paragraph, {
+    duration: 1,
+    opacity: 0,
+  });
+  new ScrollMagic.Scene({
+    triggerElement: el,
+    triggerHook: 'onLeave',
+    offset: el.offsetHeight * 0.75,
+    duration: el.offsetHeight * 0.25,
+  })
+    .setTween(fadeOutParagraph)
+    .addTo(controller);
 });
 
+//General 'about' section timeline
 const about = gsap.timeline();
 
 new ScrollMagic.Scene({
@@ -460,4 +503,53 @@ new ScrollMagic.Scene({
   offset: 1,
 })
   .setTween(about)
+  .addTo(controller);
+
+// Skills ////////////////////////////////////////////////////////////////
+// Skills ////////////////////////////////////////////////////////////////
+// Skills ////////////////////////////////////////////////////////////////
+
+//Animate Bench & Buildings over ///////////////////////////////////
+const benchOverSkills = gsap.timeline();
+benchOverSkills
+  .to(
+    '.tertiary-buildings',
+    {
+      ease: 'power1.inOut',
+      duration: 0.6,
+      xPercent: 50,
+    },
+    '<'
+  )
+  .to(
+    '.primary-buildings',
+    {
+      ease: 'power1.inOut',
+      duration: 0.6,
+      xPercent: 100,
+    },
+    '<'
+  )
+  .to(
+    '.bench',
+    {
+      ease: 'power1.inOut',
+      duration: 0.6,
+      left: '93%',
+    },
+    '<'
+  )
+  .to('.bench', {
+    ease: 'power1.inOut',
+    duration: 0.6,
+    scale: 5,
+  });
+
+//Add benchOverAbout animation to controller
+new ScrollMagic.Scene({
+  triggerElement: '#skills',
+  triggerHook: 'onLeave',
+  offset: 10,
+})
+  .setTween(benchOverSkills)
   .addTo(controller);

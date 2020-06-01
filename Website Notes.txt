@@ -24,6 +24,7 @@ About Me:
 - Start with tree in the middle
 - On scroll, tree immediately slides to the left and words appear to the right
 - Words Fade in and out as individual slides/sentences
+- Shift buildings over a little too
 
 Skills: 
 - Flicker on the streetlamp
@@ -32,15 +33,7 @@ Skills:
 ------------These flip over to reveal their descriptions
 
 
-INFO///////////////////
-Austin is a Front-End Developer based in Austin, TX. 
-Before breaking into the tech industry, Austin was an award-winning classical composer.
-Then he got the coding bug. 
-Now he brings creativity and precision that only a composer could to the world of web development. 
-
-If Beethoven were alive today, what kind of website would he create?
-
-Skills: 
+Skills///////////////////
   HTML5
     Semantic HTML
     SEO
@@ -76,17 +69,6 @@ Skills:
   Music Composition (?)
   Algorithms & Problem Solving
 
-Qualities:
-  Passionate about coding
-  Highly creative
-    Published poet & composer
-  Unwavering commitment to excellence
-  Analytical
-  Dependable
-  Hardworking
-  Fast learner
-  Lifelong learner
-
 More Info
   Resume
   Github
@@ -99,6 +81,7 @@ More Info
 - fix bark on tree
 
 Extras:
+- Add in an optional soundtrack
 - Create an SVG self portrait? 
 - add in start/stop animations (like traffic lights) with offset
 - Animate words with GSAP's TextPlugin
@@ -122,3 +105,17 @@ Super Extra:
 - Add in smooth scrolling animations--(not possible apparently??)
 - Change color based on time of day
 - Change weather based on current weather
+
+
+
+/////////////////////////////
+Qualities:
+  Passionate about coding
+  Highly creative
+    Published poet & composer
+  Unwavering commitment to excellence
+  Analytical
+  Dependable
+  Hardworking
+  Fast learner
+  Lifelong learner
