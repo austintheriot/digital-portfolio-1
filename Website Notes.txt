@@ -13,15 +13,8 @@ Font:
 
 TO DO: ////////////////////////////////////////////
 
-- fix slides timing
-- add cars back in to the home page
-
-
-
 Home: 
-- Add "Portfolio" and "Hire Me" buttons
-- Change title name to an SVG
-- add windows to primary buildings
+- Fix text slides
 
 ANIMATIONS///////////////////
 
@@ -94,6 +87,8 @@ Extras:
 
 
 General:
+- clean up event listeners on window resize (so they don't fire over and over)
+- add back in car animations
 - optimize car movement (condense to 1 function and just change the name of the selected element as a parameter)
 - animate scroll to with GSAP (plug in already registered at top)
 - Mobile blurry svg issue

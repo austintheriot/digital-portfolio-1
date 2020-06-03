@@ -29,6 +29,7 @@
   color: var(--dark-color);
   font-size: var(--body-size);
   background-color: var(--light-color);
+  opacity: 0; /* Fade out until GSAP is loaded */
 }
 
 /* Everything bigger than 900px */
@@ -150,11 +151,14 @@ nav {
 
 section {
   height: var(--section-height);
-  border: 1px solid var(--dark-color);
 }
 
-.big-sections {
+.snap-start {
   scroll-snap-align: start;
+}
+
+.snap-center {
+  scroll-snap-align: center;
 }
 
 section h1 {
@@ -167,10 +171,12 @@ section h1 {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  border: 1px solid var(--dark-lavender);
 }
 
 /* Home ////////////////////////////////////////////////////////////////// */
+#home {
+  height: var(--section-height);
+}
 
 .home__name {
   text-align: left;
@@ -203,9 +209,24 @@ section h1 {
   color: var(--dark-lavender);
 }
 
+.hire-me-button {
+  font-size: calc(var(--body-size) * 2);
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  color: var(--dark-color);
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--dark-color);
+}
+
 .ground {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   width: 20vw;
 }
 
@@ -225,17 +246,20 @@ section h1 {
   left: 80%;
 }
 
-.car {
-  position: absolute;
-  top: 50%;
-  z-index: -1; /* Puts it behind the road */
-  left: 100%;
-  height: 20vh;
-}
-
 .buildings {
   position: absolute;
   top: 50%; /* Center it (mostly vertically)--the rest is compensated for in GSAP */
+  transform: translateY(-50%);
+}
+
+/* Building Lights */
+
+.building-lights {
+  z-index: -24;
+  opacity: 0;
+}
+.building-lights--active {
+  opacity: 1;
 }
 
 /* Primary Buildings */
@@ -254,8 +278,13 @@ section h1 {
 }
 
 .frost-tower {
+  z-index: -30;
   height: 50%;
   left: 70%;
+}
+
+.frost-tower-building-lights {
+  z-index: -29;
 }
 
 .independent {
@@ -264,13 +293,23 @@ section h1 {
 }
 
 .austonian {
+  z-index: -30;
   height: 60%;
   left: 50%;
 }
 
+.austonian-building-lights {
+  z-index: -29;
+}
+
 .one-eleven-congress {
+  z-index: -20;
   height: 25%;
   left: 78%;
+}
+
+.congress-building-lights {
+  z-index: -20;
 }
 
 .condominiums {
@@ -333,36 +372,46 @@ section h1 {
   width: 100%;
   z-index: -100;
 }
-a {
-  position: absolute;
-  z-index: 100;
-}
 
 /* About ////////////////////////////////////////////////////////////////// */
+#about {
+  height: calc(var(--section-height) * 3);
+}
 
 .bench {
+  height: 100%;
   position: absolute;
   z-index: -50;
   top: 50%;
-  height: 100%;
   left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .about__info-section,
-.about__info,
 .about__info-section--filler {
-  height: calc(var(--section-height) / 6);
+  height: 100vh;
+  border: 1px solid var(--dark-color);
 }
 
 .about__info {
   position: absolute;
-  top: -25%;
+  z-index: 100;
   left: 50%;
   transform: translate(-50%);
-  z-index: 10;
+  top: 27%;
   width: 80%;
   padding: 1rem;
   font-size: calc(var(--body-size) * 1.5);
   text-align: center;
   opacity: 0;
+}
+
+/* Skills ////////////////////////////////////////////////////////////////// */
+#skills {
+  height: calc(var(--section-height));
+}
+
+/* Portfolio ////////////////////////////////////////////////////////////////// */
+#portfolio {
+  height: calc(var(--section-height));
 }

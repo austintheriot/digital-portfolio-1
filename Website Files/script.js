@@ -1,13 +1,30 @@
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
+//unhide the CSS (so that it doesn't fliker before it's ready to be showbn)
+gsap.to(':root', {
+  opacity: 1,
+});
+
 let width = document.documentElement.clientWidth || window.innerWidth;
 let height = document.documentElement.clientHeight || window.innerHeight;
+
 const ground1 = document.querySelector('.ground1');
 const homeSection = document.querySelector('#home');
+const homeSectionHeight = homeSection.offsetHeight;
 const aboutSection = document.querySelector('#about');
+const skillsSection = document.querySelector('#skills');
+const skillsSectionHeight = skillsSection.offsetHeight;
+const aboutSectionHeight = aboutSection.offsetHeight + skillsSectionHeight;
 const portfolioSection = document.querySelector('#portfolio');
+const portfolioSectionHeight = portfolioSection.offsetHeight;
 const contactSection = document.querySelector('#contact');
+const contactSectionHeight = contactSection.offsetHeight;
+const totalHeight =
+  homeSectionHeight +
+  aboutSectionHeight +
+  portfolioSectionHeight +
+  contactSectionHeight;
 
 window.addEventListener('resize', () => {
   width = document.documentElement.clientWidth || window.innerWidth;
@@ -21,20 +38,17 @@ SECTION_HEIGHT_PERCENT = Number(
     .match(/[0-9]/g)
     .join('')
 ); //retrieve section height from CSS variable (__vh, multiply it times the vertical height)
-const SECTION_HEIGHT_PIXELS = (SECTION_HEIGHT_PERCENT / 100) * height;
-const PIN_DURATION = `${SECTION_HEIGHT_PERCENT * 5}%`;
-const NAV_ORB_DURATION = `${SECTION_HEIGHT_PERCENT}%`;
-const ANIMATION_SCROLL_DURATION = `${SECTION_HEIGHT_PERCENT * 0.75}%`;
 
 // Nav ////////////////////////////////////////////////////////////////
 // Nav ////////////////////////////////////////////////////////////////
 // Nav ////////////////////////////////////////////////////////////////
+
 //Animate Nav highlight/info depending on location //////////////////////////////////////////
 function triggerNavClass(trigger, prefix, className, duration) {
   ScrollTrigger.create({
     trigger: trigger,
-    start: '=-1 top',
-    end: `${duration} top`,
+    start: '-1 top',
+    end: `${duration * 0.999} top`, //prevents overlap
     onToggle: () =>
       document
         .querySelector(`${prefix}${trigger.id}`)
@@ -43,58 +57,74 @@ function triggerNavClass(trigger, prefix, className, duration) {
 }
 
 function triggerNavContainer(prefix, className) {
-  triggerNavClass(homeSection, prefix, className, SECTION_HEIGHT_PIXELS);
-  triggerNavClass(aboutSection, prefix, className, SECTION_HEIGHT_PIXELS * 2);
-  triggerNavClass(portfolioSection, prefix, className, SECTION_HEIGHT_PIXELS);
-  triggerNavClass(contactSection, prefix, className, SECTION_HEIGHT_PIXELS);
+  triggerNavClass(homeSection, prefix, className, homeSectionHeight);
+  triggerNavClass(aboutSection, prefix, className, aboutSectionHeight);
+  triggerNavClass(portfolioSection, prefix, className, portfolioSectionHeight);
+  triggerNavClass(contactSection, prefix, className, contactSectionHeight);
 }
 
 //Light up navigation orbs when viewing that section//////////////////
 triggerNavContainer('.nav__link-', 'nav__link--selected');
 
-//Fade in nav info depending on scroll location (Mobile)//////////////
-triggerNavContainer('.nav__info-', 'nav__info--selected');
+//Desktop/Mobile Formatting
+function desktopFormatting() {
+  if (width > WINDOW_BREAK_POINT_SIZE) {
+    navHoverEffects(true);
+  } else {
+    navHoverEffects(false);
+  }
+}
+desktopFormatting();
 
 //Change opacity of entire nav on hover (Desktop)////////////////
-const nav = document.querySelector('nav');
-if (width >= WINDOW_BREAK_POINT_SIZE) {
-  gsap.to(nav, {
-    duration: 2,
-    opacity: 0.75,
-  });
-
-  //trigger functions for mouseover nav
-  nav.addEventListener('mouseover', (event) => {
+function navHoverEffects(condition) {
+  const nav = document.querySelector('nav');
+  if (condition) {
     gsap.to(nav, {
-      ease: 'power',
-      duration: 0.4,
+      duration: 1,
+      opacity: 0.75,
+    });
+
+    if (![...nav.classList].includes('desktop')) {
+      //trigger functions for mouseover nav
+      nav.addEventListener('mouseover', (event) => {
+        gsap.to(nav, {
+          ease: 'power',
+          duration: 0.4,
+          opacity: 1,
+        });
+
+        //trigger fade-in for info associated with link
+        if ([...event.target.classList].includes('nav__link')) {
+          fadeInOutElement(event.target, 1);
+        }
+      });
+
+      //trigger functions for mouseout of nav
+      nav.addEventListener('mouseout', (event) => {
+        gsap.to(nav, {
+          ease: 'power',
+          duration: 0.4,
+          opacity: 0.5,
+        });
+
+        //trigger fade-out for info associated with link
+        if ([...event.target.classList].includes('nav__link')) {
+          fadeInOutElement(event.target, 0);
+        }
+      });
+      nav.classList.add('desktop');
+    }
+  } else {
+    nav.removeEventListener('mouseover', null);
+    nav.removeEventListener('mouseout', null);
+    gsap.to(nav, {
+      duration: 1,
       opacity: 1,
     });
-
-    //trigger fade-in for info associated with link
-    if ([...event.target.classList].includes('nav__link')) {
-      fadeInOutElement(event.target, 1);
-    }
-  });
-
-  //trigger functions for mouseout of nav
-  nav.addEventListener('mouseout', (event) => {
-    gsap.to(nav, {
-      ease: 'power',
-      duration: 0.4,
-      opacity: 0.5,
-    });
-
-    //trigger fade-out for info associated with link
-    if ([...event.target.classList].includes('nav__link')) {
-      fadeInOutElement(event.target, 0);
-    }
-  });
-} else {
-  gsap.to(nav, {
-    duration: 2,
-    opacity: 1,
-  });
+    //Fade in nav info depending on scroll location (Mobile)//////////////
+    triggerNavContainer('.nav__info-', 'nav__info--selected');
+  }
 }
 
 //Change opacity of nav info on hover (Desktop)
@@ -104,6 +134,45 @@ function fadeInOutElement(target, opacity) {
   gsap.to(targetName, {
     duration: 0.4,
     opacity: opacity,
+  });
+}
+
+//Hire me button animations
+const hireMeButton = document.querySelector('.hire-me-button');
+//light up buildings right away on mobile
+if (width < WINDOW_BREAK_POINT_SIZE) {
+  gsap.to('.building-lights', {
+    ease: 'power4.out',
+    duration: 3,
+    opacity: 1,
+  });
+} else {
+  //light up buildings on hire me button hover
+  hireMeButton.addEventListener('mouseover', () => {
+    gsap.to(hireMeButton, {
+      duration: 0.2,
+      ease: 'none',
+      scale: 1.1,
+      boxShadow: '0 0 15px 15px transparent',
+    });
+    gsap.to('.building-lights', {
+      ease: 'power4.out',
+      duration: 1,
+      opacity: 1,
+    });
+  });
+  hireMeButton.addEventListener('mouseout', () => {
+    gsap.to(hireMeButton, {
+      duration: 0.2,
+      ease: 'none',
+      scale: 1,
+      boxShadow: '0 0 15px 15px rgba(255, 251, 45, 0.1);',
+    });
+    gsap.to('.building-lights', {
+      ease: 'none',
+      duration: 1,
+      opacity: 0,
+    });
   });
 }
 
@@ -126,22 +195,29 @@ nav.addEventListener('click', (event) => {
 ScrollTrigger.create({
   trigger: '.city-container',
   start: 'top top',
-  end: PIN_DURATION,
+  end: totalHeight,
   pin: true,
   pinSpacing: false,
 });
 
-//Fade out Name, Title, and Scroll title
-gsap.to('.home__name, .home__title, .nav__scroll-heading', {
-  scrollTrigger: {
-    triggerElement: '#home',
-    start: '10 top',
-    toggleActions: 'play play reverse reverse',
-  },
-  ease: 'power2.inOut',
-  duration: 0.4,
-  opacity: 0,
-});
+//Fade out Name, Title, Scroll title, and "Hire Me" button
+gsap
+  .timeline({
+    scrollTrigger: {
+      triggerElement: '#home',
+      start: '50 top',
+      toggleActions: 'play play reverse reverse',
+    },
+  })
+  .to('.home__name, .home__title, .nav__scroll-heading, .hire-me-button', {
+    ease: 'power2.inOut',
+    duration: 0.2,
+    opacity: 0,
+  })
+  .to('.home__name, .home__title, .nav__scroll-heading, .hire-me-button', {
+    duration: 0.2,
+    x: -width,
+  });
 
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
@@ -156,30 +232,18 @@ const home = gsap.timeline({
 });
 
 // Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
-
 //Placing items before animation//////////////////////////////////////////////////////
 //Animate Ground
 gsap.set(
   '.ground',
   {
-    yPercent: -50,
     scaleY: 0.1,
     scaleX: 1.5,
   },
   '<'
 );
-//Center buildings Completely
-gsap.set(
-  '.buildings',
-  {
-    yPercent: -50,
-  },
-  '<'
-);
 //Set Bench,
 gsap.set('.bench', {
-  yPercent: -50,
-  xPercent: -50,
   scale: 0.02,
 });
 
@@ -289,16 +353,15 @@ home
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
 
-const about = gsap.timeline();
-
 //Animate Bench & Buildings over ///////////////////////////////////
 
 gsap
   .timeline({
     scrollTrigger: {
-      trigger: '#about',
-      start: '100 top', //trigger element & viewport
-      end: `90% top`,
+      trigger: '.about__info-section--filler',
+      start: 'top top', //trigger element & viewport
+      end: `100% top`,
+      scrub: 0.5,
       toggleActions: 'play reverse play reverse',
     },
   })
@@ -306,7 +369,6 @@ gsap
     '.tertiary-buildings',
     {
       ease: 'power1.inOut',
-      duration: 0.4,
       xPercent: -50,
     },
     '<'
@@ -315,7 +377,6 @@ gsap
     '.primary-buildings',
     {
       ease: 'power1.inOut',
-      duration: 0.4,
       xPercent: -100,
     },
     '<'
@@ -324,7 +385,6 @@ gsap
     '.bench',
     {
       ease: 'power1.inOut',
-      duration: 0.4,
       left: '5%',
     },
     '<'
@@ -336,10 +396,8 @@ document.querySelectorAll('.about__info-section').forEach((el) => {
   gsap.to(paragraph, {
     scrollTrigger: {
       trigger: el,
-      start: '25% center', //trigger element & viewport
-      end: 'bottom center',
-      markers: true,
       toggleActions: 'play reverse play reverse',
+      markers: true,
       pin: true,
       pinSpacing: false,
     },
@@ -348,8 +406,41 @@ document.querySelectorAll('.about__info-section').forEach((el) => {
   });
 });
 
-/*       pin: true,
-      pinSpacing: false, */
+//move things back
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: '90% center', //trigger element & viewport
+      end: '100% center',
+      toggleActions: 'play reverse play reverse',
+      scrub: 0.5,
+    },
+  })
+  .to(
+    '.tertiary-buildings',
+    {
+      ease: 'power1.inOut',
+      xPercent: 50,
+    },
+    '<'
+  )
+  .to(
+    '.primary-buildings',
+    {
+      ease: 'power1.inOut',
+      xPercent: 50,
+    },
+    '<'
+  )
+  .to(
+    '.bench',
+    {
+      ease: 'power1.inOut',
+      left: '50%',
+    },
+    '<'
+  );
 
 // Skills ////////////////////////////////////////////////////////////////
 // Skills ////////////////////////////////////////////////////////////////
@@ -359,7 +450,7 @@ const skills = gsap.timeline({
   scrollTrigger: {
     trigger: '#skills',
     start: 'top top', //trigger element & viewport
-    end: () => SECTION_HEIGHT_PIXELS * 1.5,
+    end: () => skillsSectionHeight * 0.75,
     scrub: 0.5, //duration for scrub to catch up to scroll
   },
 });
