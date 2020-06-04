@@ -25,9 +25,10 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js" defer></script>
     <!-- Main Script -->
     <script src="script.js" defer></script>
+
   </head>
   <body>
-    <!-- Navigation -->
+<!-- Navigation
     <nav>
       <a href="#home" class="nav__link nav__link-home"></a>
       <a href="#about" class="nav__link nav__link-about"></a>
@@ -39,7 +40,7 @@
       <p class="nav__info nav__info-about">About</p>
       <p class="nav__info nav__info-portfolio">Portfolio</p>
       <p class="nav__info nav__info-contact">Contact</p>
-    </nav>
+    </nav> -->
 
     <!-- Animations -->
     <div class="city-container">
@@ -47,7 +48,8 @@
       <h1 class="home__name">Austin<span> Theriot</span></h1>
       <h2 class="home__title">Front-End Developer</h1>
       <a href="#contact" class="hire-me-button">Hire Me</a>
-
+      <div class="hire-me-div"></div>
+      
       <!-- Ground -->
       <img class="ground ground1" src="images/Ground.svg" alt="Ground" />
       <img class="ground ground2" src="images/Ground.svg" alt="Ground" />
@@ -182,37 +184,19 @@
         src="images/Bench.svg"
         alt="A bench and tree under a streetlamp"
       />
-
-      
-      
-      
-  
+      <p class="welcome">Welcome</p>
     </div>
     <section id="home" class="snap-start">
     </section>
     <section id="about" class="snap-start">
       <h1>About</h1>
-      <section class="about__info-section--filler">
-        <!-- empty spacer section -->
+      <div class="about__container">
+        <p class="about__info about__info--1">Austin is a Front-End Developer based in Austin, Texas. </p>
+        <p class="about__info about__info--2">Before breaking into the tech industry, Austin was an award-winning classical composer.</p>
+        <p class="about__info about__info--3">Then he caught the coding bug. </p>
+        <p class="about__info about__info--4">Now he brings a creativity and precision that only a composer can to the world of web development. </p>
+      </div>
       </section>
-      <section class="about__info-section about__info-section--1 snap-center" data-paragraph=".about__info--1">
-        <p class="about__info about__info--1">Austin is a Front-End Developer based in Austin, TX. </p>
-      </section>
-        <section class="about__info-section about__info-section--2 snap-center" data-paragraph=".about__info--2">
-          <p class="about__info about__info--2">Before breaking into the tech industry, Austin was an award-winning classical composer.</p>
-        </section>
-        <section class="about__info-section about__info-section--3 snap-center" data-paragraph=".about__info--3">
-          <p class="about__info about__info--3">Then he got the coding bug. </p>
-        </section>
-        <section class="about__info-section about__info-section--4 snap-center" data-paragraph=".about__info--4">
-          <p class="about__info about__info--4">Now he brings a creativity and precision that only a composer can to the world of web development. </p>
-        </section>
-        <!-- <section class="about__info-section about__info-section--5" data-paragraph=".about__info--5"></section> -->
-      </section>
-    </section>
-    <section id="skills" class="snap-start">
-      <h1>Skills</h1>
-    </section>
     <section id="portfolio" class="snap-start">
       <h1>Portfolio</h1>
     </section>

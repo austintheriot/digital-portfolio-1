@@ -20,23 +20,21 @@
   --h1-size: 2.5rem;
   --h2-size: 1.75rem;
   --body-size: 1rem;
-  --section-height: 200vh;
 
   /* General Styling ///////////////////////////////////////////////////////// */
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
   font-family: var(--sans, sans-serif);
   color: var(--dark-color);
   font-size: var(--body-size);
   background-color: var(--light-color);
-  opacity: 0; /* Fade out until GSAP is loaded */
+  visibility: hidden; /* Keep hidden until GSAP is loaded */
 }
 
 /* Everything bigger than 900px */
 @media (min-width: 900px) {
   :root {
     --h1-size: 4rem;
-    --h2-size: 2rem;
+    --h2-size: 2.5rem;
     --body-size: 1.125rem;
   }
 }
@@ -63,7 +61,7 @@ p {
   margin: 0 auto;
 }
 
-/* Nav ////////////////////////////////////////////////////////////////// */
+/* Nav ////////////////////////////////////////////////////////////////// 
 
 nav {
   position: fixed;
@@ -84,7 +82,6 @@ nav {
   border-radius: 50%;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .nav__link-home {
@@ -113,12 +110,10 @@ nav {
   background-color: var(--dark-color);
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .nav__scroll-heading {
   color: var(--light-lavender);
-  transform: translate(-50%, -50%) rotate(90deg);
   position: absolute;
   top: 50%;
   left: 80%;
@@ -127,7 +122,6 @@ nav {
 .nav__info {
   position: absolute;
   left: 25%;
-  transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
 }
 
@@ -145,21 +139,9 @@ nav {
 }
 .nav__info--selected {
   opacity: 1;
-}
+} */
 
 /* Formattting ////////////////////////////////////////////////////////////////// */
-
-section {
-  height: var(--section-height);
-}
-
-.snap-start {
-  scroll-snap-align: start;
-}
-
-.snap-center {
-  scroll-snap-align: center;
-}
 
 section h1 {
   position: absolute;
@@ -169,21 +151,22 @@ section h1 {
 
 .city-container {
   position: absolute;
-  height: 100vh;
+  height: var(--full-height, 100vh);
   width: 100vw;
 }
 
 /* Home ////////////////////////////////////////////////////////////////// */
 #home {
-  height: var(--section-height);
+  height: calc(var(--full-height, 100vh) * 4);
 }
 
 .home__name {
   text-align: left;
   line-height: 1rem;
-  margin: 1.5rem 0 0.5rem 0.5rem;
+  margin: 1.5rem 0 1rem 1rem;
   text-transform: uppercase;
   color: var(--pop-color);
+  z-index: -150;
 }
 
 @supports (
@@ -207,26 +190,45 @@ section h1 {
   text-align: left;
   margin-left: 1rem;
   color: var(--dark-lavender);
+  z-index: -150;
+}
+
+@media (min-width: 900px) {
+  .home__name {
+    margin: 2rem 0 1rem 1rem;
+  }
+
+  .home__title {
+    margin-left: 3rem;
+  }
 }
 
 .hire-me-button {
-  font-size: calc(var(--body-size) * 2);
+  font-size: calc(var(--body-size) * 1.5);
   position: absolute;
   left: 50%;
   top: 90%;
-  transform: translate(-50%, -50%);
   z-index: 100;
   color: var(--dark-color);
   text-decoration: none;
   padding: 0.25rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   border: 1px solid var(--dark-color);
+  background-color: var(--light-color);
+}
+
+.hire-me-div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 40%;
+  width: 2px;
+  background-color: var(--dark-color);
 }
 
 .ground {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   width: 20vw;
 }
 
@@ -249,7 +251,6 @@ section h1 {
 .buildings {
   position: absolute;
   top: 50%; /* Center it (mostly vertically)--the rest is compensated for in GSAP */
-  transform: translateY(-50%);
 }
 
 /* Building Lights */
@@ -375,7 +376,7 @@ section h1 {
 
 /* About ////////////////////////////////////////////////////////////////// */
 #about {
-  height: calc(var(--section-height) * 3);
+  height: var(--full-height, 100vh);
 }
 
 .bench {
@@ -384,34 +385,45 @@ section h1 {
   z-index: -50;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 }
 
-.about__info-section,
-.about__info-section--filler {
-  height: 100vh;
-  border: 1px solid var(--dark-color);
+.welcome {
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  font-size: calc(var(--body-size) * 1.5);
+}
+
+@media (min-width: 900px) {
+  .welcome {
+    display: none;
+  }
+}
+
+.about__container {
+  position: absolute;
+  top: calc(var(--full-height, 100vh) * 4);
+  height: var(--full-height, 100vh);
+  width: 100%;
 }
 
 .about__info {
   position: absolute;
-  z-index: 100;
+  top: 37%;
   left: 50%;
-  transform: translate(-50%);
-  top: 27%;
-  width: 80%;
+  width: 70%;
   padding: 1rem;
-  font-size: calc(var(--body-size) * 1.5);
+  font-size: calc(var(--body-size) * 2);
   text-align: center;
-  opacity: 0;
-}
-
-/* Skills ////////////////////////////////////////////////////////////////// */
-#skills {
-  height: calc(var(--section-height));
 }
 
 /* Portfolio ////////////////////////////////////////////////////////////////// */
 #portfolio {
-  height: calc(var(--section-height));
+  height: calc(var(--full-height, 100vh) * 2);
+}
+
+/* Contact ////////////////////////////////////////////////////////////////// */
+
+#contact {
+  height: calc(var(--full-height, 100vh) * 2);
 }

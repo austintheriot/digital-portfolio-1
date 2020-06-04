@@ -1,4 +1,4 @@
-Website Notes: ////////////////////////////////////
+Website Notes: ////////////////////////////////////////////////
 
 Colors: 
 - Xiketic #000314
@@ -11,24 +11,30 @@ Font:
 - Roboto
 
 
-TO DO: ////////////////////////////////////////////
+TO DO: ////////////////////////////////////////////////////////
+--refactored code to use modifiers on animations
+--deleted responsive navigation
+--separated city section from about me
+--added fading slides on about me section
 
-Home: 
-- Fix text slides
+--Add cars back in.
+--Skill section? 
 
-ANIMATIONS///////////////////
 
-About Me: 
-- Start with tree in the middle
-- On scroll, tree immediately slides to the left and words appear to the right
-- Words Fade in and out as individual slides/sentences
-- Shift buildings over a little too
 
-Skills: 
-- Flicker on the streetlamp
-- Move to bench
-- Use some sort of graphic/imagery--cards maybe? 
-------------These flip over to reveal their descriptions
+--------Include soft pictures of buildings throughout 
+
+
+--------Rotating portfolio section with popup more Info
+--------Contact section is a building with a door
+-----------store front booth with awning? 
+------------------the contact form is the placard that normally says the items being sold
+-----------posters on window of the store front?
+-----------slide in the building/city elements with the vein?
+
+
+
+
 
 
 Skills///////////////////
@@ -94,6 +100,7 @@ General:
 - Mobile blurry svg issue
 - Mobile 100vh resize issue
 - Computer: window resizing issue: buildings do not respect new width, and so could obscure the bench when expanding window from small to large on the about section.
+- Delete plug svg (and other unused SVGs)
 
 - change setTimeout to Promises (throughout)
 
