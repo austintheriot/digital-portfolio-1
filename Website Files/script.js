@@ -1,5 +1,6 @@
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(Draggable);
 
 let width = document.documentElement.clientWidth || window.innerWidth;
 let height = document.documentElement.clientHeight || window.innerHeight;
@@ -57,14 +58,6 @@ function readHeight() {
   }
 }
 readHeight();
-
-//every time the window resizes on mobile:
-window.addEventListener('resize', () => {
-  width = document.documentElement.clientWidth || window.innerWidth;
-  height = document.documentElement.clientHeight || window.innerHeight;
-  documentHeight = document.body.scrollHeight;
-  windowSize = { width, height };
-});
 
 /* // --- can't get this to work. The browser just locks up instead every time
 const nav = document.querySelector('nav');
@@ -338,14 +331,22 @@ home
     opacity: 1,
   });
 
-//on desktop move tree over
+//on desktop move tree over & fade out welcome
 if (width > WINDOW_BREAK_POINT_SIZE) {
-  home.to('.bench', {
-    x: -0.4,
-    modifiers: {
-      x: gsap.utils.unitize((x) => x * width, 'px'),
-    },
-  });
+  home
+    .to('.bench', {
+      x: -0.4,
+      modifiers: {
+        x: gsap.utils.unitize((x) => x * width, 'px'),
+      },
+    })
+    .to(
+      '.welcome',
+      {
+        opacity: 0,
+      },
+      '<'
+    );
 }
 
 //fade out city container
@@ -462,8 +463,125 @@ gsap
     zIndex: 0,
   });
 
+//PORTFOLIO///////////////////////////////////////////////////////////
+const boxes = [...document.querySelectorAll('.box')];
+const numberOfBoxes = boxes.length;
+const boxWidths = boxes.map((el) => (el = el.offsetWidth));
+const totalWidth = boxWidths.reduce((a, b) => a + b);
+//get array of cumulative box widths for placement purposes
+let sum = 0;
+const cumulativeWidths = [0];
+for (let i = 0; i < boxWidths.length; i++) {
+  sum += boxWidths[i];
+  cumulativeWidths[i + 1] = sum;
+}
+const largestBoxWidth = Math.max(...boxWidths);
+//place boxes in the container
+gsap.set('.box', {
+  x: (index) => cumulativeWidths[index],
+});
+
+const slider = document.querySelector('.animation-slider');
+
+//animate boxes to the left
+const carousel = gsap.to('.box', {
+  duration: numberOfBoxes * 2,
+  ease: 'none',
+  x: `-=${totalWidth}`, //move each box the necessasry amount to the right
+  modifiers: {
+    //allows forward or backward carousel movement
+    x: gsap.utils.unitize((x) => {
+      let adjustedModulo = x % totalWidth;
+      if (adjustedModulo < 0) {
+        adjustedModulo += totalWidth;
+      }
+      return adjustedModulo - largestBoxWidth;
+    }),
+  },
+  repeat: -1,
+});
+
+//progress or reverse carousel animation based on mouse's movement
+//carousel coordinates
+//update mouse coordinates when the mouse moves
+const outerContainer = document.querySelector('.outer-container');
+let outerContainerLeft = outerContainer.getBoundingClientRect().left;
+let outerContainerTop = outerContainer.getBoundingClientRect().top;
+let outerContainerWidth = outerContainer.getBoundingClientRect().width;
+let outerContainerHeight = outerContainer.getBoundingClientRect().height;
+
+let reverseCarousel;
+let stopCarousel;
+let progressCarousel;
+//calculate mouse's position on the outer container div
+window.addEventListener('mousemove', (e) => {
+  mouseInDiv = {
+    x: e.x - outerContainerLeft,
+    xPercent: (e.x - outerContainerLeft) / outerContainerWidth,
+  };
+  if (mouseOnContainer && mouseInDiv.xPercent < 0.25) {
+    reverseCarousel = gsap.to(carousel, {
+      duration: 0.4,
+      ease: 'power1',
+      timeScale: -5,
+    });
+  } else if (mouseOnContainer && mouseInDiv.xPercent > 0.75) {
+    stopCarousel = gsap.to(carousel, {
+      duration: 0.4,
+      ease: 'power1',
+      timeScale: 5,
+    });
+  } else if (mouseEnteredContainer) {
+    progressCarousel = gsap.to(carousel, {
+      duration: 0.4,
+      ease: 'power1',
+      timeScale: 0,
+    });
+  }
+});
+
+let mouseOnContainer = false;
+let mouseEnteredContainer = false;
+let infiniteCarouselChecker;
+//pause carousel on mouse hover or scroll
+outerContainer.addEventListener('mouseover', () => {
+  mouseOnContainer = true;
+  mouseEnteredContainer = true;
+  infiniteCarouselChecker = setInterval(() => {
+    if (carousel.progress() === 0) {
+      carousel.progress(1);
+    }
+  }, 30);
+});
+
+outerContainer.addEventListener('mouseout', () => {
+  mouseOnContainer = false;
+  clearInterval(infiniteCarouselChecker);
+});
+
+document.querySelector('.box-container').addEventListener('scroll', () => {
+  gsap.to(carousel, {
+    duration: 0.4,
+    ease: 'power1',
+    timeScale: 0,
+  });
+});
+
 //////////////////////////////////////////////////////////////////
 //unhide the CSS (so that it doesn't flicker before things are fully placed)
 gsap.to(':root', {
   visibility: 'visible',
+});
+
+//every time the window resizes on mobile:
+window.addEventListener('resize', () => {
+  width = document.documentElement.clientWidth || window.innerWidth;
+  height = document.documentElement.clientHeight || window.innerHeight;
+  documentHeight = document.body.scrollHeight;
+  windowSize = { width, height };
+
+  outerContainerLeft = outerContainer.getBoundingClientRect().left;
+  outerContainerTop = outerContainer.getBoundingClientRect().top;
+  outerContainerWidth = outerContainer.getBoundingClientRect().width;
+  outerContainerHeight = outerContainer.getBoundingClientRect().height;
 });
