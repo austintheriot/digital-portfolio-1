@@ -218,6 +218,13 @@ section h1 {
   background-color: var(--light-color);
 }
 
+@media (min-width: 900px) {
+  .hire-me-button {
+    left: 18%;
+    top: 25%;
+  }
+}
+
 .hire-me-div {
   position: absolute;
   left: 50%;

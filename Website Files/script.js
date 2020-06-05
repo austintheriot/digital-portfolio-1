@@ -140,7 +140,7 @@ gsap
     scrollTrigger: {
       triggerElement: '#home',
       start: '50 top',
-      toggleActions: 'play play reverse reverse',
+      toggleActions: 'play play play reverse',
     },
   })
   .to(
