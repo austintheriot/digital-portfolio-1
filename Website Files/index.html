@@ -18,6 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollToPlugin.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollTrigger.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/Draggable.min.js"></script>
+
     <!-- Main Script -->
     <script src="script.js" defer></script>
 
@@ -186,6 +187,10 @@
     <section id="about" class="snap-start">
       <h1>About</h1>
       <div class="about__container">
+        <div class="border border-left"></div>
+        <div class="border border-bottom"></div>
+        <div class="border border-right"></div>
+        <div class="border border-top"></div>
         <p class="about__info about__info--1">Austin is a Front-End Developer based in Austin, Texas. </p>
         <p class="about__info about__info--2">Before breaking into the tech industry, Austin was an award-winning classical composer.</p>
         <p class="about__info about__info--3">Then he caught the coding bug. </p>
@@ -194,25 +199,25 @@
       </section>
     <section id="portfolio" class="snap-start">
       <h1>Portfolio</h1>  
-          <div class="outer-container">
-            <div class="box-container">
-            <div class="box div1">1</div>
-            <div class="box div2">2</div>
-            <div class="box div3">3</div>
-            <div class="box div4">4</div>
-            <div class="box div5">5</div>
-            <div class="box div6">6</div>
-            <div class="box div7">7</div>
-            <div class="box div8">8</div>
-            <div class="box div9">9</div>
-            <div class="box div10">10</div>
-            <div class="box div11">11</div>
-            <div class="box div12">12</div>
-            <div class="box div13">13</div>
-            <div class="box div14">14</div>
-            <div class="box div15">15</div>
-          </div>
+      <div class="slides-container">
+        <div class="slides-inner">
+          <div class="slide">1</div>
+          <div class="slide">2</div>
+          <div class="slide">3</div>
+          <div class="slide">4</div>
+          <div class="slide">5</div>
+          <div class="slide">6</div>
+          <div class="slide">7</div>
+          <div class="slide">8</div>
+          <div class="slide">9</div>
+          <div class="slide">10</div>
         </div>
+      </div>
+      
+      <div class="controls">
+        <button id="prevButton">Prev</button>
+        <button id="nextButton">Next</button>
+      </div>
     </section>
     <section id="contact" class="snap-start">
       <h1>Contact</h1>

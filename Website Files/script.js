@@ -9,28 +9,14 @@ let homeSectionHeight = document.querySelector('#home').offsetHeight;
 let aboutSectionHeight = document.querySelector('#about').offsetHeight;
 const WINDOW_BREAK_POINT_SIZE = 900;
 
-//on desktop, have tree/bench coincide with about me
-if (width > WINDOW_BREAK_POINT_SIZE) {
-  pinContainer = ScrollTrigger.create({
-    trigger: '.city-container',
-    start: 'top top',
-    end: `${homeSectionHeight} top`,
-    pin: true,
-    pinSpacing: true,
-    markers: true,
-  });
-}
-//on mobile, separate the tree/bench from about me
-else {
-  pinContainer = ScrollTrigger.create({
-    trigger: '.city-container',
-    start: 'top top',
-    end: `${homeSectionHeight} bottom`,
-    pin: true,
-    pinSpacing: true,
-    markers: true,
-  });
-}
+//pin city container inside HOME section
+pinContainer = ScrollTrigger.create({
+  trigger: '.city-container',
+  start: 'top top',
+  end: `${homeSectionHeight} bottom`,
+  pin: true,
+  pinSpacing: true,
+});
 
 //GSAP's iOS bug fix
 //possible solution for old iOS bugs that don't display things inside an iframe correctly.
@@ -331,24 +317,6 @@ home
     opacity: 1,
   });
 
-//on desktop move tree over & fade out welcome
-if (width > WINDOW_BREAK_POINT_SIZE) {
-  home
-    .to('.bench', {
-      x: -0.4,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
-    })
-    .to(
-      '.welcome',
-      {
-        opacity: 0,
-      },
-      '<'
-    );
-}
-
 //fade out city container
 gsap.to('.city-container', {
   scrollTrigger: {
@@ -364,6 +332,24 @@ gsap.to('.city-container', {
 // About ////////////////////////////////////////////////////////////////
 
 //Animate Text Slides //////////////////////////////////////////////////
+
+//initialize border locations
+gsap.set('.border-left', {
+  transformOrigin: 'top',
+  scaleY: 0,
+});
+gsap.set('.border-bottom', {
+  transformOrigin: 'left',
+  scaleX: 0,
+});
+gsap.set('.border-right', {
+  transformOrigin: 'bottom',
+  scaleY: 0,
+});
+gsap.set('.border-top', {
+  transformOrigin: 'right',
+  scaleX: 0,
+});
 
 gsap.set('.about__info', {
   xPercent: -50,
@@ -381,6 +367,11 @@ gsap
       duration: 0.6,
     },
   })
+  //create labels for border animation
+  .addLabel('border-left')
+  .addLabel('border-bottom', 'border-left+=4')
+  .addLabel('border-right', 'border-bottom+=4')
+  .addLabel('border-top', 'border-right+=4')
   //fade in
   .to('.about__info--1', {
     duration: 0,
@@ -401,6 +392,15 @@ gsap
     duration: 0,
     zIndex: 0,
   })
+  //border-left animation
+  .to(
+    '.border-left',
+    {
+      duration: 4,
+      scale: 1,
+    },
+    'border-left'
+  )
   //fade in
   .to('.about__info--2', {
     duration: 0,
@@ -420,6 +420,15 @@ gsap
     duration: 0,
     zIndex: 200,
   })
+  //border-bottom animation
+  .to(
+    '.border-bottom',
+    {
+      duration: 4,
+      scale: 1,
+    },
+    'border-bottom'
+  )
   //fade in
   .to('.about__info--3', {
     duration: 0,
@@ -439,133 +448,170 @@ gsap
     duration: 0,
     zIndex: 0,
   })
-  //fade in
+  //border-right animation
+  .to(
+    '.border-right',
+    {
+      duration: 4,
+      scale: 1,
+    },
+    'border-right'
+  )
+  //change Z-index
   .to('.about__info--4', {
     duration: 0,
     zIndex: 200,
   })
+  //fade in
   .to('.about__info--4', {
     opacity: 1,
   })
+  //sustain at 1 opacity
   .to('.about__info--4', {
     duration: 6,
     opacity: 1,
   })
+  //fade out
   .to('.about__info--4', {
     opacity: 0,
   })
+  .addLabel('break-apart', '<')
+  //sustain at 0 opacity
   .to('.about__info--4', {
     duration: 2,
     opacity: 0,
   })
+  //change Z-index
   .to('.about__info--4', {
     duration: 0,
     zIndex: 0,
-  });
+  })
+  //border-top animation
+  .to(
+    '.border-top',
+    {
+      duration: 4,
+      scale: 1,
+    },
+    'border-top'
+  )
+  .to(
+    '.border',
+    {
+      scale: 1.2,
+      opacity: 0,
+    },
+    'break-apart'
+  );
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const boxes = [...document.querySelectorAll('.box')];
-const numberOfBoxes = boxes.length;
-const boxWidths = boxes.map((el) => (el = el.offsetWidth));
-const totalWidth = boxWidths.reduce((a, b) => a + b);
-//get array of cumulative box widths for placement purposes
-let sum = 0;
-const cumulativeWidths = [0];
-for (let i = 0; i < boxWidths.length; i++) {
-  sum += boxWidths[i];
-  cumulativeWidths[i + 1] = sum;
-}
-const largestBoxWidth = Math.max(...boxWidths);
-//place boxes in the container
-gsap.set('.box', {
-  x: (index) => cumulativeWidths[index],
-});
+var slideDelay = 1.5;
+var slideDuration = 0.3;
 
-const slider = document.querySelector('.animation-slider');
+var slides = document.querySelectorAll('.slide');
+var prevButton = document.querySelector('#prevButton');
+var nextButton = document.querySelector('#nextButton');
 
-//animate boxes to the left
-const carousel = gsap.to('.box', {
-  duration: numberOfBoxes * 2,
-  ease: 'none',
-  x: `-=${totalWidth}`, //move each box the necessasry amount to the right
-  modifiers: {
-    //allows forward or backward carousel movement
-    x: gsap.utils.unitize((x) => {
-      let adjustedModulo = x % totalWidth;
-      if (adjustedModulo < 0) {
-        adjustedModulo += totalWidth;
-      }
-      return adjustedModulo - largestBoxWidth;
-    }),
-  },
-  repeat: -1,
-});
+var numSlides = slides.length;
 
-//progress or reverse carousel animation based on mouse's movement
-//carousel coordinates
-//update mouse coordinates when the mouse moves
-const outerContainer = document.querySelector('.outer-container');
-let outerContainerLeft = outerContainer.getBoundingClientRect().left;
-let outerContainerTop = outerContainer.getBoundingClientRect().top;
-let outerContainerWidth = outerContainer.getBoundingClientRect().width;
-let outerContainerHeight = outerContainer.getBoundingClientRect().height;
-
-let reverseCarousel;
-let stopCarousel;
-let progressCarousel;
-//calculate mouse's position on the outer container div
-window.addEventListener('mousemove', (e) => {
-  mouseInDiv = {
-    x: e.x - outerContainerLeft,
-    xPercent: (e.x - outerContainerLeft) / outerContainerWidth,
-  };
-  if (mouseOnContainer && mouseInDiv.xPercent < 0.25) {
-    reverseCarousel = gsap.to(carousel, {
-      duration: 0.4,
-      ease: 'power1',
-      timeScale: -5,
-    });
-  } else if (mouseOnContainer && mouseInDiv.xPercent > 0.75) {
-    stopCarousel = gsap.to(carousel, {
-      duration: 0.4,
-      ease: 'power1',
-      timeScale: 5,
-    });
-  } else if (mouseEnteredContainer) {
-    progressCarousel = gsap.to(carousel, {
-      duration: 0.4,
-      ease: 'power1',
-      timeScale: 0,
-    });
-  }
-});
-
-let mouseOnContainer = false;
-let mouseEnteredContainer = false;
-let infiniteCarouselChecker;
-//pause carousel on mouse hover or scroll
-outerContainer.addEventListener('mouseover', () => {
-  mouseOnContainer = true;
-  mouseEnteredContainer = true;
-  infiniteCarouselChecker = setInterval(() => {
-    if (carousel.progress() === 0) {
-      carousel.progress(1);
-    }
-  }, 30);
-});
-
-outerContainer.addEventListener('mouseout', () => {
-  mouseOnContainer = false;
-  clearInterval(infiniteCarouselChecker);
-});
-
-document.querySelector('.box-container').addEventListener('scroll', () => {
-  gsap.to(carousel, {
-    duration: 0.4,
-    ease: 'power1',
-    timeScale: 0,
+for (var i = 0; i < numSlides; i++) {
+  gsap.set(slides[i], {
+    backgroundColor: 'black',
+    xPercent: i * 100,
   });
+}
+
+var timer = gsap.delayedCall(slideDelay, autoPlay);
+
+var animation = gsap.to(slides, {
+  duration: 1,
+  xPercent: '+=' + numSlides * 100,
+  ease: 'none',
+  paused: true,
+  repeat: -1,
+  modifiers: {
+    xPercent: gsap.utils.wrap(-100, (numSlides - 1) * 100),
+  },
 });
+
+var proxy = document.createElement('div');
+gsap.set(proxy, { x: 0 });
+var slideAnimation = gsap.to({}, { duration: 0.1 });
+var slideWidth = 0;
+var wrapWidth = 0;
+resize();
+
+var draggable = new Draggable(proxy, {
+  trigger: '.slides-container',
+  throwProps: true,
+  onPress: updateDraggable,
+  onDrag: updateProgress,
+  onThrowUpdate: updateProgress,
+  snap: {
+    x: (x) => gsap.utils.snap(Math.round(x / slideWidth) * slideWidth),
+  },
+});
+
+window.addEventListener('resize', resize);
+
+prevButton.addEventListener('click', function () {
+  animateSlides(1);
+});
+
+nextButton.addEventListener('click', function () {
+  animateSlides(-1);
+});
+
+function updateDraggable() {
+  timer.restart(true);
+  slideAnimation.kill();
+  this.update();
+}
+
+function animateSlides(direction) {
+  timer.restart(true);
+  slideAnimation.kill();
+
+  var x = snapX(gsap.getProperty(proxy, 'x') + direction * slideWidth);
+
+  slideAnimation = gsap.to(proxy, {
+    duration: slideDuration,
+    x: x,
+    onUpdate: updateProgress,
+  });
+}
+
+function autoPlay() {
+  if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
+    timer.restart(true);
+  } else {
+    animateSlides(-1);
+  }
+}
+
+function updateProgress() {
+  animation.progress(
+    gsap.utils.wrap(0, 1, gsap.getProperty(proxy, 'x') / wrapWidth)
+  );
+}
+
+function resize() {
+  var norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
+
+  slideWidth = slides[0].offsetWidth;
+  wrapWidth = slideWidth * numSlides;
+
+  gsap.set(proxy, {
+    x: norm * wrapWidth,
+  });
+
+  animateSlides(0);
+  slideAnimation.progress(1);
+}
+
+function snapX(x) {
+  return Math.round(x / slideWidth) * slideWidth;
+}
 
 //////////////////////////////////////////////////////////////////
 //unhide the CSS (so that it doesn't flicker before things are fully placed)
@@ -573,15 +619,10 @@ gsap.to(':root', {
   visibility: 'visible',
 });
 
-//every time the window resizes on mobile:
+//every time the window resizes:
 window.addEventListener('resize', () => {
   width = document.documentElement.clientWidth || window.innerWidth;
   height = document.documentElement.clientHeight || window.innerHeight;
   documentHeight = document.body.scrollHeight;
   windowSize = { width, height };
-
-  outerContainerLeft = outerContainer.getBoundingClientRect().left;
-  outerContainerTop = outerContainer.getBoundingClientRect().top;
-  outerContainerWidth = outerContainer.getBoundingClientRect().width;
-  outerContainerHeight = outerContainer.getBoundingClientRect().height;
 });

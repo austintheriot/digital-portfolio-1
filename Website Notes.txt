@@ -11,16 +11,14 @@ Font:
 - Roboto
 
 
-TO DO: ////////////////////////////////////////////////////////
---refactored code to use modifiers on animations
---deleted responsive navigation
---separated city section from about me
---added fading slides on about me section
 
+TO DO: ////////////////////////////////////////////////////////
 --Add cars back in.
 --Skill section? 
-
-
+    Elevator 
+      Elevator opens and closes to reveal new skills 
+      Each skill tree get its own "level" inidcator
+    OR Building being built - each floor is a skill
 
 --------Include soft pictures of buildings throughout 
 
@@ -80,9 +78,7 @@ More Info
 
 
 
-- add in words and description
-- animate tree leaves
-- fix bark on tree
+
 
 Extras:
 - Add in an optional soundtrack
@@ -93,6 +89,12 @@ Extras:
 
 
 General:
+- Add "scroll down" indication to HOME 
+- Add a reflectio of name and title to HOME section
+- Optimize building movement to NOT use modofiers (onresize, update the animations)
+- animated border around text slides - 1 side for each slide of text
+- animate tree leaves
+- fix bark on tree? 
 - clean up event listeners on window resize (so they don't fire over and over)
 - add back in car animations
 - optimize car movement (condense to 1 function and just change the name of the selected element as a parameter)
