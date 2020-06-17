@@ -422,19 +422,19 @@ section h1 {
 }
 
 .border-left {
-  border-left: 3px solid var(--dark-color);
+  border-left: 3px solid var(--light-lavender);
 }
 
 .border-bottom {
-  border-bottom: 3px solid var(--dark-color);
+  border-bottom: 3px solid var(--light-lavender);
 }
 
 .border-right {
-  border-right: 3px solid var(--dark-color);
+  border-right: 3px solid var(--light-lavender);
 }
 
 .border-top {
-  border-top: 3px solid var(--dark-color);
+  border-top: 3px solid var(--light-lavender);
 }
 
 /* Portfolio ////////////////////////////////////////////////////////////////// */

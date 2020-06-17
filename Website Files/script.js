@@ -8,6 +8,9 @@ let documentHeight = document.body.scrollHeight;
 let homeSectionHeight = document.querySelector('#home').offsetHeight;
 let aboutSectionHeight = document.querySelector('#about').offsetHeight;
 const WINDOW_BREAK_POINT_SIZE = 900;
+const DARK_COLOR = getComputedStyle(document.documentElement).getPropertyValue(
+  '--dark-color'
+);
 
 //pin city container inside HOME section
 pinContainer = ScrollTrigger.create({
@@ -398,6 +401,7 @@ gsap
     {
       duration: 4,
       scale: 1,
+      borderLeftColor: `${DARK_COLOR}`,
     },
     'border-left'
   )
@@ -426,6 +430,7 @@ gsap
     {
       duration: 4,
       scale: 1,
+      borderBottomColor: `${DARK_COLOR}`,
     },
     'border-bottom'
   )
@@ -454,6 +459,7 @@ gsap
     {
       duration: 4,
       scale: 1,
+      borderRightColor: `${DARK_COLOR}`,
     },
     'border-right'
   )
@@ -492,6 +498,7 @@ gsap
     {
       duration: 4,
       scale: 1,
+      borderTopColor: `${DARK_COLOR}`,
     },
     'border-top'
   )
