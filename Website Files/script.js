@@ -93,7 +93,8 @@ if (width < WINDOW_BREAK_POINT_SIZE) {
         },
       })
       .to('.hire-me-div', {
-        duration: 0.2,
+        duration: 0.4,
+        transformOrigin: 'bottom',
         scaleY: 1,
       })
       .to('.building-lights', {
@@ -109,7 +110,7 @@ if (width < WINDOW_BREAK_POINT_SIZE) {
         },
       })
       .to('.hire-me-div', {
-        duration: 0.2,
+        duration: 0.4,
         scaleY: 0,
       })
       .to(
@@ -320,16 +321,6 @@ home
     opacity: 1,
   });
 
-//fade out city container
-gsap.to('.city-container', {
-  scrollTrigger: {
-    trigger: '#about',
-    start: '-20% 80%', //trigger element & viewport
-    scrub: true, //duration for scrub to catch up to scroll
-  },
-  opacity: 0.01,
-});
-
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
@@ -364,7 +355,7 @@ gsap
     repeat: -1,
     scrollTrigger: {
       trigger: '#about',
-      toggleActions: 'play reset play reset',
+      toggleActions: 'play pause play pause',
     },
     defaults: {
       duration: 0.6,
@@ -512,98 +503,33 @@ gsap
   );
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-var slideDelay = 1.5;
-var slideDuration = 0.3;
+const SLIDE_DELAY = 2;
+const SLIDE_DURATION = 0.3;
 
-var slides = document.querySelectorAll('.slide');
-var prevButton = document.querySelector('#prevButton');
-var nextButton = document.querySelector('#nextButton');
+const slidesInner = document.querySelector('.slides-inner');
+const slidesContainer = document.querySelector('.slides-container');
+const slides = document.querySelectorAll('.slide');
+const prevButton = document.querySelector('.previous-button');
+const nextButton = document.querySelector('.next-button');
+const proxy = document.createElement('div'); //placeholder div for dragging--the proxy tells us how far we've dragged
+const numSlides = slides.length;
+let slideAnimation = gsap.to({}, { duration: 0 }); //placeholder (to kill before undefined)
+let slideWidth;
+let wrapWidth;
 
-var numSlides = slides.length;
-
-for (var i = 0; i < numSlides; i++) {
+//initialize slides horizontally
+for (let i = 0; i < numSlides; i++) {
   gsap.set(slides[i], {
-    backgroundColor: 'black',
     xPercent: i * 100,
   });
 }
-
-var timer = gsap.delayedCall(slideDelay, autoPlay);
-
-var animation = gsap.to(slides, {
-  duration: 1,
-  xPercent: '+=' + numSlides * 100,
-  ease: 'none',
-  paused: true,
-  repeat: -1,
-  modifiers: {
-    xPercent: gsap.utils.wrap(-100, (numSlides - 1) * 100),
-  },
-});
-
-var proxy = document.createElement('div');
+//initialize proxy at 0 movement
 gsap.set(proxy, { x: 0 });
-var slideAnimation = gsap.to({}, { duration: 0.1 });
-var slideWidth = 0;
-var wrapWidth = 0;
-resize();
 
-var draggable = new Draggable(proxy, {
-  trigger: '.slides-container',
-  throwProps: true,
-  onPress: updateDraggable,
-  onDrag: updateProgress,
-  onThrowUpdate: updateProgress,
-  snap: {
-    x: (x) => gsap.utils.snap(Math.round(x / slideWidth) * slideWidth),
-  },
-});
-
+//what to do on window resize (called immediately at the bottom)
 window.addEventListener('resize', resize);
-
-prevButton.addEventListener('click', function () {
-  animateSlides(1);
-});
-
-nextButton.addEventListener('click', function () {
-  animateSlides(-1);
-});
-
-function updateDraggable() {
-  timer.restart(true);
-  slideAnimation.kill();
-  this.update();
-}
-
-function animateSlides(direction) {
-  timer.restart(true);
-  slideAnimation.kill();
-
-  var x = snapX(gsap.getProperty(proxy, 'x') + direction * slideWidth);
-
-  slideAnimation = gsap.to(proxy, {
-    duration: slideDuration,
-    x: x,
-    onUpdate: updateProgress,
-  });
-}
-
-function autoPlay() {
-  if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
-    timer.restart(true);
-  } else {
-    animateSlides(-1);
-  }
-}
-
-function updateProgress() {
-  animation.progress(
-    gsap.utils.wrap(0, 1, gsap.getProperty(proxy, 'x') / wrapWidth)
-  );
-}
-
 function resize() {
-  var norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
+  let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
 
   slideWidth = slides[0].offsetWidth;
   wrapWidth = slideWidth * numSlides;
@@ -619,6 +545,76 @@ function resize() {
 function snapX(x) {
   return Math.round(x / slideWidth) * slideWidth;
 }
+
+//calls the auto play function after a delay
+const timer = gsap.delayedCall(SLIDE_DELAY, autoPlay);
+
+//moves all slides over by 100% -- starts out paused
+const animation = gsap.to(slides, {
+  duration: 1,
+  xPercent: '+=' + numSlides * 100, //move over the width of the slide
+  ease: 'none',
+  paused: true,
+  repeat: -1,
+  modifiers: {
+    //wraps positive and negative values to the limit (fancy modulo)
+    //offset to the left by one using wrap (so 10 starts out on the left)
+    xPercent: gsap.utils.wrap(-100, (numSlides - 1) * 100),
+  },
+});
+
+//restart timer
+//kill the current slideAnimation. Reassign it to a new animation
+function animateSlides(direction) {
+  timer.restart(true);
+  slideAnimation.kill();
+
+  //reads the proxy's position from being dragged
+  //snap x position to the closest slide
+  let x = snapX(gsap.getProperty(proxy, 'x') + direction * slideWidth);
+
+  slideAnimation = gsap.to(proxy, {
+    duration: SLIDE_DURATION,
+    x: x,
+    onUpdate: updateProgress,
+  });
+}
+
+//when the outermost container is dragged, drag the proxy (basically nothing)
+//stop slideAnimation
+//updates the drag animation?
+const draggable = new Draggable(proxy, {
+  trigger: '.slides-container',
+  onPress: updateDraggable,
+  onDrag: updateProgress,
+});
+
+//updates the the draggable's x/y properties to reflect the target element's current position
+function updateDraggable() {
+  slideAnimation.kill();
+  this.update();
+}
+
+//update the slide animation to reflect the movement of the draggable
+function updateProgress() {
+  animation.progress(
+    gsap.utils.wrap(0, 1, gsap.getProperty(proxy, 'x') / wrapWidth)
+  );
+}
+
+function autoPlay() {
+  if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
+  } else {
+    animateSlides(-1);
+  }
+}
+
+//pause carousel on mouse hover or scroll--resume when mouse leaves
+let mouseOnContainer = false;
+slidesContainer.addEventListener('mouseenter', () => timer.paused(true));
+slidesContainer.addEventListener('mouseleave', () => timer.restart(true));
+
+resize(); //immediately resize window to calibrate
 
 //////////////////////////////////////////////////////////////////
 //unhide the CSS (so that it doesn't flicker before things are fully placed)

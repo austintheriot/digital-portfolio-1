@@ -14,23 +14,29 @@ Font:
 
 TO DO: ////////////////////////////////////////////////////////
 --Add cars back in.
---Skill section? 
+
+ABOUT: 
+    Add in soft, building images
+
+PORTFOLIO: 
+  Business Landing Page (LASC)
+  React E-Commerce Site
+  Line Upon Line Piece
+
+
+
+SKILLS: 
     Elevator 
       Elevator opens and closes to reveal new skills 
       Each skill tree get its own "level" inidcator
     OR Building being built - each floor is a skill
 
---------Include soft pictures of buildings throughout 
-
-
---------Rotating portfolio section with popup more Info
---------Contact section is a building with a door
------------store front booth with awning? 
-------------------the contact form is the placard that normally says the items being sold
------------posters on window of the store front?
------------slide in the building/city elements with the vein?
-
-
+CONTACT: 
+  Store front booth with awning? 
+    The contact form is the placard that normally says the items being sold
+      posters on window of the store front?
+      slide in the building/city elements with the vein?
+  OR (Building with a door?)
 
 
 
@@ -53,14 +59,17 @@ Skills///////////////////
     Babel
     Unit Testing
   React
+    (Redux?)
+    (Hooks?)
   Git/Github/version control
   Design Skills
     From-scratch web design
     Original vector asset creation
+    Custom art creation (link images in)
     Mobile-first workflow
-    Photoshop
-    Photography
-    Figma
+    (Photoshop?)
+    (Photography?)
+    (Figma?)
   Excellent verbal/written Skills
   Webmaster
     Hosting/domain management
