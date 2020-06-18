@@ -18,18 +18,25 @@ TO DO: ////////////////////////////////////////////////////////
 ABOUT: 
     Add in soft, building images
 
-PORTFOLIO: 
-  Business Landing Page (LASC)
-  React E-Commerce Site
-  Line Upon Line Piece
-
-
-
 SKILLS: 
     Elevator 
       Elevator opens and closes to reveal new skills 
       Each skill tree get its own "level" inidcator
     OR Building being built - each floor is a skill
+    Cards that fly in but remain static?
+
+PORTFOLIO: 
+  #1 - React E-Commerce Site
+  #2 - Business Landing Page (LASC)
+  #3 - Electroacoustic/Visual Art
+  #4 - Generative Art
+  #5 - 3D Attractors
+  #6 - Particle Playground
+  #7 - Sound to mp3 transformations
+  #8 - Absolute Pitch App
+  #9 - Canon Tool
+  #10 - Paintings? 
+
 
 CONTACT: 
   Store front booth with awning? 

@@ -355,7 +355,7 @@ gsap
     repeat: -1,
     scrollTrigger: {
       trigger: '#about',
-      toggleActions: 'play pause play pause',
+      toggleActions: 'play restart play restart',
     },
     defaults: {
       duration: 0.6,
@@ -538,6 +538,13 @@ function resize() {
     x: norm * wrapWidth,
   });
 
+  gsap.set(slidesInner, {
+    width: Math.min(wrapWidth - slideWidth, width),
+  });
+  gsap.set(slidesContainer, {
+    width: Math.min(wrapWidth - slideWidth, width),
+  });
+
   animateSlides(0);
   slideAnimation.progress(1);
 }
@@ -547,7 +554,8 @@ function snapX(x) {
 }
 
 //calls the auto play function after a delay
-const timer = gsap.delayedCall(SLIDE_DELAY, autoPlay);
+/////////////////////////change Infinity back to DELAY_TIME
+const timer = gsap.delayedCall(Infinity, autoPlay);
 
 //moves all slides over by 100% -- starts out paused
 const animation = gsap.to(slides, {
