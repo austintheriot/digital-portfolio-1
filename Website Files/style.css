@@ -164,6 +164,12 @@ section h1 {
   height: calc(var(--full-height, 100vh) * 4);
 }
 
+.car {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+}
+
 .home__name {
   text-align: left;
   line-height: 1rem;
@@ -497,7 +503,6 @@ section h1 {
 
 .project-about-container {
   position: absolute;
-  cursor: text;
   border-radius: 10px;
   background-color: var(--light-color);
   border: 0.25vh solid var(--dark-color);
@@ -522,7 +527,6 @@ section h1 {
   transform: translateY(-50%);
   font-size: calc(var(--full-height, 100vh) * 0.025);
   text-transform: uppercase;
-  cursor: text;
 }
 
 /* Project 1 /////////////////////////// */
@@ -615,7 +619,6 @@ section h1 {
   left: 20%;
   writing-mode: vertical-lr;
   text-orientation: upright;
-  cursor: vertical-text;
   font-size: calc(var(--full-height, 100vh) * 0.025);
 }
 

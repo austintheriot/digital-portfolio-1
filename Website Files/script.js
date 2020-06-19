@@ -129,7 +129,7 @@ gsap
   .timeline({
     scrollTrigger: {
       triggerElement: '#home',
-      start: '50 top',
+      start: '100 top',
       toggleActions: 'play play play reverse',
     },
   })
@@ -141,7 +141,7 @@ gsap
     .hire-me-div`,
     {
       ease: 'power2.inOut',
-      duration: 0.2,
+      duration: 0.6,
       opacity: 0,
     }
   )
@@ -191,15 +191,64 @@ gsap.set('.welcome', {
   yPercent: -50,
   opacity: 0,
 });
+//Set Cars
+gsap.set('.car', {
+  scale: 0.1,
+  yPercent: -50,
+});
+
+// Animating CARS ////////////////////////////////////////////////////////////////////////////////////////
+function animateCar(selector, delay = 0, speed = 1) {
+  //animate cars automatically
+  gsap
+    .timeline({
+      repeat: -1, //restarts indefinitely
+      scrollTrigger: {
+        triggerElement: '#home',
+        start: '-1 top',
+        end: '9 top',
+        toggleActions: 'resume pause resume none',
+        markers: true,
+      },
+    })
+    .to(selector, {
+      ease: 'none',
+      duration: 10 / speed,
+      left: '-25%',
+      delay,
+    });
+
+  gsap.to(selector, {
+    scrollTrigger: {
+      triggerElement: '#home',
+      start: '10 top',
+      scrub: 1,
+      markers: true,
+    },
+    scale: 1,
+    x: 1,
+    modifiers: {
+      x: gsap.utils.unitize((x) => {
+        let location = document.querySelector(selector).getBoundingClientRect()
+          .left;
+        let modifier = location < width / 2 ? -width * 7 : width * 7;
+        return x * modifier;
+      }, 'px'),
+    },
+  });
+}
+//car animations
+animateCar('.car1', 0, 1);
+animateCar('.car2', 5, 1.25);
 
 //Animating Home Items///////////////////////////////////////////////////////////////
 //Animation speeds for buildings
-const MOVE_PRIMARY_X = 2.2;
-const MOVE_PRIMARY_SCALE = 7;
-const MOVE_SECONDARY_X = 1.2;
-const MOVE_SECONDARY_SCALE = 3;
-const MOVE_TERTIARY_X = 0.5;
-const MOVE_TERTIARY_SCALE = 2;
+let MOVE_PRIMARY_X = width * 2.2;
+let MOVE_PRIMARY_SCALE = 7;
+let MOVE_SECONDARY_X = width * 1.2;
+let MOVE_SECONDARY_SCALE = 3;
+let MOVE_TERTIARY_X = width * 0.5;
+let MOVE_TERTIARY_SCALE = 2;
 
 // Move Primary Buildings ////////////////////
 home
@@ -209,9 +258,6 @@ home
     {
       x: -MOVE_PRIMARY_X,
       scale: MOVE_PRIMARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
     },
     '<'
   )
@@ -221,9 +267,6 @@ home
     {
       x: MOVE_PRIMARY_X,
       scale: MOVE_PRIMARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
     },
     '<'
   )
@@ -234,9 +277,6 @@ home
     {
       x: -MOVE_SECONDARY_X,
       scale: MOVE_SECONDARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
     },
     '<'
   )
@@ -246,9 +286,6 @@ home
     {
       x: MOVE_SECONDARY_X,
       scale: MOVE_SECONDARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
     },
     '<'
   )
@@ -259,9 +296,6 @@ home
     {
       x: -MOVE_TERTIARY_X,
       scale: MOVE_TERTIARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
     },
     '<'
   )
@@ -271,9 +305,6 @@ home
     {
       x: MOVE_TERTIARY_X,
       scale: MOVE_TERTIARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
     },
     '<'
   )
@@ -528,26 +559,6 @@ gsap.set(proxy, { x: 0 });
 
 //what to do on window resize (called immediately at the bottom)
 window.addEventListener('resize', resize);
-function resize() {
-  let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
-
-  slideWidth = slides[0].offsetWidth;
-  wrapWidth = slideWidth * numSlides;
-
-  gsap.set(proxy, {
-    x: norm * wrapWidth,
-  });
-
-  gsap.set(slidesInner, {
-    width: Math.min(wrapWidth - slideWidth, width),
-  });
-  gsap.set(slidesContainer, {
-    width: Math.min(wrapWidth - slideWidth, width),
-  });
-
-  animateSlides(0);
-  slideAnimation.progress(1);
-}
 
 function snapX(x) {
   return Math.round(x / slideWidth) * slideWidth;
@@ -622,18 +633,37 @@ let mouseOnContainer = false;
 slidesContainer.addEventListener('mouseenter', () => timer.paused(true));
 slidesContainer.addEventListener('mouseleave', () => timer.restart(true));
 
-resize(); //immediately resize window to calibrate
-
 //////////////////////////////////////////////////////////////////
-//unhide the CSS (so that it doesn't flicker before things are fully placed)
-gsap.to(':root', {
-  visibility: 'visible',
-});
-
-//every time the window resizes:
-window.addEventListener('resize', () => {
+function resize() {
   width = document.documentElement.clientWidth || window.innerWidth;
   height = document.documentElement.clientHeight || window.innerHeight;
   documentHeight = document.body.scrollHeight;
   windowSize = { width, height };
+
+  //stuff for carousel/slider
+  let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
+
+  slideWidth = slides[0].offsetWidth;
+  wrapWidth = slideWidth * numSlides;
+
+  gsap.set(proxy, {
+    x: norm * wrapWidth,
+  });
+
+  gsap.set(slidesInner, {
+    width: Math.min(wrapWidth - slideWidth, width),
+  });
+  gsap.set(slidesContainer, {
+    width: Math.min(wrapWidth - slideWidth, width),
+  });
+
+  animateSlides(0);
+  slideAnimation.progress(1);
+}
+
+resize(); //immediately resize window to calibrate
+
+//unhide the CSS (so that it doesn't flicker before things are fully placed)
+gsap.to(':root', {
+  visibility: 'visible',
 });

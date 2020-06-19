@@ -1,5 +1,5 @@
-ANIMATE CARS //////////////////////////////////////////////////////
-Place Cars//////////////////////
+//ANIMATE CARS //////////////////////////////////////////////////////
+//Place Cars//////////////////////
 gsap.set('.car', {
   yPercent: -50,
   scale: 0.1,
@@ -84,11 +84,6 @@ animateCar('.car1', 0, 1);
 animateCar('.car2', 7, 1.3);
 animateCar('.car3', 11, 0.6);
 animateCar('.car4', 15, 1.75);
-
-
-
-
-
 
 //NEWER VERSION (STILL NOT WORKING)
 ///////////////////////////////////////

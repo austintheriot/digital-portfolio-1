@@ -13,7 +13,6 @@ Font:
 
 
 TO DO: ////////////////////////////////////////////////////////
---Add cars back in.
 
 ABOUT: 
     Add in soft, building images
