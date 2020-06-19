@@ -171,50 +171,45 @@ section h1 {
 }
 
 .home__name {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 1%;
+  left: 2%;
   text-align: left;
-  line-height: 1rem;
-  margin: 1.5rem 0 1rem 1rem;
   color: var(--dark-color);
-  z-index: -150;
+  z-index: -1000;
+  font-size: calc(var(--h1-size) * 1.5);
 }
 
-/* Outlined Text */
-/* @supports (
-  (-webkit-text-fill-color: var(--dark-color)) and
-    (-webkit-text-stroke-width: 0.75px) and
-    (-webkit-text-stroke-color: transparent)
-) {
-  .home__name {
-    -webkit-text-stroke-width: 0.75px;
-    -webkit-text-stroke-color: var(--dark-color);
-    -webkit-text-fill-color: transparent;
-  }
-} */
-
 .home__name span {
-  font-size: calc(var(--h1-size) * 0.6);
+  font-size: calc(var(--h1-size));
 }
 
 .home__title {
+  position: absolute;
+  margin: 0;
+  top: 10%;
+  left: 10%;
   font-size: calc(var(--h2-size) * 0.75);
   text-align: left;
-  margin-left: 1rem;
   color: var(--dark-lavender);
-  z-index: -150;
+  z-index: -1000;
 }
 
 @media (min-width: 900px) {
   .home__name {
-    margin: 2rem 0 1rem 1rem;
+    top: -0%;
+    left: 3%;
   }
-
   .home__title {
-    margin-left: 3rem;
+    top: 16%;
+    left: 10%;
   }
 }
 
 .hire-me-button {
-  font-size: calc(var(--body-size) * 1.5);
+  font-size: calc(var(--body-size) * 1);
   position: absolute;
   left: 50%;
   top: 85%;
@@ -223,7 +218,9 @@ section h1 {
   text-decoration: none;
   padding: 0.25rem 1rem;
   border: 1px solid var(--dark-color);
+  border-radius: 2px;
   background-color: var(--light-color);
+  text-transform: uppercase;
 }
 
 .hire-me-div {
@@ -233,6 +230,23 @@ section h1 {
   height: 35%;
   width: 2px;
   background-color: var(--dark-color);
+}
+
+.scroll-down {
+  position: absolute;
+  top: 91%;
+  left: 50%;
+  width: max-content;
+  color: var(--dark-lavender);
+  text-transform: uppercase;
+  font-size: calc(var(--body-size) * 0.8);
+}
+
+.scroll-down-arrow {
+  position: absolute;
+  width: 1rem;
+  top: 94%;
+  left: 50%;
 }
 
 .ground {
@@ -383,11 +397,6 @@ section h1 {
   z-index: -100;
 }
 
-/* About ////////////////////////////////////////////////////////////////// */
-#about {
-  height: var(--full-height, 100vh);
-}
-
 .bench {
   height: 100%;
   position: absolute;
@@ -401,6 +410,11 @@ section h1 {
   top: 40%;
   left: 60%;
   font-size: var(--h2-size);
+}
+
+/* About ////////////////////////////////////////////////////////////////// */
+#about {
+  height: var(--full-height, 100vh);
 }
 
 .about__container {
@@ -418,6 +432,24 @@ section h1 {
   padding: 1rem;
   font-size: calc(var(--body-size) * 2);
   text-align: center;
+}
+
+.restart-about-slides {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 4rem;
+  width: 4rem;
+  background-color: transparent;
+  border: 1px solid var(--dark-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.restart-about-slides img {
+  width: 3rem;
+  height: 3rem;
 }
 
 .border {
@@ -445,18 +477,59 @@ section h1 {
   border-top: 3px solid var(--light-lavender);
 }
 
+/* Skills /////////////////////////////////////////////////////////////////// */
+#skills {
+  position: absolute;
+  top: calc(var(--full-height, 100vh) * 5);
+  height: calc(var(--full-height, 100vh) * 2);
+  width: 100vw;
+  border: 1px solid black;
+}
+
+#skills h1,
+.skill-headings {
+  position: absolute;
+}
+
+.construction-building {
+  position: absolute;
+  height: calc(var(--full-height, 100vh) * 1.75);
+  top: 12.5%;
+}
+
+.skill-headings {
+  font-size: calc(var(--full-height, 100vh) * 0.05);
+  color: var(--light-color);
+  left: 28px;
+}
+
+.graphics {
+  color: var(--light-color);
+  background-color: var(--dark-color);
+  top: 37%;
+  display: none;
+}
+
+.node {
+  top: 42%;
+  color: var(--light-color);
+  background-color: var(--dark-color);
+  display: none;
+}
+
+.composition {
+  top: 45.4%;
+}
+
 /* Portfolio ////////////////////////////////////////////////////////////////// */
 #projects {
+  position: absolute;
+  top: calc(var(--full-height, 100vh) * 2);
   height: var(--full-height, 100vh);
   width: 100vw;
   display: flex;
   position: relative;
   flex-direction: column;
-  border: 1px solid black;
-}
-
-#projects h1 {
-  margin: 0 auto;
 }
 
 .slides-container {
@@ -472,8 +545,6 @@ section h1 {
   background-repeat: no-repeat;
   background-size: 200%;
   background-position-y: 100%;
-  border-top: 3px solid var(--light-lavender);
-  border-bottom: 3px solid var(--light-lavender);
 }
 
 .slides-inner {
@@ -505,7 +576,6 @@ section h1 {
   position: absolute;
   border-radius: 10px;
   background-color: var(--light-color);
-  border: 0.25vh solid var(--dark-color);
 }
 
 .project-about {
@@ -518,7 +588,6 @@ section h1 {
 
 .project-title-container {
   position: absolute;
-  border: 0.25vh solid var(--dark-color);
   background-color: var(--light-color);
 }
 
@@ -661,21 +730,17 @@ section h1 {
   top: 88.8%;
 }
 
-/* Skills /////////////////////////////////////////////////////////////////// */
-#skills {
-  height: calc(var(--full-height, 100vh));
-  width: 100vw;
-  border: 1px solid black;
-}
-
-#skills h1,
-#skills li,
-#skills ul {
-  position: static;
-}
-
 /* Contact ////////////////////////////////////////////////////////////////// */
 
 #contact {
+  position: absolute;
+  top: calc(var(--full-height, 100vh) * 8);
   height: calc(var(--full-height, 100vh) * 2);
+}
+
+#contact h1,
+#contact h2 {
+  position: static;
+  width: max-content;
+  margin: 0 auto;
 }

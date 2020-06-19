@@ -53,8 +53,6 @@ Skills///////////////////
     SEO
   CSS3
     BEM Methodology
-    Advanced animations with GSAP 
-    ScrollMagic
   JavaScript 
     ES6+
     OOP
@@ -67,7 +65,8 @@ Skills///////////////////
   React
     (Redux?)
     (Hooks?)
-  Git/Github/version control
+  Animations
+    Greensock (GSAP)
   Design Skills
     From-scratch web design
     Original vector asset creation
@@ -76,7 +75,7 @@ Skills///////////////////
     (Photoshop?)
     (Photography?)
     (Figma?)
-  Excellent verbal/written Skills
+  Git/Github/version control
   Webmaster
     Hosting/domain management
     Business email management
@@ -93,30 +92,9 @@ More Info
 
 
 
-
-
-Extras:
-- Add in an optional soundtrack
-- Create an SVG self portrait? 
-- add in start/stop animations (like traffic lights) with offset
-- Animate words with GSAP's TextPlugin
-- Skew perspective based on mouse position
-
-
 General:
-- Add "scroll down" indication to HOME 
 - Add a reflectio of name and title to HOME section
-- Optimize building movement to NOT use modofiers (onresize, update the animations)
-- animated border around text slides - 1 side for each slide of text
-- animate tree leaves
-- fix bark on tree? 
-- clean up event listeners on window resize (so they don't fire over and over)
-- add back in car animations
-- optimize car movement (condense to 1 function and just change the name of the selected element as a parameter)
 - animate scroll to with GSAP (plug in already registered at top)
-- Mobile blurry svg issue
-- Mobile 100vh resize issue
-- Computer: window resizing issue: buildings do not respect new width, and so could obscure the bench when expanding window from small to large on the about section.
 - Delete plug svg (and other unused SVGs)
 
 - change setTimeout to Promises (throughout)
@@ -124,6 +102,14 @@ General:
 - Take out <h1>s in <sections> & get rid of CSS section h1 {}
 - Optimize Roboto font (get rid of every weight, etc.)
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)
+
+Extras:
+- animate tree leaves
+- Add in an optional soundtrack
+- Create an SVG self portrait? 
+- add in start/stop animations (like traffic lights) with offset
+- Animate words with GSAP's TextPlugin
+- Skew perspective based on mouse position
 
 Super Extra: 
 - Add in smooth scrolling animations--(not possible apparently??)

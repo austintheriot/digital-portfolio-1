@@ -68,7 +68,7 @@ nav.addEventListener('click', (event) => {
 
 //Hire me button animations
 const hireMeButton = document.querySelector('.hire-me-button');
-gsap.set('.hire-me-button', {
+gsap.set('.hire-me-button, .scroll-down, .scroll-down-arrow', {
   xPercent: -50,
   yPercent: -50,
 });
@@ -130,7 +130,9 @@ gsap
     .home__title, 
     .nav__scroll-heading, 
     .hire-me-button, 
-    .hire-me-div`,
+    .hire-me-div,
+    .scroll-down,
+    .scroll-down-arrow`,
     {
       ease: 'power2.inOut',
       duration: 0.6,
@@ -141,7 +143,9 @@ gsap
     `.home__name, 
     .home__title, 
     .hire-me-button,
-    .hire-me-div`,
+    .hire-me-div,
+    .scroll-down,
+    .scroll-down-arrow`,
     {
       duration: 0.2,
       scale: 0,
@@ -349,6 +353,10 @@ home
 
 //Animate Text Slides //////////////////////////////////////////////////
 
+document
+  .querySelector('.restart-about-slides')
+  .addEventListener('click', () => aboutAnimations.restart());
+
 //initialize border locations
 gsap.set('.border-left', {
   transformOrigin: 'top',
@@ -366,18 +374,18 @@ gsap.set('.border-top', {
   transformOrigin: 'right',
   scaleX: 0,
 });
-
 gsap.set('.about__info', {
   xPercent: -50,
   yPercent: -50,
   opacity: 0,
 });
-gsap
+
+const aboutAnimations = gsap
   .timeline({
     repeat: -1,
     scrollTrigger: {
       trigger: '#about',
-      toggleActions: 'play restart play restart',
+      toggleActions: 'play pause play pause',
     },
     defaults: {
       duration: 0.6,
