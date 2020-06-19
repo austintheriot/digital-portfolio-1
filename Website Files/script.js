@@ -76,52 +76,44 @@ gsap.set('.hire-me-div', {
   scaleY: 0,
   xPercent: -50,
 });
-//light up buildings right away on mobile
-if (width < WINDOW_BREAK_POINT_SIZE) {
-  gsap.to('.building-lights', {
-    ease: 'power4.out',
-    duration: 3,
-    opacity: 1,
-  });
-} else {
-  //light up buildings on hire me button hover
-  hireMeButton.addEventListener('mouseover', () => {
-    gsap
-      .timeline({
-        defaults: {
-          ease: 'power4.out',
-        },
-      })
-      .to('.hire-me-div', {
-        duration: 0.4,
-        transformOrigin: 'bottom',
-        scaleY: 1,
-      })
-      .to('.building-lights', {
+
+function hireButtonMouseOverHandler() {
+  gsap
+    .timeline({
+      defaults: {
+        ease: 'power4.out',
+      },
+    })
+    .to('.hire-me-div', {
+      duration: 0.4,
+      transformOrigin: 'bottom',
+      scaleY: 1,
+    })
+    .to('.building-lights', {
+      duration: 2,
+      opacity: 1,
+    });
+}
+
+function hireButtonMouseOutHandler() {
+  gsap
+    .timeline({
+      defaults: {
+        ease: 'power4.out',
+      },
+    })
+    .to('.hire-me-div', {
+      duration: 0.4,
+      scaleY: 0,
+    })
+    .to(
+      '.building-lights',
+      {
         duration: 2,
-        opacity: 1,
-      });
-  });
-  hireMeButton.addEventListener('mouseout', () => {
-    gsap
-      .timeline({
-        defaults: {
-          ease: 'power4.out',
-        },
-      })
-      .to('.hire-me-div', {
-        duration: 0.4,
-        scaleY: 0,
-      })
-      .to(
-        '.building-lights',
-        {
-          duration: 2,
-          opacity: 0,
-        },
-        '<'
-      );
-  });
+        opacity: 0,
+      },
+      '<'
+    );
 }
 
 //Fade out Name, Title, Scroll title, and "Hire Me" button
@@ -156,6 +148,8 @@ gsap
     }
   );
 
+// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
+//home timeline (all city animations (besides the cars) are added to this)
 const home = gsap.timeline({
   scrollTrigger: {
     trigger: '#home',
@@ -164,7 +158,6 @@ const home = gsap.timeline({
   },
 });
 
-// Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
 //Placing items before animation//////////////////////////////////////////////////////
 //Animate Ground
 gsap.set(
@@ -208,7 +201,6 @@ function animateCar(selector, delay = 0, speed = 1) {
         start: '-1 top',
         end: '9 top',
         toggleActions: 'resume pause resume none',
-        markers: true,
       },
     })
     .to(selector, {
@@ -223,7 +215,6 @@ function animateCar(selector, delay = 0, speed = 1) {
       triggerElement: '#home',
       start: '10 top',
       scrub: 1,
-      markers: true,
     },
     scale: 1,
     x: 1,
@@ -639,6 +630,27 @@ function resize() {
   height = document.documentElement.clientHeight || window.innerHeight;
   documentHeight = document.body.scrollHeight;
   windowSize = { width, height };
+
+  //see my work button animations
+  //light up buildings right away on mobile
+  if (width < WINDOW_BREAK_POINT_SIZE) {
+    hireMeButton.removeEventListener('mouseover', hireButtonMouseOverHandler);
+    hireMeButton.removeEventListener('mouseout', hireButtonMouseOutHandler);
+    gsap.to('.building-lights', {
+      ease: 'power4.out',
+      duration: 3,
+      opacity: 1,
+    });
+  } else {
+    //light up buildings on see my work button hover
+    hireMeButton.addEventListener('mouseover', hireButtonMouseOverHandler);
+    hireMeButton.addEventListener('mouseout', hireButtonMouseOutHandler);
+    gsap.to('.building-lights', {
+      ease: 'power4.out',
+      duration: 3,
+      opacity: 0,
+    });
+  }
 
   //stuff for carousel/slider
   let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
