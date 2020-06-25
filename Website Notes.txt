@@ -48,6 +48,8 @@ CONTACT:
 
 
 Skills///////////////////
+
+
   HTML5
     Semantic HTML
     SEO
@@ -93,6 +95,10 @@ More Info
 
 
 General:
+- Update Resume (both files)
+- Add linkedIn
+- Add bonus info to Skills section
+- make border on final ABOUT slide match the duration of the text slide
 - Add a reflectio of name and title to HOME section
 - animate scroll to with GSAP (plug in already registered at top)
 - Delete plug svg (and other unused SVGs)
@@ -104,6 +110,7 @@ General:
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)
 
 Extras:
+- make (or scroll down) jump up and down on hover
 - animate tree leaves
 - Add in an optional soundtrack
 - Create an SVG self portrait? 

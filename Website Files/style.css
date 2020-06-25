@@ -484,6 +484,7 @@ section h1 {
   height: calc(var(--full-height, 100vh) * 2);
   width: 100vw;
   border: 1px solid black;
+  overflow: hidden;
 }
 
 #skills h1,
@@ -491,34 +492,141 @@ section h1 {
   position: absolute;
 }
 
-.construction-building {
+.construction-building,
+.construction-building-lights {
   position: absolute;
-  height: calc(var(--full-height, 100vh) * 1.75);
-  top: 12.5%;
+  top: 10%;
+  height: calc(var(--full-height, 100vh) * 1.81);
+}
+
+.construction-building-lights {
+  opacity: 0;
 }
 
 .skill-headings {
   font-size: calc(var(--full-height, 100vh) * 0.05);
   color: var(--light-color);
-  left: 28px;
+  left: 15px;
 }
 
-.graphics {
-  color: var(--light-color);
-  background-color: var(--dark-color);
-  top: 37%;
+.web-design {
+  top: 40.3%;
+}
+
+.animations {
+  top: 45.7%;
+}
+
+.algorithms {
+  top: 51%;
+}
+
+.data-structures {
+  top: 56.3%;
+}
+
+.git {
+  top: 61.8%;
+}
+
+.react {
+  top: 67.2%;
+}
+
+.javascript {
+  top: 72.5%;
+}
+
+.css3 {
+  top: 77.9%;
+}
+
+.html5 {
+  top: 83.3%;
+}
+
+.more {
+  top: 88.8%;
+}
+
+.skills__bonus-info-container {
   display: none;
 }
 
-.node {
-  top: 42%;
-  color: var(--light-color);
-  background-color: var(--dark-color);
-  display: none;
+@media (min-width: 900px) {
+  .skills__bonus-info-container {
+    display: block;
+    position: absolute;
+    height: calc(var(--full-height, 100vh) * 1.04);
+    width: calc(100% - 400px);
+    top: calc(var(--full-height, 100vh) * 0.8);
+    left: calc(var(--full-height, 100vh) * 0.5);
+  }
 }
 
-.composition {
-  top: 45.4%;
+.skills__bonus-info h3 {
+  text-align: left;
+}
+
+.skills__bonus-info {
+  transform: translateY(-50%);
+  position: absolute;
+  font-size: calc(var(--full-height, 100vh) * 0.04);
+}
+
+.skills__bonus-info--web-design {
+  top: 5%;
+}
+
+.skills__bonus-info--animations {
+  top: 16.5%;
+}
+
+.skills__bonus-info--algorithms {
+  top: 24%;
+}
+
+.skills__bonus-info--algorithms a {
+  color: var(--dark-color);
+}
+
+.skills__bonus-info--data-structures {
+  top: 3%;
+}
+
+.skills__bonus-info--git {
+  top: 3%;
+}
+
+.skills__bonus-info--react {
+  top: 58%;
+}
+
+.skills__bonus-info--javascript {
+  top: 70%;
+}
+
+.skills__bonus-info--css3 {
+  top: 76%;
+}
+
+.skills__bonus-info--html5 {
+  top: 89%;
+}
+
+.skills__bonus-info--more {
+  top: 98%;
+}
+
+.skills__bonus-info--more a {
+  color: var(--dark-color);
+}
+
+.github-logo,
+.resume,
+.codewars,
+.linkedin {
+  margin: 0 1rem;
 }
 
 /* Portfolio ////////////////////////////////////////////////////////////////// */

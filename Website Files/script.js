@@ -7,6 +7,7 @@ let height = document.documentElement.clientHeight || window.innerHeight;
 let documentHeight = document.body.scrollHeight;
 let homeSectionHeight = document.querySelector('#home').offsetHeight;
 let aboutSectionHeight = document.querySelector('#about').offsetHeight;
+let skillsSectionHeight = document.querySelector('#skills').offsetHeight;
 const WINDOW_BREAK_POINT_SIZE = 900;
 const DARK_COLOR = getComputedStyle(document.documentElement).getPropertyValue(
   '--dark-color'
@@ -532,6 +533,69 @@ const aboutAnimations = gsap
     'break-apart'
   );
 
+//What I Do///////////////////////////////////////////////////////////
+const skills = document.querySelectorAll('.skill-headings');
+skills.forEach((el) => {
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: el,
+        toggleActions: 'play none play reverse',
+      },
+    })
+    .from(el, {
+      opacity: 0,
+      xPercent: -50,
+    });
+});
+
+function fadeInBonusInfo(event) {
+  let targetInfo = event.target.dataset.bonusTarget;
+  let targetInfoFormatted = `.skills__bonus-info--${targetInfo},
+    .construction-building-lights--${targetInfo}`;
+
+  //fade out all other infos and lights
+  gsap.to(
+    `.skills__bonus-info:not(${targetInfo}),
+  .construction-building-lights:not(${targetInfo})`,
+    {
+      duration: 0.4,
+      opacity: 0,
+    }
+  );
+
+  //fade in this one
+  gsap.to(targetInfoFormatted, {
+    duration: 0.4,
+    opacity: 1,
+  });
+
+  //move .more to the right or back to start when selected
+  if (targetInfo === 'more') {
+    gsap.to('.more', {
+      duration: 0.4,
+      color: 'rgb(255, 214, 92)',
+    });
+  } else {
+    gsap.to('.more', {
+      duration: 0.4,
+      color: 'rgb(246, 243, 248)',
+    });
+  }
+}
+
+/* const skillsMoreInfo = document.querySelector('.skills__more-info');
+gsap.timeline({
+  scrollTrigger: {
+    trigger: skillsMoreInfo,
+    start: `top top`,
+    end: `${skillsSectionHeight} bottom`,
+    pin: true,
+    pinSpacing: false,
+    markers: true,
+  },
+}); */
+
 //PORTFOLIO///////////////////////////////////////////////////////////
 const SLIDE_DELAY = 2;
 const SLIDE_DURATION = 0.3;
@@ -642,8 +706,8 @@ function resize() {
   //see my work button animations
   //light up buildings right away on mobile
   if (width < WINDOW_BREAK_POINT_SIZE) {
-    hireMeButton.removeEventListener('mouseover', hireButtonMouseOverHandler);
-    hireMeButton.removeEventListener('mouseout', hireButtonMouseOutHandler);
+    hireMeButton.removeEventListener('mouseenter', hireButtonMouseOverHandler);
+    hireMeButton.removeEventListener('mouseleave', hireButtonMouseOutHandler);
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
@@ -651,12 +715,30 @@ function resize() {
     });
   } else {
     //light up buildings on see my work button hover
-    hireMeButton.addEventListener('mouseover', hireButtonMouseOverHandler);
-    hireMeButton.addEventListener('mouseout', hireButtonMouseOutHandler);
+    hireMeButton.addEventListener('mouseenter', hireButtonMouseOverHandler);
+    hireMeButton.addEventListener('mouseleave', hireButtonMouseOutHandler);
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
       opacity: 0,
+    });
+  }
+
+  //skills bonus info animations
+  if (width < WINDOW_BREAK_POINT_SIZE) {
+    skills.forEach((el) => {
+      el.removeEventListener('mouseenter', fadeInBonusInfo);
+    });
+  } else {
+    skills.forEach((el) => {
+      el.addEventListener('mouseenter', fadeInBonusInfo);
+      //immediately make them dissapear
+      skills.forEach((el) => {
+        gsap.to('.skills__bonus-info', {
+          duration: 0.4,
+          opacity: 0,
+        });
+      });
     });
   }
 
