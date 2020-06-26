@@ -14,13 +14,12 @@ Font:
 
 TO DO: ////////////////////////////////////////////////////////
 
-CONTACT:
-  Store front booth with awning? 
-    The contact form is the placard that normally says the items being sold
-      posters on window of the store front?
-      slide in the building/city elements with the vein?
-  OR (Building with a door?)
+Projects: 
+  Turn previews into grid OR flex system depending on screen size
+  Create embedded gifs
+  Allow lazy loading of gifs
 
+  Embed gifs on Project hover as well
 
   
 

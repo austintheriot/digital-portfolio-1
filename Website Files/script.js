@@ -748,6 +748,95 @@ projectTitleContainers.forEach((el) => {
   });
 });
 
+// Project Previews ///////////////////////////////////////////////
+//Prevent Scrolling while preview window is open
+var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener(
+    'test',
+    null,
+    Object.defineProperty({}, 'passive', {
+      get: function () {
+        supportsPassive = true;
+      },
+    })
+  );
+} catch (e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent =
+  'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+// call this to Disable
+function disableScroll() {
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  document.querySelector('body').style.overflow = 'hidden';
+}
+
+// call this to Enable
+function enableScroll() {
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  document.querySelector('body').style.overflow = 'visible';
+}
+
+//////////////////////
+
+function showPreviews(el) {
+  gsap.set(`${el.dataset.preview}`, {
+    visibility: 'visible',
+  });
+  gsap.set('.project-previews-background', {
+    visibility: 'visible',
+  });
+  disableScroll();
+}
+
+function closePreviews() {
+  gsap.set('.project-previews-background, .project-previews', {
+    visibility: 'hidden',
+  });
+  enableScroll();
+}
+
+//display preview on click of the title or about section
+const titleButtons = document.querySelectorAll('.project-title-container');
+titleButtons.forEach((el) => {
+  el.addEventListener('click', showPreviews.bind(this, el));
+});
+const aboutButtons = document.querySelectorAll('.project-about-container');
+aboutButtons.forEach((el) => {
+  el.addEventListener('click', showPreviews.bind(this, el));
+});
+
+//hide preview on click of the clsoe button or background div
+const closeButtons = document.querySelectorAll('.close-button');
+closeButtons.forEach((el) => {
+  el.addEventListener('click', closePreviews);
+});
+const projectPreviewsBackground = document
+  .querySelector('.project-previews-background')
+  .addEventListener('click', closePreviews);
+
 //CONTACT///////////////////////////////////////////////////////////
 const contactSubmitButton = document.querySelector('.contact__submit-button');
 contactSubmitButton.addEventListener('mouseenter', buttonMouseEnterHandler);

@@ -38,6 +38,7 @@
       <p class="nav__info nav__info-contact">Contact</p>
     </nav> -->
 
+    <!-- HOME /////////////////////////////////////////////////// -->
     <!-- Animations -->
     <div class="city-container">
       <!-- Name, Title, Hire Me Button -->
@@ -179,8 +180,6 @@
         src="images/Background Buildings.svg"
         alt="Background Buildings"
       />
-
-      <!-- About ////////////////////////////////////////////////////////// -->
       <img
         class="bench"
         src="images/Bench.svg"
@@ -190,6 +189,8 @@
     </div>
     <section id="home">
     </section>
+
+    <!-- ABOUT /////////////////////////////////////////////////// -->
     <section id="about">
       <h1>About Me</h1>
       <div class="about__container">
@@ -206,6 +207,8 @@
         </main>
       </div>
       </section>
+
+    <!-- SKILLS /////////////////////////////////////////////////// -->
     <section id="skills">
         <h1>What I Do</h1> 
         <!-- Building Lights -->
@@ -288,34 +291,32 @@
               <img src="images/CodeWars Icon.svg" ref="CodeWars icon" class="codewars">CodeWars</a></h3>
           </div>
         </div>
-        <!-- Add more bonus info -->
-
-    
-    
       </section>
+
+    <!-- PROJECTS /////////////////////////////////////////////////// -->
     <section id="projects">
       <h1>My Projects</h1>  
       <div class="slides-container">
         <div class="slides-inner">
           <div class="slide">
             <img src="images/Project 1.svg" alt="newspaper dispenser" class="project-image project-image--1">
-            <div class="project-about-container project-about-container--1">
+            <div class="project-about-container project-about-container--1" data-preview=".ecommerce">
               <p class="project-about project-about--1 coming-soon">Coming Soon!
               </p>
             </div>
-            <div class="project-title-container project-title-container--1">
+            <div class="project-title-container project-title-container--1" data-preview=".ecommerce">
               <h2 class="project-title project-title--1">React E-Commerce Site</h2>
             </div>
           </div>
           <div class="slide">
             <img src="images/Project 2.svg" alt="newspaper dispenser" class="project-image project-image--2">
-            <div class="project-about-container project-about-container--2">
+            <div class="project-about-container project-about-container--2" data-preview=".lascabling">
               <p class="project-about project-about--2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, libero.
                 <a href="#projects">Example Link</a>
               </p>
             </div>
-            <div class="project-title-container project-title-container--2">
-              <h2 class="project-title project-title--2">Business Landing Page</h2>
+            <div class="project-title-container project-title-container--2" data-preview=".lascabling">
+              <h2 class="project-title project-title--2" >Business Landing Page</h2>
             </div>
           </div>
           <div class="slide">
@@ -364,12 +365,35 @@
           <div class="slide"><h2>Canon Creation Assistant</h2></div>
         </div>
       </div>
+
+      <!-- Project Previews -->
       <div class="project-previews-container">
-        <div class="project-previews-background">
-          <div class="project-previews"></div>
-        </div>
+        <div class="project-previews-background"></div>
+
+        <!-- React Ecommerce Site -->
+          <div class="project-previews ecommerce">
+            <img src="images/X icon.svg" alt="close" class="close-button">
+            <h1>Coming Soon!</h1>
+          </div>
       </div>
+
+      <!-- Business Landing Page -->
+      <div class="project-previews-container">
+        <div class="project-previews-background"></div>
+          <div class="project-previews lascabling">
+            <img src="images/X icon.svg" alt="close" class="close-button">
+            <div class="project-previews-details">
+              <img src="gifs/lascabling.gif" alt="business landing page preview" class="lascabling-gif">
+            </div>
+          </div>
+      </div>
+      <!-- Create previews programatically??? -->
+
+
+
     </section>
+
+    <!-- CONTACT /////////////////////////////////////////////////// -->
     <section id="contact">
       <h1>Contact Me</h1>
         <form
