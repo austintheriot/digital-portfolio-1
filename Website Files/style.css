@@ -39,6 +39,10 @@
   }
 }
 
+section {
+  width: 100vw;
+}
+
 h1,
 h2,
 h3,
@@ -417,6 +421,10 @@ section h1 {
   height: var(--full-height, 100vh);
 }
 
+#about h1 {
+  margin-top: 4rem;
+}
+
 .about__container {
   position: absolute;
   top: calc(var(--full-height, 100vh) * 4);
@@ -482,7 +490,6 @@ section h1 {
   position: absolute;
   top: calc(var(--full-height, 100vh) * 5);
   height: calc(var(--full-height, 100vh) * 2);
-  width: 100vw;
   border: 1px solid black;
   overflow: hidden;
 }
@@ -521,47 +528,37 @@ section h1 {
   top: 51%;
 }
 
-.data-structures {
+.git {
   top: 56.3%;
 }
 
-.git {
+.react {
   top: 61.8%;
 }
 
-.react {
+.javascript {
   top: 67.2%;
 }
 
-.javascript {
+.css3 {
   top: 72.5%;
 }
 
-.css3 {
+.html5 {
   top: 77.9%;
 }
 
-.html5 {
+.more {
   top: 83.3%;
 }
 
-.more {
-  top: 88.8%;
-}
-
 .skills__bonus-info-container {
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .skills__bonus-info-container {
-    display: block;
-    position: absolute;
-    height: calc(var(--full-height, 100vh) * 1.04);
-    width: calc(100% - 400px);
-    top: calc(var(--full-height, 100vh) * 0.8);
-    left: calc(var(--full-height, 100vh) * 0.5);
-  }
+  display: block;
+  position: absolute;
+  height: calc(var(--full-height, 100vh) * 1.04);
+  width: calc(100% - 400px);
+  top: calc(var(--full-height, 100vh) * 0.8);
+  left: calc(var(--full-height, 100vh) * 0.5);
 }
 
 .skills__bonus-info h3 {
@@ -572,6 +569,10 @@ section h1 {
   transform: translateY(-50%);
   position: absolute;
   font-size: calc(var(--full-height, 100vh) * 0.04);
+}
+
+.skills__bonus-info a {
+  color: var(--dark-color);
 }
 
 .skills__bonus-info--web-design {
@@ -586,40 +587,28 @@ section h1 {
   top: 24%;
 }
 
-.skills__bonus-info--algorithms a {
-  color: var(--dark-color);
-}
-
-.skills__bonus-info--data-structures {
-  top: 3%;
-}
-
 .skills__bonus-info--git {
-  top: 3%;
+  top: 35%;
 }
 
 .skills__bonus-info--react {
-  top: 58%;
+  top: 45%;
 }
 
 .skills__bonus-info--javascript {
-  top: 70%;
+  top: 58%;
 }
 
 .skills__bonus-info--css3 {
-  top: 76%;
+  top: 65%;
 }
 
 .skills__bonus-info--html5 {
-  top: 89%;
+  top: 77%;
 }
 
 .skills__bonus-info--more {
-  top: 98%;
-}
-
-.skills__bonus-info--more a {
-  color: var(--dark-color);
+  top: 89%;
 }
 
 .github-logo,
@@ -634,7 +623,6 @@ section h1 {
   position: absolute;
   top: calc(var(--full-height, 100vh) * 2);
   height: var(--full-height, 100vh);
-  width: 100vw;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -726,6 +714,11 @@ section h1 {
   top: 50%;
 }
 
+.coming-soon {
+  left: 53%;
+  font-size: calc(var(--full-height, 100vh) * 0.025);
+}
+
 /* Project 2 /////////////////////////////// */
 
 .project-about-container--2 {
@@ -769,7 +762,6 @@ section h1 {
   width: 90%;
   left: 5%;
   top: 50%;
-  font-size: calc(var(--full-height, 100vh) * 0.03);
 }
 
 /* Project 4 /////////////////////////////// */
@@ -843,7 +835,7 @@ section h1 {
 #contact {
   position: absolute;
   top: calc(var(--full-height, 100vh) * 8);
-  height: calc(var(--full-height, 100vh) * 2);
+  height: calc(var(--full-height, 100vh) * 1);
 }
 
 #contact h1,
@@ -851,4 +843,57 @@ section h1 {
   position: static;
   width: max-content;
   margin: 0 auto;
+}
+
+form {
+  display: block;
+  box-shadow: var(--shadow);
+  height: 600px;
+  width: 90%;
+  max-width: 600px;
+  margin: 3rem auto;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: var(--light-color);
+}
+
+label {
+  display: block;
+  width: 80%;
+  margin: 2rem auto 0 auto;
+  transition: all 0.2s;
+}
+
+input,
+textarea {
+  display: block;
+  width: 80%;
+  margin: 0.5rem auto 1rem auto;
+  border-radius: 3px;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 2px solid var(--medium-color);
+  transition: all 0.5s;
+  outline: none;
+  background-color: white;
+}
+
+input:focus,
+textarea:focus {
+  border-bottom: 2px solid var(--pop-color);
+}
+
+.contact__submit-button {
+  display: block;
+  margin: 4rem auto;
+  padding: 0.25rem 1rem;
+  font-size: var(--body-size);
+  color: var(--dark-color);
+  text-decoration: none;
+  border: 1px solid var(--dark-color);
+  border-radius: 2px;
+  background-color: var(--light-color);
+  text-transform: uppercase;
+  width: max-content;
+  cursor: pointer;
 }

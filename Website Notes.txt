@@ -14,30 +14,7 @@ Font:
 
 TO DO: ////////////////////////////////////////////////////////
 
-ABOUT: 
-    Add in soft, building images
-
-SKILLS: 
-    Elevator 
-      Elevator opens and closes to reveal new skills 
-      Each skill tree get its own "level" inidcator
-    OR Building being built - each floor is a skill
-    Cards that fly in but remain static?
-
-PORTFOLIO: 
-  #1 - React E-Commerce Site
-  #2 - Business Landing Page (LASC)
-  #3 - Electroacoustic/Visual Art
-  #4 - Generative Art
-  #5 - 3D Attractors
-  #6 - Particle Playground
-  #7 - Sound to mp3 transformations
-  #8 - Absolute Pitch App
-  #9 - Canon Tool
-  #10 - Paintings? 
-
-
-CONTACT: 
+CONTACT:
   Store front booth with awning? 
     The contact form is the placard that normally says the items being sold
       posters on window of the store front?
@@ -45,65 +22,19 @@ CONTACT:
   OR (Building with a door?)
 
 
-
-
-Skills///////////////////
-
-
-  HTML5
-    Semantic HTML
-    SEO
-  CSS3
-    BEM Methodology
-  JavaScript 
-    ES6+
-    OOP
-    async/await
-    Ajax
-    npm'
-    Webpack
-    Babel
-    Unit Testing
-  React
-    (Redux?)
-    (Hooks?)
-  Animations
-    Greensock (GSAP)
-  Design Skills
-    From-scratch web design
-    Original vector asset creation
-    Custom art creation (link images in)
-    Mobile-first workflow
-    (Photoshop?)
-    (Photography?)
-    (Figma?)
-  Git/Github/version control
-  Webmaster
-    Hosting/domain management
-    Business email management
-  3D Graphics
-    OpenGL/GLSL
-    Custom Shaders
-  Music Composition (?)
-  Algorithms & Problem Solving
-
-More Info
-  Resume
-  Github
-  CodeWars
+  
 
 
 
 General:
 - Update Resume (both files)
-- Add linkedIn
+- make sure the skills listed are my ACTUAL skills (and not just theoretical ones)
 - Add bonus info to Skills section
 - make border on final ABOUT slide match the duration of the text slide
 - Add a reflectio of name and title to HOME section
 - animate scroll to with GSAP (plug in already registered at top)
 - Delete plug svg (and other unused SVGs)
-
-- change setTimeout to Promises (throughout)
+- change "hire me button" to "see my work button"
 
 - Take out <h1>s in <sections> & get rid of CSS section h1 {}
 - Optimize Roboto font (get rid of every weight, etc.)
@@ -136,3 +67,59 @@ Qualities:
   Hardworking
   Fast learner
   Lifelong learner
+
+Skills:
+  HTML5
+    Semantic HTML
+    SEO
+  CSS3
+    BEM Methodology
+  JavaScript 
+    ES6+
+    OOP
+    async/await
+    Ajax
+    npm'
+    Webpack
+    Babel
+    Unit Testing
+  React
+    (Redux?)
+    (Hooks?)
+  Art & Animations
+    Greensock (GSAP)
+    CSS animations
+    Vector Art
+    Digital Painting
+  Design Skills
+    From-scratch web design
+    Mobile-first workflow
+    (Photoshop?)
+    (Photography?)
+    (Figma?)
+  Git/Github/version control
+  Webmaster
+    Hosting/domain management
+    Business email management
+  3D Graphics
+    OpenGL/GLSL
+    Custom Shaders
+  Music Composition (?)
+  Algorithms & Problem Solving
+
+More Info
+  Resume
+  Github
+  CodeWars
+
+  PORTFOLIO: 
+  #1 - React E-Commerce Site
+  #2 - Business Landing Page (LASC)
+  #3 - Electroacoustic/Visual Art
+  #4 - Generative Art
+  #5 - 3D Attractors
+  #6 - Particle Playground
+  #7 - Sound to mp3 transformations
+  #8 - Absolute Pitch App
+  #9 - Canon Tool
+  #10 - Paintings? 

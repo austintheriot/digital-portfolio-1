@@ -9,9 +9,9 @@ let homeSectionHeight = document.querySelector('#home').offsetHeight;
 let aboutSectionHeight = document.querySelector('#about').offsetHeight;
 let skillsSectionHeight = document.querySelector('#skills').offsetHeight;
 const WINDOW_BREAK_POINT_SIZE = 900;
-const DARK_COLOR = getComputedStyle(document.documentElement).getPropertyValue(
-  '--dark-color'
-);
+const DARK_COLOR = 'rgb(0, 3, 20)';
+const LIGHT_COLOR = 'rgb(246, 243, 248)';
+const POP_COLOR = 'rgb(255, 214, 92)';
 
 //pin city container inside HOME section
 pinContainer = ScrollTrigger.create({
@@ -67,8 +67,27 @@ nav.addEventListener('click', (event) => {
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
 
+//General Button Animations
+function buttonMouseEnterHandler(event) {
+  gsap.to(event.target, {
+    duration: 0.4,
+    color: LIGHT_COLOR,
+    backgroundColor: DARK_COLOR,
+  });
+}
+
+function buttonMouseLeaveHandler(event) {
+  gsap.to(event.target, {
+    duration: 0.4,
+    color: DARK_COLOR,
+    backgroundColor: LIGHT_COLOR,
+  });
+}
+
 //Hire me button animations
 const hireMeButton = document.querySelector('.hire-me-button');
+
+//place button
 gsap.set('.hire-me-button, .scroll-down, .scroll-down-arrow', {
   xPercent: -50,
   yPercent: -50,
@@ -78,6 +97,12 @@ gsap.set('.hire-me-div', {
   xPercent: -50,
 });
 
+//add general button animations
+hireMeButton.addEventListener('mouseenter', buttonMouseEnterHandler);
+
+hireMeButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
+
+//animations specific to smaller screen sizes
 function hireButtonMouseOverHandler() {
   gsap
     .timeline({
@@ -342,7 +367,21 @@ home
     },
     '<'
   )
-  //keep bench in place and fade in welcome
+  // Keep Bench In Shot ////////////////////
+  .to('.bench', {
+    duration: 0.25,
+    scale: 1,
+  });
+
+//fade in welcome
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: '#home',
+      start: '50% top', //trigger element & viewport
+      toggleActions: 'play reverse play reverse',
+    },
+  })
   .to('.welcome', {
     duration: 1,
     opacity: 1,
@@ -533,7 +572,7 @@ const aboutAnimations = gsap
     'break-apart'
   );
 
-//What I Do///////////////////////////////////////////////////////////
+//SKILLS///////////////////////////////////////////////////////////
 const skills = document.querySelectorAll('.skill-headings');
 skills.forEach((el) => {
   gsap
@@ -569,20 +608,11 @@ function fadeInBonusInfo(event) {
     duration: 0.4,
     opacity: 1,
   });
-
-  //move .more to the right or back to start when selected
-  if (targetInfo === 'more') {
-    gsap.to('.more', {
-      duration: 0.4,
-      color: 'rgb(255, 214, 92)',
-    });
-  } else {
-    gsap.to('.more', {
-      duration: 0.4,
-      color: 'rgb(246, 243, 248)',
-    });
-  }
 }
+
+gsap.set('.skills__bonus-info, .construction-building-lights', {
+  opacity: 0,
+});
 
 /* const skillsMoreInfo = document.querySelector('.skills__more-info');
 gsap.timeline({
@@ -696,6 +726,34 @@ let mouseOnContainer = false;
 slidesContainer.addEventListener('mouseenter', () => timer.paused(true));
 slidesContainer.addEventListener('mouseleave', () => timer.restart(true));
 
+const projectTitles = document.querySelectorAll('.project-title');
+const projectTitleContainers = document.querySelectorAll(
+  '.project-title-container'
+);
+
+projectTitleContainers.forEach((el) => {
+  el.addEventListener('mouseenter', (event) => {
+    gsap.to(event.target, {
+      duration: 0.2,
+      backgroundColor: DARK_COLOR,
+      color: LIGHT_COLOR,
+    });
+  });
+  el.addEventListener('mouseleave', (event) => {
+    gsap.to(event.target, {
+      duration: 0.2,
+      backgroundColor: LIGHT_COLOR,
+      color: DARK_COLOR,
+    });
+  });
+});
+
+//CONTACT///////////////////////////////////////////////////////////
+const contactSubmitButton = document.querySelector('.contact__submit-button');
+contactSubmitButton.addEventListener('mouseenter', buttonMouseEnterHandler);
+
+contactSubmitButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
+
 //////////////////////////////////////////////////////////////////
 function resize() {
   width = document.documentElement.clientWidth || window.innerWidth;
@@ -729,16 +787,14 @@ function resize() {
     skills.forEach((el) => {
       el.removeEventListener('mouseenter', fadeInBonusInfo);
     });
+    gsap.to('.skills__bonus-info, .construction-building-lights', {
+      duration: 0.4,
+      opacity: 0,
+    });
   } else {
     skills.forEach((el) => {
       el.addEventListener('mouseenter', fadeInBonusInfo);
       //immediately make them dissapear
-      skills.forEach((el) => {
-        gsap.to('.skills__bonus-info', {
-          duration: 0.4,
-          opacity: 0,
-        });
-      });
     });
   }
 
