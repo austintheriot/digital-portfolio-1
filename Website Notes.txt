@@ -36,11 +36,11 @@ General:
 - make border on final ABOUT slide match the duration of the text slide
 - Add a reflectio of name and title to HOME section
 - animate scroll to with GSAP (plug in already registered at top)
-- Delete plug svg (and other unused SVGs)
 - change "hire me button" to "see my work button"
 
 - project previews not working on Android?
 
+- fix issue where city container goes to the bottom of the screen when scrolled all the way down (some sort of refresh issue?)
 - Take out <h1>s in <sections> & get rid of CSS section h1 {}
 - Optimize Roboto font (get rid of every weight, etc.)
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)

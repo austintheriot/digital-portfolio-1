@@ -18,13 +18,16 @@ const lazyLoadImages = document.querySelectorAll('[data-src]');
 lazyLoadImages.forEach((el) => {
   ScrollTrigger.create({
     trigger: el,
+    start: '-=250 bottom', //load 250px BEFORE the item intersects the viewport
     onEnter: lazyLoadOnEnter.bind(this, el),
     onEnterBack: lazyLoadOnEnter.bind(this, el),
+    id: el.dataset.src, //identify scrolltriggers by their element's data-src attribute
   });
 });
 
 function lazyLoadOnEnter(el) {
-  el.setAttribute('src', el.dataset.src);
+  el.src = el.dataset.src;
+  ScrollTrigger.getById(el.dataset.src).kill(); //release Scrolltrigger for garbage collection
 }
 
 //pin city container inside HOME section
@@ -35,7 +38,6 @@ pinContainer = ScrollTrigger.create({
   end: `${homeSectionHeight} bottom`,
   pin: true,
   pinSpacing: false,
-  markers: true,
 });
 
 //GSAP's iOS bug fix
