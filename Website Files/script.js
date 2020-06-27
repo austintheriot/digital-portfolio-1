@@ -626,11 +626,19 @@ function fadeInBonusInfo(event) {
       opacity: 0,
     }
   );
+  //stop pointer events on others
+  gsap.set(`.skills__bonus-info:not(${targetInfo})`, {
+    pointerEvents: 'none',
+  });
 
-  //fade in this one
+  //fade in the selected one
   gsap.to(targetInfoFormatted, {
     duration: 0.4,
     opacity: 1,
+  });
+  //allow pointer events on the selected one
+  gsap.set(targetInfoFormatted, {
+    pointerEvents: 'auto',
   });
 }
 
@@ -860,10 +868,6 @@ const titleButtons = document.querySelectorAll('.project-title-container');
 titleButtons.forEach((el) => {
   el.addEventListener('click', showPreview.bind(this, el));
 });
-const aboutButtons = document.querySelectorAll('.project-about-container');
-aboutButtons.forEach((el) => {
-  el.addEventListener('click', showPreview.bind(this, el));
-});
 
 //hide preview on click of the clsoe button or background div
 const xButtons = document.querySelectorAll('.x-button');
@@ -904,12 +908,18 @@ function resize() {
 
   //skills bonus info animations
   if (width < WINDOW_BREAK_POINT_SIZE) {
+    //remove hover events that trigger the bonus info
     skills.forEach((el) => {
       el.removeEventListener('mouseenter', fadeInBonusInfo);
     });
+    //fade out bonus info
     gsap.to('.skills__bonus-info, .construction-building-lights', {
       duration: 0.4,
       opacity: 0,
+    });
+    //disable pointer events on additional info
+    gsap.set('.skills__bonus-info', {
+      pointerEvents: 'none',
     });
   } else {
     skills.forEach((el) => {

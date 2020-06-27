@@ -26,18 +26,18 @@ Projects:
 
 
 General:
-- make a favicon
-- redo LASCabling GIF (slower on the animations)
-- formatting issue with "canvas art" project
+- add prev & next button to projects for desktop
+- redo LASCabling GIF (slower on the animations) -- fix this site first
 - Update Resume (both files)
 - make sure the skills listed are my ACTUAL skills (and not just theoretical ones)
-- Add bonus info to Skills section
 - add metadata tags to webpage
 - make border on final ABOUT slide match the duration of the text slide
 - Add a reflectio of name and title to HOME section
 - animate scroll to with GSAP (plug in already registered at top)
 - change "hire me button" to "see my work button"
 
+- make carousel move on its own again
+- add Inertia plug in to draggable
 - project previews not working on Android?
 
 - fix issue where city container goes to the bottom of the screen when scrolled all the way down (some sort of refresh issue?)
