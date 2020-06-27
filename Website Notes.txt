@@ -26,8 +26,8 @@ Projects:
 
 
 General:
+- make projects not pause on mousehover
 - add prev & next button to projects for desktop
-- redo LASCabling GIF (slower on the animations) -- fix this site first
 - Update Resume (both files)
 - make sure the skills listed are my ACTUAL skills (and not just theoretical ones)
 - add metadata tags to webpage
@@ -36,6 +36,7 @@ General:
 - animate scroll to with GSAP (plug in already registered at top)
 - change "hire me button" to "see my work button"
 
+- check the project preview links to make sure they go where they're supposed to
 - make carousel move on its own again
 - add Inertia plug in to draggable
 - project previews not working on Android?

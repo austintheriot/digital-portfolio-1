@@ -807,39 +807,14 @@ section h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-items: space-evenly;
   overflow: hidden;
-}
-
-.project-previews__individal-container__text-and-buttons {
-  position: relative;
-  background-color: var(--light-color);
-  margin: 0 auto;
-  width: 48vh;
-  height: max-content;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.project-previews__individal-container__text-and-buttons p {
-  margin: 1rem;
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .project-previews__individal-container__text-and-buttons p {
-    display: block;
-  }
-}
-
-.project-previews__individal-container__text-and-buttons a {
-  margin: 1rem;
 }
 
 .preview-gif-container {
   height: 75%;
   width: 50%;
+  min-width: 300px;
   margin: 0 auto;
 }
 
@@ -849,14 +824,50 @@ section h1 {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.project-previews__individal-container__text-and-buttons {
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+  height: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.preview-title {
+  width: 100%;
+  margin: 1rem;
+  text-align: left;
+  display: none;
+}
+
+.project-previews__individal-container__text-and-buttons p {
+  margin: 1rem;
+  width: 100%;
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .preview-title,
+  .project-previews__individal-container__text-and-buttons p {
+    display: block;
+  }
+}
+
+.project-previews__individal-container__text-and-buttons a {
+  margin: 1rem;
 }
 
 /* Contact ////////////////////////////////////////////////////////////////// */
 
 #contact {
   position: relative;
-  height: var(--full-height, 100vh);
+  height: calc(var(--full-height, 100vh) * 1.25);
 }
 
 #contact h1,
@@ -868,12 +879,12 @@ section h1 {
 
 form {
   display: block;
-  box-shadow: var(--shadow);
   height: max-content;
   width: 90%;
   max-width: 500px;
   margin: 3rem auto;
-  border-radius: 15px;
+  border: 3px solid var(--medium-color);
+  border-radius: 5px;
   overflow: hidden;
   background-color: var(--light-color);
 }
@@ -909,4 +920,10 @@ textarea:focus {
 .contact__submit-button {
   display: block;
   margin: 3rem auto;
+}
+
+/* EXtRAS /////////////////////////////////////// */
+
+.inactive {
+  pointer-events: none;
 }

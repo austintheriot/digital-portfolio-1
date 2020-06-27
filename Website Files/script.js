@@ -20,7 +20,6 @@ lazyLoadImages.forEach((el) => {
     trigger: el,
     start: '-=250 bottom', //load 250px BEFORE the item intersects the viewport
     onEnter: lazyLoadOnEnter.bind(this, el),
-    onEnterBack: lazyLoadOnEnter.bind(this, el),
     id: el.dataset.src, //identify scrolltriggers by their element's data-src attribute
   });
 });
@@ -691,7 +690,7 @@ function snapX(x) {
 
 //calls the auto play function after a delay
 /////////////////////////change Infinity back to DELAY_TIME
-const timer = gsap.delayedCall(Infinity, autoPlay);
+const timer = gsap.delayedCall(2, autoPlay);
 
 //moves all slides over by 100% -- starts out paused
 const animation = gsap.to(slides, {
