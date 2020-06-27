@@ -30,10 +30,12 @@ function lazyLoadOnEnter(el) {
 //pin city container inside HOME section
 pinContainer = ScrollTrigger.create({
   trigger: '.city-container',
+  endtrigger: '#about',
   start: 'top top',
   end: `${homeSectionHeight} bottom`,
   pin: true,
   pinSpacing: false,
+  markers: true,
 });
 
 //GSAP's iOS bug fix
@@ -80,6 +82,12 @@ nav.addEventListener('click', (event) => {
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
+
+const generalButtons = document.querySelectorAll('.button');
+generalButtons.forEach((el) => {
+  el.addEventListener('mouseenter', buttonMouseEnterHandler);
+  el.addEventListener('mouseleave', buttonMouseLeaveHandler);
+});
 
 //General Button Animations
 function buttonMouseEnterHandler(event) {
@@ -836,9 +844,12 @@ function showPreview(el) {
 }
 
 function closePreviews() {
-  gsap.set('.project-previews-background, .project-previews', {
-    visibility: 'hidden',
-  });
+  gsap.set(
+    '.project-previews-background, .project-previews__individal-container--outer',
+    {
+      visibility: 'hidden',
+    }
+  );
   enableScroll();
 }
 
@@ -853,21 +864,15 @@ aboutButtons.forEach((el) => {
 });
 
 //hide preview on click of the clsoe button or background div
-const closeButtons = document.querySelectorAll('.close-button');
-closeButtons.forEach((el) => {
+const xButtons = document.querySelectorAll('.x-button');
+xButtons.forEach((el) => {
   el.addEventListener('click', closePreviews);
 });
 const projectPreviewsBackground = document
   .querySelector('.project-previews-background')
   .addEventListener('click', closePreviews);
 
-//CONTACT///////////////////////////////////////////////////////////
-const contactSubmitButton = document.querySelector('.contact__submit-button');
-contactSubmitButton.addEventListener('mouseenter', buttonMouseEnterHandler);
-
-contactSubmitButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
-
-//////////////////////////////////////////////////////////////////
+//WINDOW RESIZING, etc.//////////////////////////////////////////////////////////////////
 function resize() {
   width = document.documentElement.clientWidth || window.innerWidth;
   height = document.documentElement.clientHeight || window.innerHeight;

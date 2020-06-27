@@ -371,26 +371,42 @@
         <div class="project-previews-background"></div>
 
         <!-- React Ecommerce Site -->
-          <div class="project-previews ecommerce">
-            <img data-src-preview="images/X icon.svg" alt="close" class="close-button">
-            <h1>Coming Soon!</h1>
-          </div>
-      </div>
-
-      <!-- Business Landing Page -->
-      <div class="project-previews-container">
-        <div class="project-previews-background"></div>
-          <div class="project-previews lascabling">
-            <img data-src-preview="images/X icon.svg" alt="close" class="close-button">
-            <div class="project-previews-details">
-              <img data-src-preview="gifs/lascabling.gif" alt="business landing page preview" class="lascabling-gif">
+        <div class="project-previews__individal-container--outer ecommerce">
+          <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+          <div class="project-previews__individal-container--inner">
+            <!-- GIF -->
+            <div class="preview-gif-container">
+              <!-- Insert GIF here -->
+            </div>
+            <!-- Text & BUttons -->
+            <div class="project-previews__individal-container__text-and-buttons">
+              <!-- <p>Coming Soon!</p>
+              <a href="#" target="_blank" class="button">See Live</a>
+              <a href="#" target="_blank" class="button">See Code</a> -->
             </div>
           </div>
+        </div>
+
+        <!-- Business Landing Page -->
+          <div class="project-previews__individal-container--outer lascabling">
+            <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+            <div class="project-previews__individal-container--inner">
+              <!-- GIF -->
+              <div class="preview-gif-container">
+                <img data-src-preview="gifs/lascabling.gif" alt="business landing page preview" class="preview-gif">
+              </div>
+              <!-- Text & BUttons -->
+              <div class="project-previews__individal-container__text-and-buttons">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad placeat rerum ducimus saepe iusto quia dolores vero iure, illo ullam, exercitationem ab sint! Tempore earum officia incidunt beatae expedita error fugiat adipisci provident consequuntur corrupti enim odio saepe necessitatibus nesciunt voluptate voluptates, possimus hic, animi facere eos? Hic, vero maiores.</p>
+                <a href="https://www.lascabling.com/" target="_blank" class="button">See Live</a>
+                <a href="#" target="_blank" class="button">See Code</a>
+              </div>
+            </div>
+          </div>
+
+  
+
       </div>
-      <!-- Create previews programatically??? -->
-
-
-
     </section>
 
     <!-- CONTACT /////////////////////////////////////////////////// -->
@@ -418,7 +434,7 @@
               rows="4"
             ></textarea>
           </div>
-          <button type="submit" class="contact__submit-button button">
+          <button type="submit" class="button contact__submit-button button">
             Submit
           </button>
         </form>

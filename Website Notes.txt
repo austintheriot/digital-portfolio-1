@@ -27,6 +27,7 @@ Projects:
 
 General:
 - make a favicon
+- redo LASCabling GIF (slower on the animations)
 - formatting issue with "canvas art" project
 - Update Resume (both files)
 - make sure the skills listed are my ACTUAL skills (and not just theoretical ones)
@@ -45,6 +46,7 @@ General:
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)
 
 Extras:
+- add hover > indication for desktop on SKILLS section
 - make (or scroll down) jump up and down on hover
 - animate tree leaves
 - Add in an optional soundtrack
