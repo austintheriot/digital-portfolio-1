@@ -166,6 +166,8 @@ section h1 {
 /* Home ////////////////////////////////////////////////////////////////// */
 #home {
   height: calc(var(--full-height, 100vh) * 4);
+  position: relative;
+  z-index: -1000; /* This was covering up the button hover animations */
 }
 
 .car {
@@ -193,7 +195,7 @@ section h1 {
 .home__title {
   position: absolute;
   margin: 0;
-  top: 10%;
+  top: calc(1% + (var(--h1-size) * 1.5));
   left: 10%;
   font-size: calc(var(--h2-size) * 0.75);
   text-align: left;
@@ -207,7 +209,6 @@ section h1 {
     left: 3%;
   }
   .home__title {
-    top: 16%;
     left: 10%;
   }
 }
@@ -217,7 +218,7 @@ section h1 {
   position: absolute;
   left: 50%;
   top: 85%;
-  z-index: 100;
+  z-index: 1000;
   color: var(--dark-color);
   text-decoration: none;
   padding: 0.25rem 1rem;
@@ -426,8 +427,7 @@ section h1 {
 }
 
 .about__container {
-  position: absolute;
-  top: calc(var(--full-height, 100vh) * 4);
+  position: relative;
   height: var(--full-height, 100vh);
   width: 100%;
 }
@@ -487,10 +487,8 @@ section h1 {
 
 /* Skills /////////////////////////////////////////////////////////////////// */
 #skills {
-  position: absolute;
-  top: calc(var(--full-height, 100vh) * 5);
+  position: relative;
   height: calc(var(--full-height, 100vh) * 2);
-  border: 1px solid black;
   overflow: hidden;
 }
 
@@ -620,8 +618,7 @@ section h1 {
 
 /* Portfolio ////////////////////////////////////////////////////////////////// */
 #projects {
-  position: absolute;
-  top: calc(var(--full-height, 100vh) * 2);
+  position: relative;
   height: var(--full-height, 100vh);
   display: flex;
   position: relative;
@@ -882,8 +879,7 @@ section h1 {
 /* Contact ////////////////////////////////////////////////////////////////// */
 
 #contact {
-  position: absolute;
-  top: calc(var(--full-height, 100vh) * 8);
+  position: relative;
   height: calc(var(--full-height, 100vh) * 1);
 }
 

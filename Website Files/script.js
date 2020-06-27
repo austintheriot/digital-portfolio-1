@@ -13,13 +13,27 @@ const DARK_COLOR = 'rgb(0, 3, 20)';
 const LIGHT_COLOR = 'rgb(246, 243, 248)';
 const POP_COLOR = 'rgb(255, 214, 92)';
 
+//lazy load images
+const lazyLoadImages = document.querySelectorAll('[data-src]');
+lazyLoadImages.forEach((el) => {
+  ScrollTrigger.create({
+    trigger: el,
+    onEnter: lazyLoadOnEnter.bind(this, el),
+    onEnterBack: lazyLoadOnEnter.bind(this, el),
+  });
+});
+
+function lazyLoadOnEnter(el) {
+  el.setAttribute('src', el.dataset.src);
+}
+
 //pin city container inside HOME section
 pinContainer = ScrollTrigger.create({
   trigger: '.city-container',
   start: 'top top',
   end: `${homeSectionHeight} bottom`,
   pin: true,
-  pinSpacing: true,
+  pinSpacing: false,
 });
 
 //GSAP's iOS bug fix
@@ -799,15 +813,25 @@ function enableScroll() {
   document.querySelector('body').style.overflow = 'visible';
 }
 
-//////////////////////
+//My Code////////////////////
 
-function showPreviews(el) {
+function showPreview(el) {
+  let previewTarget = el.dataset.preview;
+
+  //begin loading assets (lazy loading the images for each preview)
+  let previewTargetImages = document.querySelectorAll(`${previewTarget} img`);
+  previewTargetImages.forEach((el) => {
+    el.setAttribute('src', el.dataset.srcPreview);
+  });
+
+  //make preview visible
   gsap.set(`${el.dataset.preview}`, {
     visibility: 'visible',
   });
   gsap.set('.project-previews-background', {
     visibility: 'visible',
   });
+
   disableScroll();
 }
 
@@ -821,11 +845,11 @@ function closePreviews() {
 //display preview on click of the title or about section
 const titleButtons = document.querySelectorAll('.project-title-container');
 titleButtons.forEach((el) => {
-  el.addEventListener('click', showPreviews.bind(this, el));
+  el.addEventListener('click', showPreview.bind(this, el));
 });
 const aboutButtons = document.querySelectorAll('.project-about-container');
 aboutButtons.forEach((el) => {
-  el.addEventListener('click', showPreviews.bind(this, el));
+  el.addEventListener('click', showPreview.bind(this, el));
 });
 
 //hide preview on click of the clsoe button or background div
