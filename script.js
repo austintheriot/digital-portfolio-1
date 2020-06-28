@@ -664,8 +664,6 @@ const SLIDE_DURATION = 0.3;
 const slidesInner = document.querySelector('.slides-inner');
 const slidesContainer = document.querySelector('.slides-container');
 const slides = document.querySelectorAll('.slide');
-const prevButton = document.querySelector('.previous-button');
-const nextButton = document.querySelector('.next-button');
 const proxy = document.createElement('div'); //placeholder div for dragging--the proxy tells us how far we've dragged
 const numSlides = slides.length;
 let slideAnimation = gsap.to({}, { duration: 0 }); //placeholder (to kill before undefined)
@@ -780,58 +778,17 @@ projectTitleContainers.forEach((el) => {
 });
 
 // Project Previews ///////////////////////////////////////////////
-//Prevent Scrolling while preview window is open
-var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
-function preventDefault(e) {
-  e.preventDefault();
-}
-
-function preventDefaultForScrollKeys(e) {
-  if (keys[e.keyCode]) {
-    preventDefault(e);
-    return false;
-  }
-}
-
-// modern Chrome requires { passive: false } when adding event
-var supportsPassive = false;
-try {
-  window.addEventListener(
-    'test',
-    null,
-    Object.defineProperty({}, 'passive', {
-      get: function () {
-        supportsPassive = true;
-      },
-    })
-  );
-} catch (e) {}
-
-var wheelOpt = supportsPassive ? { passive: false } : false;
-var wheelEvent =
-  'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-
-// call this to Disable
 function disableScroll() {
-  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
   document.querySelector('body').style.overflow = 'hidden';
 }
 
-// call this to Enable
 function enableScroll() {
-  window.removeEventListener('DOMMouseScroll', preventDefault, false);
-  window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-  window.removeEventListener('touchmove', preventDefault, wheelOpt);
-  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
   document.querySelector('body').style.overflow = 'visible';
 }
 
 //My Code////////////////////
 
+let stopTimer;
 function showPreview(el) {
   let previewTarget = el.dataset.preview;
 
@@ -850,6 +807,7 @@ function showPreview(el) {
   });
 
   disableScroll();
+  stopTimer = setTimeout(() => timer.paused(true), 1500);
 }
 
 function closePreviews() {
@@ -860,6 +818,8 @@ function closePreviews() {
     }
   );
   enableScroll();
+  clearTimeout(stopTimer);
+  timer.restart(true);
 }
 
 //display preview on click of the title or about section
