@@ -14,7 +14,6 @@ Font:
 TO DO: ////////////////////////////////////////////////////////
 
 General:
-- make projects not pause on mousehover
 - add prev & next button to projects for desktop
 - Update Resume (both files)
 - make sure the skills listed are my ACTUAL skills (and not just theoretical ones)
