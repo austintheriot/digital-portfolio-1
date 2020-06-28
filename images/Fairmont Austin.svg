@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="Fairmont Austin.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   id="svg6658"
+   version="1.1"
+   viewBox="0 0 24.285766 258.47595"
+   height="258.47595mm"
+   width="24.285767mm">
+  <defs
+     id="defs6652">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path2781"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="696"
+     inkscape:window-height="1001"
+     inkscape:window-width="1206"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="460.44603"
+     inkscape:cx="-441.33592"
+     inkscape:zoom="0.35355339"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:object-nodes="false"
+     inkscape:object-paths="false" />
+  <metadata
+     id="metadata6655">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-604.85537,-1000.9765)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       style="stroke-width:6.39717"
+       id="g4829"
+       transform="matrix(0.15631899,0,0,0.15631899,1281.575,934.60182)">
+      <path
+         sodipodi:nodetypes="ssscccscsss"
+         d="m -4328.8179,2078.1263 c -0.1533,0 -0.2763,-0.1231 -0.2763,-0.2758 v -824.6162 c 0,-0.1526 0.1226,-0.2753 0.2763,-0.2753 l 154.7726,0.2186 c 0.8434,266.3862 -0.6223,535.2178 -0.6223,801.8096 0,0.1526 -0.1239,0.2758 -0.2769,0.2758 h -87.371 v 22.5875 c 0,0.1527 -0.1226,0.2758 -0.2765,0.2758 z"
+         style="fill:#dad7e9;fill-opacity:1;stroke:none;stroke-width:1.69525;stroke-linejoin:round"
+         id="rect4932-54" />
+      <path
+         id="rect4932"
+         style="fill:#8f8fa4;fill-opacity:1;stroke:none;stroke-width:1.69525;stroke-linejoin:round"
+         d="m -4328.7681,424.61036 c -0.1533,0 -0.2763,0.12365 -0.2763,0.27691 v 827.92513 c 0,0.1532 0.1226,0.2764 0.2763,0.2764 l 154.7726,-0.2195 c 0.8434,-267.45513 -0.6223,-537.36545 -0.6223,-805.02694 0,-0.15328 -0.1239,-0.27689 -0.2769,-0.27689 h -87.371 v -22.6782 c 0,-0.15329 -0.1226,-0.27691 -0.2765,-0.27691 z"
+         sodipodi:nodetypes="ssscccscsss" />
+    </g>
+    <g
+       style="stroke-width:6.39717"
+       transform="matrix(0.15631899,0,0,0.15631899,1281.575,934.60182)"
+       id="g12902">
+      <path
+         sodipodi:nodetypes="ssscccscsss"
+         d="m -4328.7681,424.61036 c -0.1533,0 -0.2763,0.12365 -0.2763,0.27691 v 827.92513 c 0,0.1532 0.1226,0.2764 0.2763,0.2764 l 154.7726,-0.2195 c 0.8434,-267.45513 -0.6223,-537.36545 -0.6223,-805.02694 0,-0.15328 -0.1239,-0.27689 -0.2769,-0.27689 h -87.371 v -22.6782 c 0,-0.15329 -0.1226,-0.27691 -0.2765,-0.27691 z"
+         style="fill:#8f8fa4;fill-opacity:1;stroke:none;stroke-width:1.69525;stroke-linejoin:round"
+         id="path12900" />
+    </g>
+  </g>
+</svg>

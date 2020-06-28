@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Austin Theriot | Front-End Developer</title>
+    <!-- Roboto Font (All Variants) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="normalize.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <!-- Scripts -->
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollToPlugin.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/Draggable.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js" defer></script>
+
+  </head>
+  <body>
+<!-- Navigation
+    <nav>
+      <a href="#home" class="nav__link nav__link-home"></a>
+      <a href="#about" class="nav__link nav__link-about"></a>
+      <a href="#portfolio" class="nav__link nav__link-portfolio"></a>
+      <a href="#contact" class="nav__link nav__link-contact"></a>
+      <div class="nav__vertical-line"></div>
+      <h2 class="nav__scroll-heading">Scroll</h2>
+      <p class="nav__info nav__info-home">Home</p>
+      <p class="nav__info nav__info-about">About</p>
+      <p class="nav__info nav__info-portfolio">Portfolio</p>
+      <p class="nav__info nav__info-contact">Contact</p>
+    </nav> -->
+
+    <!-- HOME /////////////////////////////////////////////////// -->
+    <!-- Animations -->
+    <div class="city-container">
+      <!-- Name, Title, Hire Me Button -->
+      <h1 class="home__name">Austin<span> Theriot</span></h1>
+      <h2 class="home__title">front-end developer</h1>
+      <a href="#projects" class="hire-me-button button">See My Work</a>
+      <p class="scroll-down">(Or Scroll Down)</p>
+      <img src="images/Scroll Down Arrow.svg" alt="scroll down arrow" class="scroll-down-arrow">
+      <div class="hire-me-div"></div>
+      
+      <!-- Cars -->
+      <img src="images/Car1.svg" alt="car" class="car car1">
+      <img src="images/Car2.svg" alt="car" class="car car2">
+
+      <!-- Ground -->
+      <img class="ground ground1" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground2" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground3" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground4" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground5" src="images/Ground.svg" alt="Ground" />
+
+      <!-- Primary Buildings -->
+      <img
+        class="buildings primary-buildings state-capital move-secondary-right"
+        src="images/Texas State Capital.svg"
+        alt="The Texas State Capital"
+      />
+      <img
+        class="buildings primary-buildings state-capital move-secondary-right building-lights"
+        src="images/Texas State Capital - lights.svg"
+        alt="The Texas State Capital Lights"
+      />
+      <img
+        class="buildings primary-buildings UT-main move-primary-left"
+        src="images/UT Main Building.svg"
+        alt="The University of Texas, Austin Main Building"
+      />
+      <img
+        class="buildings primary-buildings UT-main move-primary-left building-lights"
+        src="images/UT Main Building - lights.svg"
+        alt="The University of Texas, Austin Main Building Lights"
+      />
+      <img
+        class="buildings primary-buildings condominiums move-primary-right"
+        src="images/360 Condominiums.svg"
+        alt="360 Condomiums"
+      />
+      <img
+        class="buildings primary-buildings condominiums move-primary-right building-lights"
+        src="images/360 Condominiums - lights.svg"
+        alt="360 Condomium Lights"
+      />
+      <img
+        class="buildings primary-buildings frost-tower move-primary-right"
+        src="images/Frost Bank Tower.svg"
+        alt="The Frost Bank Tower"
+      />
+      <img
+        class="buildings primary-buildings frost-tower move-primary-right building-lights frost-tower-building-lights"
+        src="images/Frost Bank Tower - lights.svg"
+        alt="The Frost Bank Tower Lights"
+      />
+      <img
+        class="buildings primary-buildings one-eleven-congress move-primary-right"
+        src="images/One Eleven Congress.svg"
+        alt="One Eleven Congress"
+      />
+      <img
+        class="buildings primary-buildings one-eleven-congress move-primary-right building-lights congress-building-lights"
+        src="images/One Eleven Congress - lights.svg"
+        alt="One Eleven Congress Lights"
+      />
+      <img
+        class="buildings primary-buildings austonian move-secondary-left"
+        src="images/The Austonian.svg"
+        alt="The Austonian"
+      />
+      <img
+        class="buildings primary-buildings austonian move-secondary-left building-lights austonian-building-lights"
+        src="images/The Austonian - lights.svg"
+        alt="The Austonian Lights"
+      />
+      <img
+        class="buildings primary-buildings independent move-primary-left"
+        src="images/The Independent.svg"
+        alt="The Independent"
+      />
+      <img
+        class="buildings primary-buildings independent move-primary-left building-lights"
+        src="images/The Independent - lights.svg"
+        alt="The Independent Lights"
+      />
+
+      <!-- Secondary Buildings -->
+      <img
+        class="buildings secondary-buildings fairmont move-secondary-left"
+        src="images/Fairmont Austin.svg"
+        alt="The Fairmont"
+      />
+      <img
+        class="buildings secondary-buildings ashton move-secondary-right"
+        src="images/The Ashton.svg"
+        alt="The Ashton"
+      />
+      <img
+        class="buildings secondary-buildings northshore move-tertiary-right"
+        src="images/The Northshore.svg"
+        alt="The Northshore"
+      />
+      <!-- Tertiary Buildings -->
+      <img
+        class="buildings tertiary-buildings congress move-tertiary-right-slower"
+        src="images/Congress.svg"
+        alt="Congress"
+      />
+      <img
+        class="buildings tertiary-buildings shore move-tertiary-right"
+        src="images/The Shore.svg"
+        alt="The Shore"
+      />
+      <img
+        class="buildings tertiary-buildings san-jacinto move-tertiary-left"
+        src="images/San Jacinto Center.svg"
+        alt="The San Jacinto Center"
+      />
+      <img
+        class="buildings tertiary-buildings west-sixth move-tertiary-left"
+        src="images/West Sixth.svg"
+        alt="West Sixth"
+      />
+      <img
+        class="buildings tertiary-buildings westgate move-tertiary-right"
+        src="images/Westgate Tower.svg"
+        alt="Westgate Tower"
+      />
+      <!-- Background Buildings -->
+      <img
+        class="buildings background-buildings"
+        src="images/Background Buildings.svg"
+        alt="Background Buildings"
+      />
+      <img
+        class="bench"
+        src="images/Bench.svg"
+        alt="A bench and tree under a streetlamp"
+      />
+      <p class="welcome">Welcome</p>
+    </div>
+    <section id="home">
+    </section>
+
+    <!-- ABOUT /////////////////////////////////////////////////// -->
+    <section id="about">
+      <h1>About Me</h1>
+      <div class="about__container">
+        <div class="border border-left"></div>
+        <div class="border border-bottom"></div>
+        <div class="border border-right"></div>
+        <div class="border border-top"></div>
+        <main>
+          <p class="about__info about__info--1">I'm a Front-End Developer based in Austin, Texas. </p>
+          <p class="about__info about__info--2">Before entering the tech industry, I was an award-winning classical composer.</p>
+          <p class="about__info about__info--3">Then I fell in love with coding. </p>
+          <p class="about__info about__info--4">Now I bring a creativity and precision that only a composer can to the world of web development. </p>
+          <button class="restart-about-slides"><img data-src="images/restart.svg" alt="restart icon"></button>
+        </main>
+      </div>
+      </section>
+
+    <!-- SKILLS /////////////////////////////////////////////////// -->
+    <section id="skills">
+        <h1>What I Do</h1> 
+        <!-- Building Lights -->
+        <img data-src="images/Building Under Construction.svg" alt="building under construction" class="construction-building">
+        <img data-src="images/Building Under Construction - lights 1.svg" alt="window lights" class="construction-building-lights construction-building-lights--web-design">
+        <img data-src="images/Building Under Construction - lights 2.svg" alt="window lights" class="construction-building-lights construction-building-lights--animations">
+        <img data-src="images/Building Under Construction - lights 3.svg" alt="window lights" class="construction-building-lights construction-building-lights--algorithms">
+        <img data-src="images/Building Under Construction - lights 4.svg" alt="window lights" class="construction-building-lights construction-building-lights--git">
+        <img data-src="images/Building Under Construction - lights 5.svg" alt="window lights" class="construction-building-lights construction-building-lights--react">
+        <img data-src="images/Building Under Construction - lights 6.svg" alt="window lights" class="construction-building-lights construction-building-lights--javascript">
+        <img data-src="images/Building Under Construction - lights 7.svg" alt="window lights" class="construction-building-lights construction-building-lights--css3">
+        <img data-src="images/Building Under Construction - lights 8.svg" alt="window lights" class="construction-building-lights construction-building-lights--html5">
+        <img data-src="images/Building Under Construction - lights 9.svg" alt="window lights" class="construction-building-lights construction-building-lights--more">
+        
+        <!-- Skill Headings -->
+        <h2 class="web-design skill-headings"data-bonus-target="web-design">Web Design</h2>
+        <h2 class="animations skill-headings" data-bonus-target="animations">Web Art/Animation</h2>
+        <h2 class="algorithms skill-headings" data-bonus-target="algorithms">Algorithms</h2>
+        
+        <h2 class="git skill-headings" data-bonus-target="git">Git/GitHub</h2>
+        <h2 class="react skill-headings" data-bonus-target="react">React</h2>
+        <h2 class="javascript skill-headings" data-bonus-target="javascript">JavaScript</h2>
+        <h2 class="css3 skill-headings" data-bonus-target="css3">CSS3</h2>
+        <h2 class="html5 skill-headings" data-bonus-target="html5">HTML5</h2>
+        <h2 class="more skill-headings" data-bonus-target="more">More</h2>
+        
+        <!-- Skill Headings Bonus info-->
+        <div class="skills__bonus-info-container">
+          <!-- web design bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--web-design">
+            <h3>From-scratch design</h3>
+            <h3>Mobile-first workflow</h3>
+            <h3>UI/UX Design</h3>
+          </div>
+          <!-- animations bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--animations">
+            <h3>GreenSock Animation Platform (GSAP)</h3>
+            <h3>CSS Animations</h3>
+            <h3>Vector asset creation</h3>
+            <h3>Digital art/painting</h3>
+          </div>
+          <!-- algorithms bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--algorithms">
+          <h3>See my algorithmic <a href="https://www.codewars.com/users/AustinTheriot/completed_solutions">solutions</a></h3> 
+          </div>
+          <!-- git bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--git">
+          <h3>Check out my <a href="https://github.com/austintheriot">GitHub</a></a></h3>
+          </div>
+          <!-- react bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--react">
+            <h3>Currently learning!</h3>
+          </div>
+          <!-- javascript bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--javascript">
+            <h3>ES6+</h3>
+            <h3>OOP</h3>
+            <h3>async/await</h3>
+            <h3>Ajax</h3>
+            <h3>npm</h3>
+          </div>
+          <!-- css3 bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--css3">
+            <h3>BEM Methodology</h3>
+          </div>
+          <!-- html5 bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--html5">
+            <h3>Semantic HTML</h3>
+            <h3>Search Engine Optimization</h3>
+          </div>
+          <!-- more bonus info -->
+          <div class="skills__bonus-info skills__bonus-info--more">
+            <h3><a href="files/Resume.pdf" >
+              <img data-src="images/Resume Icon.svg" ref="resume icon" class="resume">Résumé (pdf)</a></h3>
+            <h3><a href="https://github.com/austintheriot">
+              <img data-src="images/GitHub Logo.svg" ref="GitHub Logo" class="github-logo">GitHub</a></h3>
+              <h3><a href="https://www.linkedin.com/in/austinmtheriot">
+                <img data-src="images/LinkedIn Icon.svg" ref="LinkedIn icon" class="linkedin">LinkedIn</a></h3>
+            <h3><a href="https://www.codewars.com/users/AustinTheriot">
+              <img data-src="images/CodeWars Icon.svg" ref="CodeWars icon" class="codewars">CodeWars</a></h3>
+          </div>
+        </div>
+      </section>
+
+    <!-- PROJECTS /////////////////////////////////////////////////// -->
+    <section id="projects">
+      <h1>My Projects</h1>  
+      <div class="slides-container">
+        <div class="slides-inner">
+          <div class="slide">
+            <img data-src="images/Project 1.svg" alt="newspaper dispenser" class="project-image project-image--1">
+            <div class="project-title-container project-title-container--1" data-preview=".ecommerce">
+              <h2 class="project-title project-title--1">React E-Commerce Website</h2>
+            </div>
+          </div>
+          <div class="slide">
+            <img data-src="images/Project 2.svg" alt="newspaper dispenser" class="project-image project-image--2">
+            <div class="project-title-container project-title-container--2" data-preview=".lascabling">
+              <h2 class="project-title project-title--2" >Business Landing Page</h2>
+            </div>
+          </div>
+          <div class="slide">
+            <img data-src="images/Project 3.svg" alt="newspaper dispenser" class="project-image project-image--3">
+            <div class="project-title-container project-title-container--3" data-preview=".attractors">
+              <h2 class="project-title project-title--3">3D Particle Attractor Application</h2>
+            </div>
+          </div>
+          <div class="slide">
+            <img data-src="images/Project 4.svg" alt="newspaper dispenser" class="project-image project-image--4">
+            <div class="project-title-container project-title-container--4" data-preview=".yevgeniy">
+              <h2 class="project-title project-title--4">Music Artist Landing Page</h2>
+            </div>
+          </div>
+          <div class="slide">
+            <img data-src="images/Project 5.svg" alt="newspaper dispenser" class="project-image project-image--5">
+            <div class="project-title-container project-title-container--5" data-preview=".canvas">
+              <h2 class="project-title project-title--5">Generative Canvas Art</h2>
+            </div>
+            <div class="project-title-container project-title-container--6" data-preview=".web-particles">
+              <h2 class="project-title project-title--6">Web Particles</h2>
+            </div>
+          </div>
+          <div class="slide"><h2>Player Piano</h2></div>
+          <div class="slide"><h2>Ear Training App</h2></div>
+          <div class="slide"><h2>Canon Creation Assistant</h2></div>
+        </div>
+      </div>
+
+      <!-- Project Previews -->
+      <div class="project-previews-container">
+        <div class="project-previews-background"></div>
+
+        <!-- React Ecommerce Site -->
+        <div class="project-previews__individal-container--outer ecommerce">
+          <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+          <div class="project-previews__individal-container--inner">
+            <!-- GIF -->
+            <div class="preview-gif-container">
+              <img data-src-preview="gifs/coming-soon.png" alt="website preview" class="preview-gif">
+            </div>
+            <!-- Text & BUttons -->
+            <div class="project-previews__individal-container__text-and-buttons">
+              <h3 class="preview-title">React E-Commerce Website</h3>
+              <p>This project is currently in progress and will be available for viewing soon.</p>
+              <a href="#" target="_blank" class="button inactive">See Live</a>
+              <a href="#" target="_blank" class="button inactive">See Code</a> 
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Landing Page -->
+          <div class="project-previews__individal-container--outer lascabling">
+            <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+            <div class="project-previews__individal-container--inner">
+              <!-- GIF -->
+              <div class="preview-gif-container">
+                <img data-src-preview="gifs/lascabling.gif" alt="business landing page preview" class="preview-gif">
+              </div>
+              <!-- Text & BUttons -->
+              <div class="project-previews__individal-container__text-and-buttons">
+                <h3 class="preview-title">Business Landing Page</h3>
+                <p>I designed and built this website for Louisiana Structured Cabling in Lake Charles, Louisiana.</p>
+                <p>The page features a responsive design and custom visual assets.</p>
+                <a href="https://www.lascabling.com/" target="_blank" class="button">See Live</a>
+                <a href="#" target="_blank" class="button">See Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D Particle Attractors -->
+          <div class="project-previews__individal-container--outer attractors">
+            <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+            <div class="project-previews__individal-container--inner">
+              <!-- GIF -->
+              <div class="preview-gif-container">
+                <img data-src-preview="gifs/attractors.gif" alt="software preview" class="preview-gif">
+              </div>
+              <!-- Text & BUttons -->
+              <div class="project-previews__individal-container__text-and-buttons">
+                <h3 class="preview-title">3D Particle Attractor Application</h3>
+                <p>I created this project using the visual programming environment Max 8. The 3D Particle Attractor Application provides an interactive environment for viewing mathematical 3D "strange attractor" particle simulations. The speeds of various strange attractors can be adjusted and combined to form interesting particle motion.</p>
+                <p>This project later became the basis for one of my multimedia compositions for percussion and computer with live, projected visuals, called Light Flower.</p>
+                <a href="https://github.com/austintheriot/strange-attractors" target="_blank" class="button">See Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yevgeniy's Website -->
+          <div class="project-previews__individal-container--outer yevgeniy">
+            <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+            <div class="project-previews__individal-container--inner">
+              <!-- GIF -->
+              <div class="preview-gif-container">
+                <img data-src-preview="gifs/coming-soon.png" alt="software preview" class="preview-gif">
+              </div>
+              <!-- Text & BUttons -->
+              <div class="project-previews__individal-container__text-and-buttons">
+                <h3 class="preview-title">Music Artist Landing Page</h3>
+                <p>This project is currently in progress and will be available for viewing soon.</p>
+                <a href="#" target="_blank" class="button inactive">See Live</a>
+                <a href="#" target="_blank" class="button inactive">See Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generative Canvas Art -->
+          <div class="project-previews__individal-container--outer canvas">
+            <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+            <div class="project-previews__individal-container--inner">
+              <!-- GIF -->
+              <div class="preview-gif-container">
+                <img data-src-preview="gifs/canvas.gif" alt="website preview" class="preview-gif">
+              </div>
+              <!-- Text & BUttons -->
+              <div class="project-previews__individal-container__text-and-buttons">
+                <h3 class="preview-title">Generative Canvas Art</h3>
+                <p>These projects use the JavaScript Canvas API to procedurally generate designs. </p>
+                <a href="https://github.com/austintheriot?tab=repositories" target="_blank" class="button">See Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Particles -->
+          <div class="project-previews__individal-container--outer web-particles">
+            <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
+            <div class="project-previews__individal-container--inner">
+              <!-- GIF -->
+              <div class="preview-gif-container">
+                <img data-src-preview="gifs/web-particles.gif" alt="website preview" class="preview-gif">
+              </div>
+              <!-- Text & BUttons -->
+              <div class="project-previews__individal-container__text-and-buttons">
+                <h3 class="preview-title">Web Particles</h3>
+                <p>Physics-based particle playground. I originally intended for this project to serve as a lightweight background animation for a landing page. Since I've added more features and interactivity to it, however, it functions better a small particle/physics simulation app. I built it using the JavaScript Canvas API.</p>
+                <a href="web-particles/index.html" target="_blank" class="button">See Live</a>
+                <a href="https://github.com/austintheriot/web-particles" target="_blank" class="button">See Code</a>
+              </div>
+            </div>
+          </div>
+  
+
+      </div>
+    </section>
+
+    <!-- CONTACT /////////////////////////////////////////////////// -->
+    <section id="contact">
+      <h1>Contact Me</h1>
+        <form
+          id="contact__form"
+          action="https://usebasin.com/f/988c59d2b10a"
+          method="post"
+        >
+          <div>
+            <label for="contact__name">Name</label>
+            <input name="Name:" id="contact__name" type="text" required />
+          </div>
+          <div>
+            <label for="contact__email">Email</label>
+            <input name="Email:" id="contact__email" type="email" required />
+          </div>
+          <div>
+            <label for="contact__comment">Message</label>
+            <textarea
+              name="Comments:"
+              id="contact__comment"
+              cols="30"
+              rows="4"
+            ></textarea>
+          </div>
+          <button type="submit" class="button contact__submit-button button">
+            Submit
+          </button>
+        </form>
+    </section>
+  </body>
+</html>
