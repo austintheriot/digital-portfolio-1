@@ -12,7 +12,6 @@
   --dark-color: #000314;
   --dark-lavender: #8f8fa4;
   --light-lavender: #c6c6c6;
-  --medium-color: lightgray;
   --light-color: #f6f3f8;
   --pop-color: #ffd65c;
   --shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.1),
@@ -78,6 +77,7 @@ p {
   background-color: var(--light-color);
   text-transform: uppercase;
   width: max-content;
+  height: max-content;
   cursor: pointer;
 }
 
@@ -457,7 +457,7 @@ section h1 {
   height: 4rem;
   width: 4rem;
   background-color: transparent;
-  border: 1px solid var(--medium-color);
+  border: 1px solid var(--light-lavender);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -635,8 +635,7 @@ section h1 {
 
 .slides-container {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 25%;
   overflow: hidden;
   display: flex;
   flex: none;
@@ -849,7 +848,8 @@ section h1 {
   width: 100%;
 }
 
-.project-previews__individal-container__text-and-buttons a {
+.project-previews__individal-container__text-and-buttons a,
+.project-previews__individal-container__text-and-buttons ol {
   margin: 1rem;
 }
 
@@ -857,14 +857,16 @@ section h1 {
 
 #contact {
   position: relative;
-  height: calc(var(--full-height, 100vh) * 1.25);
+  height: calc(var(--full-height, 100vh) * 1.1);
+  background-color: var(--light-color);
+  overflow: hidden;
 }
 
 #contact h1,
 #contact h2 {
   position: static;
   width: max-content;
-  margin: 0 auto;
+  margin: 2rem auto 2rem auto;
 }
 
 form {
@@ -872,11 +874,11 @@ form {
   height: max-content;
   width: 90%;
   max-width: 500px;
-  margin: 3rem auto;
-  border: 3px solid var(--medium-color);
+  margin: 2rem auto;
+  border: 3px solid var(--light-lavender);
   border-radius: 5px;
   overflow: hidden;
-  background-color: var(--medium-color);
+  background-color: var(--light-color);
 }
 
 label {
@@ -894,8 +896,8 @@ textarea {
   border-radius: 3px;
   padding: 0.5rem;
   border-radius: 2px;
-  border: 2px solid var(--medium-color);
-  background-color: var(--light-color);
+  border: 2px solid var(--light-lavender);
+  background-color: white;
   transition: all 0.5s;
   outline: none;
   -webkit-appearance: none;
