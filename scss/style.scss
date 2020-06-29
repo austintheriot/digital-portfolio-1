@@ -507,6 +507,7 @@ section h1 {
 .construction-building,
 .construction-building-lights {
   position: absolute;
+  left: 0;
   top: 10%;
   height: calc(var(--full-height, 100vh) * 1.81);
 }
@@ -679,7 +680,7 @@ section h1 {
     text-decoration: underline;
   }
 
-  /* Project 1 /////////////////////////// */
+  /* Project 1 React E-Commerce Site /////////////////////////// */
   .project-title-container--1 {
     width: 70%;
     height: 50%;
@@ -691,7 +692,7 @@ section h1 {
     }
   }
 
-  /* Project 2 /////////////////////////////// */
+  /* Project 2 Business Landing Page /////////////////////////////// */
   .project-title-container--2 {
     width: 70%;
     height: 30%;
@@ -704,7 +705,7 @@ section h1 {
     }
   }
 
-  /* Project 3 /////////////////////////////// */
+  /* Project 3 3D Particle Application/////////////////////////////// */
 
   .project-title-container--3 {
     width: 76%;
@@ -719,8 +720,8 @@ section h1 {
     }
   }
 
-  /* Project 4 /////////////////////////////// */
-  .project-title-container--4 {
+  /* Project 4 Yevgeniy's Website /////////////////////////////// */
+  /*  .project-title-container--4 {
     width: 58%;
     height: 33%;
     left: 22%;
@@ -730,15 +731,16 @@ section h1 {
       top: 50%;
       left: 6%;
     }
-  }
+  } */
 
-  /* Projects 5 & 6 /////////////////////////////// */
+  /* Projects 5 & 6 - Generative Art & Web Particles /////////////////////////////// */
 
   .project-title-container--5,
   .project-title-container--6 {
     width: 75%;
-    height: 33.5%;
+    height: 31%;
     left: 12%;
+    border-radius: 3px;
 
     .project-title--5,
     .project-title--6 {
@@ -755,6 +757,20 @@ section h1 {
 
   .project-title-container--6 {
     top: 62.5%;
+  }
+}
+
+/* Project 7 - Computer Assisted Composition /////////////////////////////// */
+.project-title-container--7 {
+  width: 72%;
+  height: 42%;
+  left: 14%;
+  top: 27.5%;
+  border-radius: 20px;
+
+  .project-title--7 {
+    top: 50%;
+    left: 6%;
   }
 }
 
@@ -824,6 +840,7 @@ section h1 {
     .individal-container__text-and-buttons {
       position: relative;
       margin: 0 auto;
+      min-width: 250px;
       width: 50%;
       height: max-content;
       display: flex;

@@ -701,7 +701,7 @@ function snapX(x) {
 
 //calls the auto play function after a delay
 /////////////////////////change Infinity back to DELAY_TIME
-const timer = gsap.delayedCall(2, autoPlay);
+const timer = gsap.delayedCall(Infinity, autoPlay);
 
 //moves all slides over by 100% -- starts out paused
 const animation = gsap.to(slides, {

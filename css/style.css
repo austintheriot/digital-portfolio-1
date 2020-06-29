@@ -495,6 +495,7 @@ section h1 {
 .construction-building,
 .construction-building-lights {
   position: absolute;
+  left: 0;
   top: 10%;
   height: calc(var(--full-height, 100vh) * 1.81);
 }
@@ -614,11 +615,22 @@ section h1 {
   position: relative;
   flex-direction: column;
   /* General Project Settings */
-  /* Project 1 /////////////////////////// */
-  /* Project 2 /////////////////////////////// */
-  /* Project 3 /////////////////////////////// */
-  /* Project 4 /////////////////////////////// */
-  /* Projects 5 & 6 /////////////////////////////// */
+  /* Project 1 React E-Commerce Site /////////////////////////// */
+  /* Project 2 Business Landing Page /////////////////////////////// */
+  /* Project 3 3D Particle Application/////////////////////////////// */
+  /* Project 4 Yevgeniy's Website /////////////////////////////// */
+  /*  .project-title-container--4 {
+    width: 58%;
+    height: 33%;
+    left: 22%;
+    top: 4%;
+
+    .project-title--4 {
+      top: 50%;
+      left: 6%;
+    }
+  } */
+  /* Projects 5 & 6 - Generative Art & Web Particles /////////////////////////////// */
 }
 #projects .slides-container {
   position: relative;
@@ -696,21 +708,12 @@ section h1 {
   left: 5%;
   top: 50%;
 }
-#projects .project-title-container--4 {
-  width: 58%;
-  height: 33%;
-  left: 22%;
-  top: 4%;
-}
-#projects .project-title-container--4 .project-title--4 {
-  top: 50%;
-  left: 6%;
-}
 #projects .project-title-container--5,
 #projects .project-title-container--6 {
   width: 75%;
-  height: 33.5%;
+  height: 31%;
   left: 12%;
+  border-radius: 3px;
 }
 #projects .project-title-container--5 .project-title--5,
 #projects .project-title-container--5 .project-title--6,
@@ -726,6 +729,19 @@ section h1 {
 }
 #projects .project-title-container--6 {
   top: 62.5%;
+}
+
+/* Project 7 - Computer Assisted Composition /////////////////////////////// */
+.project-title-container--7 {
+  width: 72%;
+  height: 42%;
+  left: 14%;
+  top: 27.5%;
+  border-radius: 20px;
+}
+.project-title-container--7 .project-title--7 {
+  top: 50%;
+  left: 6%;
 }
 
 /* Project Previews //////////// */
@@ -787,6 +803,7 @@ section h1 {
 .project-previews-container .individal-container--inner .individal-container__text-and-buttons {
   position: relative;
   margin: 0 auto;
+  min-width: 250px;
   width: 50%;
   height: max-content;
   display: flex;
