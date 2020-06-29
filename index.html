@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Austin Theriot | Front-End Developer</title>
     <!-- Roboto Font (All Variants) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico">
+
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="normalize.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <!-- Scripts -->
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollToPlugin.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/ScrollTrigger.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/Draggable.min.js"></script>
 
@@ -46,21 +43,21 @@
       <!-- Name, Title, Hire Me Button -->
       <h1 class="home__name">Austin<span> Theriot</span></h1>
       <h2 class="home__title">front-end developer</h1>
-      <a href="#projects" class="hire-me-button button">See My Work</a>
+      <a href="#projects" class="see-my-work-button button">See My Work</a>
       <p class="scroll-down">(Or Scroll Down)</p>
       <img src="images/Scroll Down Arrow.svg" alt="scroll down arrow" class="scroll-down-arrow">
-      <div class="hire-me-div"></div>
+      <div class="see-my-work-div"></div>
       
       <!-- Cars -->
       <img src="images/Car1.svg" alt="car" class="car car1">
       <img src="images/Car2.svg" alt="car" class="car car2">
 
       <!-- Ground -->
-      <img class="ground ground1" src="images/Ground.svg" alt="Ground" />
-      <img class="ground ground2" src="images/Ground.svg" alt="Ground" />
-      <img class="ground ground3" src="images/Ground.svg" alt="Ground" />
-      <img class="ground ground4" src="images/Ground.svg" alt="Ground" />
-      <img class="ground ground5" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground--1" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground--2" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground--3" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground--4" src="images/Ground.svg" alt="Ground" />
+      <img class="ground ground--5" src="images/Ground.svg" alt="Ground" />
 
       <!-- Primary Buildings -->
       <img
@@ -194,7 +191,7 @@
 
     <!-- ABOUT /////////////////////////////////////////////////// -->
     <section id="about">
-      <h1>About Me</h1>
+      <h1 class="headings">About Me</h1>
       <div class="about__container">
         <div class="border border-left"></div>
         <div class="border border-bottom"></div>
@@ -212,7 +209,7 @@
 
     <!-- SKILLS /////////////////////////////////////////////////// -->
     <section id="skills">
-        <h1>What I Do</h1> 
+      <h1 class="headings">What I Do</h1>
         <!-- Building Lights -->
         <img data-src="images/Building Under Construction.svg" alt="building under construction" class="construction-building">
         <img data-src="images/Building Under Construction - lights 1.svg" alt="window lights" class="construction-building-lights construction-building-lights--web-design">
@@ -278,6 +275,7 @@
           </div>
           <!-- css3 bonus info -->
           <div class="skills__bonus-info skills__bonus-info--css3">
+            <h3>SCSS/SASS preprocessors</h3>
             <h3>BEM Methodology</h3>
           </div>
           <!-- html5 bonus info -->
@@ -287,7 +285,7 @@
           </div>
           <!-- more bonus info -->
           <div class="skills__bonus-info skills__bonus-info--more">
-            <h3><a href="files/Resume.pdf" >
+            <h3><a href="text files/Resume.pdf" >
               <img data-src="images/Resume Icon.svg" ref="resume icon" class="resume">Résumé (pdf)</a></h3>
             <h3><a href="https://github.com/austintheriot">
               <img data-src="images/GitHub Logo.svg" ref="GitHub Logo" class="github-logo">GitHub</a></h3>
@@ -301,7 +299,7 @@
 
     <!-- PROJECTS /////////////////////////////////////////////////// -->
     <section id="projects">
-      <h1>My Projects</h1>  
+      <h1 class="headings">My Projects</h1>
       <div class="slides-container">
         <div class="slides-inner">
           <div class="slide">
@@ -344,18 +342,18 @@
 
       <!-- Project Previews -->
       <div class="project-previews-container">
-        <div class="project-previews-background"></div>
+        <div class="background"></div>
 
         <!-- React Ecommerce Site -->
-        <div class="project-previews__individal-container--outer ecommerce">
+        <div class="individal-container--outer ecommerce">
           <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
-          <div class="project-previews__individal-container--inner">
+          <div class="individal-container--inner">
             <!-- GIF -->
-            <div class="preview-gif-container">
-              <img data-src-preview="gifs/coming-soon.png" alt="website preview" class="preview-gif">
+            <div class="gif-container">
+              <img data-src-preview="gifs/coming-soon.png" alt="website preview" class="gif">
             </div>
             <!-- Text & BUttons -->
-            <div class="project-previews__individal-container__text-and-buttons">
+            <div class="individal-container__text-and-buttons">
               <h3 class="preview-title">React E-Commerce Website</h3>
               <p>This project is currently in progress and will be available for viewing soon.</p>
               <a href="#" target="_blank" class="button inactive">See Live</a>
@@ -365,15 +363,15 @@
         </div>
 
         <!-- Business Landing Page -->
-          <div class="project-previews__individal-container--outer lascabling">
+          <div class="individal-container--outer lascabling">
             <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
-            <div class="project-previews__individal-container--inner">
+            <div class="individal-container--inner">
               <!-- GIF -->
-              <div class="preview-gif-container">
-                <img data-src-preview="gifs/lascabling.gif" alt="business landing page preview" class="preview-gif">
+              <div class="gif-container">
+                <img data-src-preview="gifs/lascabling.gif" alt="business landing page preview" class="gif">
               </div>
               <!-- Text & BUttons -->
-              <div class="project-previews__individal-container__text-and-buttons">
+              <div class="individal-container__text-and-buttons">
                 <h3 class="preview-title">Business Landing Page</h3>
                 <p>I designed and built this website for Louisiana Structured Cabling in Lake Charles, Louisiana.</p>
                 <p>The page features a responsive design and custom visual assets.</p>
@@ -384,15 +382,15 @@
           </div>
 
           <!-- 3D Particle Attractors -->
-          <div class="project-previews__individal-container--outer attractors">
+          <div class="individal-container--outer attractors">
             <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
-            <div class="project-previews__individal-container--inner">
+            <div class="individal-container--inner">
               <!-- GIF -->
-              <div class="preview-gif-container">
-                <img data-src-preview="gifs/attractors.gif" alt="software preview" class="preview-gif">
+              <div class="gif-container">
+                <img data-src-preview="gifs/attractors.gif" alt="software preview" class="gif">
               </div>
               <!-- Text & BUttons -->
-              <div class="project-previews__individal-container__text-and-buttons">
+              <div class="individal-container__text-and-buttons">
                 <h2 class="preview-title">3D Particle Attractor Application</h3>
                 <p>I created this project using the visual programming environment Max 8. This 3D Particle Attractor Application provides an interactive tool for viewing 3D "strange attractor" particle simulations. The speeds of various strange attractors can be adjusted and combined to form interesting particle effects.</p>
                 <p>This project later became the basis for one of my multimedia compositions for percussion and computer with live, projected visuals, called Light Flower.</p>
@@ -409,13 +407,13 @@
           </div>
 
           <!-- Yevgeniy's Website
-          <div class="project-previews__individal-container--outer yevgeniy">
+          <div class="individal-container--outer yevgeniy">
             <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
-            <div class="project-previews__individal-container--inner">
-              <div class="preview-gif-container">
-                <img data-src-preview="gifs/coming-soon.png" alt="software preview" class="preview-gif">
+            <div class="individal-container--inner">
+              <div class="gif-container">
+                <img data-src-preview="gifs/coming-soon.png" alt="software preview" class="gif">
               </div>
-              <div class="project-previews__individal-container__text-and-buttons">
+              <div class="individal-container__text-and-buttons">
                 <h3 class="preview-title">Music Artist Landing Page</h3>
                 <p>This project is currently in progress and will be available for viewing soon.</p>
                 <a href="#" target="_blank" class="button inactive">See Live</a>
@@ -425,15 +423,15 @@
           </div> -->
 
           <!-- Generative Canvas Art -->
-          <div class="project-previews__individal-container--outer canvas">
+          <div class="individal-container--outer canvas">
             <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
-            <div class="project-previews__individal-container--inner">
+            <div class="individal-container--inner">
               <!-- GIF -->
-              <div class="preview-gif-container">
-                <img data-src-preview="gifs/canvas.gif" alt="website preview" class="preview-gif">
+              <div class="gif-container">
+                <img data-src-preview="gifs/canvas.gif" alt="website preview" class="gif">
               </div>
               <!-- Text & BUttons -->
-              <div class="project-previews__individal-container__text-and-buttons">
+              <div class="individal-container__text-and-buttons">
                 <h3 class="preview-title">Generative Canvas Art</h3>
                 <p>These projects use the JavaScript Canvas API to procedurally generate designs. </p>
                 <a href="https://github.com/austintheriot?tab=repositories" target="_blank" class="button">See Code</a>
@@ -442,15 +440,15 @@
           </div>
 
           <!-- Web Particles -->
-          <div class="project-previews__individal-container--outer web-particles">
+          <div class="individal-container--outer web-particles">
             <img data-src-preview="images/X icon.svg" alt="close" class="x-button">
-            <div class="project-previews__individal-container--inner">
+            <div class="individal-container--inner">
               <!-- GIF -->
-              <div class="preview-gif-container">
-                <img data-src-preview="gifs/web-particles.gif" alt="website preview" class="preview-gif">
+              <div class="gif-container">
+                <img data-src-preview="gifs/web-particles.gif" alt="website preview" class="gif">
               </div>
               <!-- Text & BUttons -->
-              <div class="project-previews__individal-container__text-and-buttons">
+              <div class="individal-container__text-and-buttons">
                 <h3 class="preview-title">Web Particles</h3>
                 <p>Physics-based particle playground. I originally intended for this project to serve as a lightweight background animation for a landing page. Since I've added more features and interactivity to it, however, it functions better a small particle/physics simulation app. I built it using the JavaScript Canvas API.</p>
                 <a href="web-particles/index.html" target="_blank" class="button">See Live</a>
@@ -465,7 +463,7 @@
 
     <!-- CONTACT /////////////////////////////////////////////////// -->
     <section id="contact">
-      <h1>Contact Me</h1>
+      <h1 class="headings">Contact Me</h1>
         <form
           id="contact__form"
           action="https://usebasin.com/f/988c59d2b10a"
@@ -488,7 +486,7 @@
               rows="4"
             ></textarea>
           </div>
-          <button type="submit" class="button contact__submit-button button">
+          <button type="submit" class="button">
             Submit
           </button>
         </form>

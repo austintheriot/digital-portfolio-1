@@ -1,0 +1,15 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Austin Theriot's personal front-end developer online portolio.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass --watch scss:css"
+  },
+  "author": "Austin Theriot",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.26.9"
+  }
+}

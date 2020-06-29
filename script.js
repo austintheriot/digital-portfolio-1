@@ -1,4 +1,3 @@
-gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Draggable);
 
@@ -37,6 +36,19 @@ pinContainer = ScrollTrigger.create({
   end: `${homeSectionHeight} bottom`,
   pin: true,
   pinSpacing: false,
+});
+
+//section heading animations
+const headings = document.querySelectorAll('.headings');
+headings.forEach((el) => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      toggleActions: 'play none none none',
+    },
+    yPercent: 50,
+    opacity: 0,
+  });
 });
 
 //GSAP's iOS bug fix
@@ -108,32 +120,32 @@ function buttonMouseLeaveHandler(event) {
 }
 
 //Hire me button animations
-const hireMeButton = document.querySelector('.hire-me-button');
+const seeMyWorkButton = document.querySelector('.see-my-work-button');
 
 //place button
-gsap.set('.hire-me-button, .scroll-down, .scroll-down-arrow', {
+gsap.set('.see-my-work-button, .scroll-down, .scroll-down-arrow', {
   xPercent: -50,
   yPercent: -50,
 });
-gsap.set('.hire-me-div', {
+gsap.set('.see-my-work-div', {
   scaleY: 0,
   xPercent: -50,
 });
 
 //add general button animations
-hireMeButton.addEventListener('mouseenter', buttonMouseEnterHandler);
+seeMyWorkButton.addEventListener('mouseenter', buttonMouseEnterHandler);
 
-hireMeButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
+seeMyWorkButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
 
 //animations specific to smaller screen sizes
-function hireButtonMouseOverHandler() {
+function seeWorkMouseEnterHandler() {
   gsap
     .timeline({
       defaults: {
         ease: 'power4.out',
       },
     })
-    .to('.hire-me-div', {
+    .to('.see-my-work-div', {
       duration: 0.4,
       transformOrigin: 'bottom',
       scaleY: 1,
@@ -144,14 +156,14 @@ function hireButtonMouseOverHandler() {
     });
 }
 
-function hireButtonMouseOutHandler() {
+function seeWorkMouseLeaveHandler() {
   gsap
     .timeline({
       defaults: {
         ease: 'power4.out',
       },
     })
-    .to('.hire-me-div', {
+    .to('.see-my-work-div', {
       duration: 0.4,
       scaleY: 0,
     })
@@ -178,8 +190,8 @@ gsap
     `.home__name, 
     .home__title, 
     .nav__scroll-heading, 
-    .hire-me-button, 
-    .hire-me-div,
+    .see-my-work-button, 
+    .see-my-work-div,
     .scroll-down,
     .scroll-down-arrow`,
     {
@@ -191,8 +203,8 @@ gsap
   .to(
     `.home__name, 
     .home__title, 
-    .hire-me-button,
-    .hire-me-div,
+    .see-my-work-button,
+    .see-my-work-div,
     .scroll-down,
     .scroll-down-arrow`,
     {
@@ -254,6 +266,7 @@ function animateCar(selector, delay = 0, speed = 1) {
         start: '-1 top',
         end: '9 top',
         toggleActions: 'resume pause resume none',
+        delay: 1, //allow scrub to catch up
       },
     })
     .to(selector, {
@@ -602,7 +615,7 @@ skills.forEach((el) => {
     .timeline({
       scrollTrigger: {
         trigger: el,
-        toggleActions: 'play none play reverse',
+        toggleActions: 'play none none none',
       },
     })
     .from(el, {
@@ -802,7 +815,7 @@ function showPreview(el) {
   gsap.set(`${el.dataset.preview}`, {
     visibility: 'visible',
   });
-  gsap.set('.project-previews-background', {
+  gsap.set('.background', {
     visibility: 'visible',
   });
 
@@ -811,12 +824,9 @@ function showPreview(el) {
 }
 
 function closePreviews() {
-  gsap.set(
-    '.project-previews-background, .project-previews__individal-container--outer',
-    {
-      visibility: 'hidden',
-    }
-  );
+  gsap.set('.background, .individal-container--outer', {
+    visibility: 'hidden',
+  });
   enableScroll();
   clearTimeout(stopTimer);
   timer.restart(true);
@@ -834,7 +844,7 @@ xButtons.forEach((el) => {
   el.addEventListener('click', closePreviews);
 });
 const projectPreviewsBackground = document
-  .querySelector('.project-previews-background')
+  .querySelector('.background')
   .addEventListener('click', closePreviews);
 
 //WINDOW RESIZING, etc.//////////////////////////////////////////////////////////////////
@@ -847,8 +857,8 @@ function resize() {
   //see my work button animations
   //light up buildings right away on mobile
   if (width < WINDOW_BREAK_POINT_SIZE) {
-    hireMeButton.removeEventListener('mouseenter', hireButtonMouseOverHandler);
-    hireMeButton.removeEventListener('mouseleave', hireButtonMouseOutHandler);
+    seeMyWorkButton.removeEventListener('mouseenter', seeWorkMouseEnterHandler);
+    seeMyWorkButton.removeEventListener('mouseleave', seeWorkMouseLeaveHandler);
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
@@ -856,8 +866,8 @@ function resize() {
     });
   } else {
     //light up buildings on see my work button hover
-    hireMeButton.addEventListener('mouseenter', hireButtonMouseOverHandler);
-    hireMeButton.addEventListener('mouseleave', hireButtonMouseOutHandler);
+    seeMyWorkButton.addEventListener('mouseenter', seeWorkMouseEnterHandler);
+    seeMyWorkButton.addEventListener('mouseleave', seeWorkMouseLeaveHandler);
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
