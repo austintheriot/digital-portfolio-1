@@ -23,6 +23,8 @@ General:
 - add metadata tags to webpage
 - make border on final ABOUT slide match the duration of the text slide
 
+- create project item in portfolio for the portfolio itself? 
+- create description of portfolio on GitHub (what technologies I used to make it)
 - check the project preview links to make sure they go where they're supposed to
 - add Inertia plug in to draggable
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)
