@@ -14,6 +14,7 @@ Font:
 TO DO: ////////////////////////////////////////////////////////
 
 General:
+- turn paintings into gifs on hover
 - fix see my work button for mobile
 - Add Ear-Training App & Canon Creation Assistant 
 - upload LASC website to GitHub

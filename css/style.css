@@ -733,7 +733,7 @@ section h1 {
 
 /* Project 7 - Computer Assisted Composition /////////////////////////////// */
 .project-title-container--7 {
-  width: 72%;
+  width: 73%;
   height: 42%;
   left: 14%;
   top: 27.5%;
@@ -742,6 +742,19 @@ section h1 {
 .project-title-container--7 .project-title--7 {
   top: 50%;
   left: 6%;
+}
+
+/* Project 8 - Digital Art /////////////////////////////// */
+.project-title-container--8 {
+  width: 72%;
+  height: 22%;
+  left: 15%;
+  top: 26%;
+  border-radius: 2px;
+}
+.project-title-container--8 .project-title--8 {
+  top: 50%;
+  left: 15%;
 }
 
 /* Project Previews //////////// */
@@ -784,6 +797,7 @@ section h1 {
   align-items: center;
   justify-content: space-evenly;
   overflow: scroll;
+  /* Art Gallery Settings */
 }
 .project-previews-container .individal-container--inner .gif-container {
   height: 75%;
@@ -799,6 +813,16 @@ section h1 {
   transform: translate(-50%, -50%);
   max-width: 100%;
   max-height: 100%;
+}
+.project-previews-container .individal-container--inner .preview-title--art {
+  margin: 2rem;
+  width: 100%;
+}
+.project-previews-container .individal-container--inner .art {
+  display: block;
+  max-height: 75vh;
+  max-width: 75vw;
+  margin: 0 auto;
 }
 .project-previews-container .individal-container--inner .individal-container__text-and-buttons {
   position: relative;

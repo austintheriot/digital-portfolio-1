@@ -808,11 +808,11 @@ function showPreview(el) {
   //begin loading assets (lazy loading the images for each preview)
   let previewTargetImages = document.querySelectorAll(`${previewTarget} img`);
   previewTargetImages.forEach((el) => {
-    el.setAttribute('src', el.dataset.srcPreview);
+    el.src = el.dataset.srcPreview;
   });
 
   //make preview visible
-  gsap.set(`${el.dataset.preview}`, {
+  gsap.set(`${el.dataset.preview}, ${el.dataset.preview} *`, {
     visibility: 'visible',
   });
   gsap.set('.background', {
@@ -824,7 +824,7 @@ function showPreview(el) {
 }
 
 function closePreviews() {
-  gsap.set('.background, .individal-container--outer', {
+  gsap.set('.project-previews-container, .project-previews-container *', {
     visibility: 'hidden',
   });
   enableScroll();
