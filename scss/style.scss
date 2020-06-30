@@ -176,6 +176,7 @@ section h1 {
   position: absolute;
   height: var(--full-height, 100vh);
   width: 100vw;
+  overflow: hidden;
 
   //make all child elements absolutely positioned
   * {
@@ -185,7 +186,7 @@ section h1 {
 
 /* Home ////////////////////////////////////////////////////////////////// */
 #home {
-  height: calc(var(--full-height, 100vh) * 4);
+  height: var(--full-height, 100vh);
   position: relative;
   z-index: -1000; /* This was covering up the button hover animations */
 }
@@ -233,19 +234,16 @@ section h1 {
 
 .see-my-work-button {
   left: 50%;
-  top: 85%;
-}
-
-.see-my-work-div {
-  left: 50%;
-  top: 50%;
-  height: 35%;
-  width: 2px;
-  background-color: $dark-color;
+  top: calc(100% - var(--body-size) * 7);
+  margin: 0 auto;
+  padding: 0.25rem 1rem;
+  /* Max content wouldn't work on this for some reason */
+  width: calc(var(--body-size) * 9);
+  height: calc(var(--body-size) * 1.8);
 }
 
 .scroll-down {
-  top: calc(85% + var(--body-size) * 3);
+  top: calc(100% - var(--body-size) * 5);
   left: 50%;
   width: max-content;
   color: $dark-lavender;
@@ -255,13 +253,13 @@ section h1 {
 
 .scroll-down-arrow {
   width: 1rem;
-  top: calc(85% + var(--body-size) * 4);
+  top: calc(100% - var(--body-size) * 4);
   left: 50%;
 }
 
 .ground {
   top: 50%;
-  width: 20vw;
+  width: 400px;
 }
 
 .ground--1 {
@@ -420,6 +418,8 @@ section h1 {
 
 /* About ////////////////////////////////////////////////////////////////// */
 #about {
+  background-color: $light-color;
+  position: relative;
   height: var(--full-height, 100vh);
 
   h1 {
@@ -488,6 +488,7 @@ section h1 {
 
 /* Skills /////////////////////////////////////////////////////////////////// */
 #skills {
+  background-color: $light-color;
   position: relative;
   height: calc(var(--full-height, 100vh) * 2);
   overflow: hidden;
@@ -621,6 +622,7 @@ section h1 {
 
 /* Portfolio ////////////////////////////////////////////////////////////////// */
 #projects {
+  background-color: $light-color;
   position: relative;
   height: var(--full-height, 100vh);
   display: flex;
@@ -819,6 +821,7 @@ section h1 {
     left: calc(100% - 10px);
     transform: translateX(-100%);
     cursor: pointer;
+    height: 2.5%;
   }
 
   .individal-container--inner {
@@ -861,7 +864,7 @@ section h1 {
       display: block;
       max-height: 75vh;
       max-width: 75vw;
-      margin: 0 auto;
+      margin: 1rem;
     }
 
     .individal-container__text-and-buttons {
@@ -896,9 +899,9 @@ section h1 {
 /* Contact ////////////////////////////////////////////////////////////////// */
 
 #contact {
+  background-color: $light-color;
   position: relative;
   height: calc(var(--full-height, 100vh) * 1.25);
-  background-color: $light-color;
   overflow: hidden;
 
   h1,

@@ -2,41 +2,25 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Draggable);
 
 let width = document.documentElement.clientWidth || window.innerWidth;
-let height = document.documentElement.clientHeight || window.innerHeight;
-let documentHeight = document.body.scrollHeight;
 let homeSectionHeight = document.querySelector('#home').offsetHeight;
 let aboutSectionHeight = document.querySelector('#about').offsetHeight;
 let skillsSectionHeight = document.querySelector('#skills').offsetHeight;
 const WINDOW_BREAK_POINT_SIZE = 900;
+const LARGE_IPAD_SIZE = 1300;
 const DARK_COLOR = 'rgb(0, 3, 20)';
 const LIGHT_COLOR = 'rgb(246, 243, 248)';
 const POP_COLOR = 'rgb(255, 214, 92)';
 
-//lazy load images
-const lazyLoadImages = document.querySelectorAll('[data-src]');
-lazyLoadImages.forEach((el) => {
+//only pin city container on desktop
+
+function pinCityContainerFunction() {
   ScrollTrigger.create({
-    trigger: el,
-    start: '-=500 bottom', //load 250px BEFORE the item intersects the viewport
-    onEnter: lazyLoadOnEnter.bind(this, el),
-    id: el.dataset.src, //identify scrolltriggers by their element's data-src attribute
+    trigger: '#home',
+    end: 'bottom bottom',
+    pin: '.city-container',
+    pinSpacing: false,
   });
-});
-
-function lazyLoadOnEnter(el) {
-  el.src = el.dataset.src;
-  ScrollTrigger.getById(el.dataset.src).kill(); //release Scrolltrigger for garbage collection
 }
-
-//pin city container inside HOME section
-pinContainer = ScrollTrigger.create({
-  trigger: '.city-container',
-  endtrigger: '#about',
-  start: 'top top',
-  end: `${homeSectionHeight} bottom`,
-  pin: true,
-  pinSpacing: false,
-});
 
 //section heading animations
 const headings = document.querySelectorAll('.headings');
@@ -54,7 +38,7 @@ headings.forEach((el) => {
 //GSAP's iOS bug fix
 //possible solution for old iOS bugs that don't display things inside an iframe correctly.
 //Create a --full-height CSS variable and use it instead of height: 100%
-function readHeight() {
+/* function readHeight() {
   if (ScrollTrigger.isScrolling()) {
     console.log('wait until end...');
     ScrollTrigger.addEventListener('scrollEnd', readHeight);
@@ -72,11 +56,13 @@ function readHeight() {
     setTimeout(function () {
       window.addEventListener('resize', readHeight);
     }, 500);
+    // With this turned on, it tends to make pinned elements fall to the bottom of the screen
+    // And also make scroll-based animations restart
     ScrollTrigger.refresh(true);
     scrollFunc(scrollProgress * ScrollTrigger.maxScroll(window));
   }
 }
-readHeight();
+readHeight(); */
 
 /* // --- can't get this to work. The browser just locks up instead every time
 const nav = document.querySelector('nav');
@@ -127,10 +113,6 @@ gsap.set('.see-my-work-button, .scroll-down, .scroll-down-arrow', {
   xPercent: -50,
   yPercent: -50,
 });
-gsap.set('.see-my-work-div', {
-  scaleY: 0,
-  xPercent: -50,
-});
 
 //add general button animations
 seeMyWorkButton.addEventListener('mouseenter', buttonMouseEnterHandler);
@@ -139,90 +121,70 @@ seeMyWorkButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
 
 //animations specific to smaller screen sizes
 function seeWorkMouseEnterHandler() {
-  gsap
-    .timeline({
-      defaults: {
-        ease: 'power4.out',
-      },
-    })
-    .to('.see-my-work-div', {
-      duration: 0.4,
-      transformOrigin: 'bottom',
-      scaleY: 1,
-    })
-    .to('.building-lights', {
-      duration: 2,
-      opacity: 1,
-    });
+  gsap.to('.building-lights', {
+    ease: 'power4.out',
+    duration: 2,
+    opacity: 1,
+  });
 }
 
 function seeWorkMouseLeaveHandler() {
-  gsap
-    .timeline({
-      defaults: {
-        ease: 'power4.out',
-      },
-    })
-    .to('.see-my-work-div', {
-      duration: 0.4,
-      scaleY: 0,
-    })
-    .to(
-      '.building-lights',
-      {
-        duration: 2,
-        opacity: 0,
-      },
-      '<'
-    );
+  gsap.to('.building-lights', {
+    ease: 'power4.out',
+    duration: 2,
+    opacity: 0,
+  });
 }
 
 //Fade out Name, Title, Scroll title, and "Hire Me" button
-gsap
-  .timeline({
-    scrollTrigger: {
-      triggerElement: '#home',
-      start: '100 top',
-      toggleActions: 'play play play reverse',
-    },
-  })
-  .to(
-    `.home__name, 
+function fadeOutHomeItemsFunction() {
+  gsap
+    .timeline({
+      scrollTrigger: {
+        triggerElement: '#home',
+        start: '100 top',
+        toggleActions: 'play play play reverse',
+      },
+    })
+    .to(
+      `.home__name, 
     .home__title, 
     .nav__scroll-heading, 
     .see-my-work-button, 
-    .see-my-work-div,
     .scroll-down,
     .scroll-down-arrow`,
-    {
-      ease: 'power2.inOut',
-      duration: 0.6,
-      opacity: 0,
-    }
-  )
-  .to(
-    `.home__name, 
+      {
+        duration: 0,
+        pointerEvents: 'auto',
+      }
+    )
+    .to(
+      `.home__name, 
+    .home__title, 
+    .nav__scroll-heading, 
+    .see-my-work-button, 
+    .scroll-down,
+    .scroll-down-arrow`,
+      {
+        ease: 'power2.inOut',
+        duration: 0.6,
+        opacity: 0,
+      }
+    )
+    .to(
+      `.home__name, 
     .home__title, 
     .see-my-work-button,
-    .see-my-work-div,
     .scroll-down,
     .scroll-down-arrow`,
-    {
-      duration: 0.2,
-      scale: 0,
-    }
-  );
+      {
+        duration: 0,
+        pointerEvents: 'none',
+      }
+    );
+}
 
 // Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
-//home timeline (all city animations (besides the cars) are added to this)
-const home = gsap.timeline({
-  scrollTrigger: {
-    trigger: '#home',
-    start: 'top top', //trigger element & viewport
-    scrub: 1, //duration for scrub to catch up to scroll
-  },
-});
-
 //Placing items before animation//////////////////////////////////////////////////////
 //Animate Ground
 gsap.set(
@@ -242,7 +204,9 @@ gsap.set('.bench', {
 });
 //Set Buildings
 gsap.set('.buildings', {
+  scale: 1,
   yPercent: -50,
+  x: 0,
 });
 //Set Welcome heading,
 gsap.set('.welcome', {
@@ -251,177 +215,193 @@ gsap.set('.welcome', {
 });
 //Set Cars
 gsap.set('.car', {
+  x: 0,
+  left: '125%',
   scale: 0.1,
   yPercent: -50,
 });
 
-// Animating CARS ////////////////////////////////////////////////////////////////////////////////////////
-function animateCar(selector, delay = 0, speed = 1) {
-  //animate cars automatically
+//home timeline (all city animations (besides the cars) are added to this)
+function animateHome() {
+  //Animating Home Items///////////////////////////////////////////////////////////////
+  //Animation speeds for buildings
+  let MOVE_PRIMARY_X = width * 2.2;
+  let MOVE_PRIMARY_SCALE = 7;
+  let MOVE_SECONDARY_X = width * 1.2;
+  let MOVE_SECONDARY_SCALE = 3;
+  let MOVE_TERTIARY_X = width * 0.5;
+  let MOVE_TERTIARY_SCALE = 2;
   gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: '#home',
+        start: 'top top', //trigger element & viewport
+        scrub: 1, //duration for scrub to catch up to scroll
+      },
+    })
+    // Move Primary Buildings ////////////////////
+    //Move Primary Buildings Left
+    .to(
+      '.move-primary-left',
+      {
+        x: -MOVE_PRIMARY_X,
+        scale: MOVE_PRIMARY_SCALE,
+      },
+      '<'
+    )
+    //Move Primary Buildings Right
+    .to(
+      '.move-primary-right',
+      {
+        x: MOVE_PRIMARY_X,
+        scale: MOVE_PRIMARY_SCALE,
+      },
+      '<'
+    )
+    // Move Secondary Buildings ////////////////////
+    //Move Secondary Buildings Left
+    .to(
+      '.move-secondary-left',
+      {
+        x: -MOVE_SECONDARY_X,
+        scale: MOVE_SECONDARY_SCALE,
+      },
+      '<'
+    )
+    //Move Secondary Buildings Right
+    .to(
+      '.move-secondary-right',
+      {
+        x: MOVE_SECONDARY_X,
+        scale: MOVE_SECONDARY_SCALE,
+      },
+      '<'
+    )
+    // Move Tertiary Buildings /////////////////////
+    //Move Tertiary Buildings Left
+    .to(
+      '.move-tertiary-left',
+      {
+        x: -MOVE_TERTIARY_X,
+        scale: MOVE_TERTIARY_SCALE,
+      },
+      '<'
+    )
+    //Move Tertiary Buildings Right
+    .to(
+      '.move-tertiary-right',
+      {
+        x: MOVE_TERTIARY_X,
+        scale: MOVE_TERTIARY_SCALE,
+      },
+      '<'
+    )
+    //Move Tertiary Buildings Right (Slower)
+    .to(
+      '.move-tertiary-right-slower',
+      {
+        x: 0.3,
+        scale: MOVE_TERTIARY_SCALE,
+        modifiers: {
+          x: gsap.utils.unitize((x) => x * width, 'px'),
+        },
+      },
+      '<'
+    )
+    // Scale Up Background Buildings //////////////
+    .to(
+      '.background-buildings',
+      {
+        scale: 1.5,
+      },
+      '<'
+    )
+    // Scale Up Ground /////////////////////////////
+    .to(
+      '.ground',
+      {
+        ease: 'power.in',
+        scaleY: 0.5,
+      },
+      '<'
+    )
+    // Scale Up Bench Into Shot ////////////////////
+    .to(
+      '.bench',
+      {
+        ease: 'power1.inOut',
+        scale: 1,
+      },
+      '<'
+    )
+    // Keep Bench In Shot ////////////////////
+    .to('.bench', {
+      duration: 0.25,
+      scale: 1,
+    });
+
+  //fade in welcome
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: '#home',
+        start: '50% top', //trigger element & viewport
+        toggleActions: 'play reverse play reverse',
+      },
+    })
+    .to('.welcome', {
+      duration: 1,
+      opacity: 1,
+    });
+}
+
+// Animating CARS ////////////////////////////////////////////////////////////////////////////////////////
+let animateCars = gsap.timeline();
+function animateCarsFunction(action) {
+  //animate cars automatically
+  animateCars.kill();
+  animateCars = gsap
     .timeline({
       repeat: -1, //restarts indefinitely
       scrollTrigger: {
         triggerElement: '#home',
         start: '-1 top',
         end: '9 top',
-        toggleActions: 'resume pause resume none',
-        delay: 1, //allow scrub to catch up
+        toggleActions: `play ${action} resume none`,
+      },
+    })
+    .to('.car', {
+      ease: 'none',
+      duration: 10 / (Math.random() * 0.5 + 0.75),
+      left: '-25%',
+      stagger: 3,
+      delay: 1, //allow scrub to catch up
+    });
+}
+
+function animateCarScroll(selector) {
+  gsap
+    .timeline({
+      scrollTrigger: {
+        triggerElement: '#home',
+        start: '10 top',
+        scrub: 1,
       },
     })
     .to(selector, {
-      ease: 'none',
-      duration: 10 / speed,
-      left: '-25%',
-      delay,
-    });
-
-  gsap.to(selector, {
-    scrollTrigger: {
-      triggerElement: '#home',
-      start: '10 top',
-      scrub: 1,
-    },
-    scale: 1,
-    x: 1,
-    modifiers: {
-      x: gsap.utils.unitize((x) => {
-        let location = document.querySelector(selector).getBoundingClientRect()
-          .left;
-        let modifier = location < width / 2 ? -width * 7 : width * 7;
-        return x * modifier;
-      }, 'px'),
-    },
-  });
-}
-//car animations
-animateCar('.car1', 0, 1);
-animateCar('.car2', 5, 1.25);
-
-//Animating Home Items///////////////////////////////////////////////////////////////
-//Animation speeds for buildings
-let MOVE_PRIMARY_X = width * 2.2;
-let MOVE_PRIMARY_SCALE = 7;
-let MOVE_SECONDARY_X = width * 1.2;
-let MOVE_SECONDARY_SCALE = 3;
-let MOVE_TERTIARY_X = width * 0.5;
-let MOVE_TERTIARY_SCALE = 2;
-
-// Move Primary Buildings ////////////////////
-home
-  //Move Primary Buildings Left
-  .to(
-    '.move-primary-left',
-    {
-      x: -MOVE_PRIMARY_X,
-      scale: MOVE_PRIMARY_SCALE,
-    },
-    '<'
-  )
-  //Move Primary Buildings Right
-  .to(
-    '.move-primary-right',
-    {
-      x: MOVE_PRIMARY_X,
-      scale: MOVE_PRIMARY_SCALE,
-    },
-    '<'
-  )
-  // Move Secondary Buildings ////////////////////
-  //Move Secondary Buildings Left
-  .to(
-    '.move-secondary-left',
-    {
-      x: -MOVE_SECONDARY_X,
-      scale: MOVE_SECONDARY_SCALE,
-    },
-    '<'
-  )
-  //Move Secondary Buildings Right
-  .to(
-    '.move-secondary-right',
-    {
-      x: MOVE_SECONDARY_X,
-      scale: MOVE_SECONDARY_SCALE,
-    },
-    '<'
-  )
-  // Move Tertiary Buildings /////////////////////
-  //Move Tertiary Buildings Left
-  .to(
-    '.move-tertiary-left',
-    {
-      x: -MOVE_TERTIARY_X,
-      scale: MOVE_TERTIARY_SCALE,
-    },
-    '<'
-  )
-  //Move Tertiary Buildings Right
-  .to(
-    '.move-tertiary-right',
-    {
-      x: MOVE_TERTIARY_X,
-      scale: MOVE_TERTIARY_SCALE,
-    },
-    '<'
-  )
-  //Move Tertiary Buildings Right (Slower)
-  .to(
-    '.move-tertiary-right-slower',
-    {
-      x: 0.3,
-      scale: MOVE_TERTIARY_SCALE,
-      modifiers: {
-        x: gsap.utils.unitize((x) => x * width, 'px'),
-      },
-    },
-    '<'
-  )
-  // Scale Up Background Buildings //////////////
-  .to(
-    '.background-buildings',
-    {
-      scale: 1.5,
-    },
-    '<'
-  )
-  // Scale Up Ground /////////////////////////////
-  .to(
-    '.ground',
-    {
-      ease: 'power.in',
-      scaleY: 0.5,
-    },
-    '<'
-  )
-  // Scale Up Bench Into Shot ////////////////////
-  .to(
-    '.bench',
-    {
-      ease: 'power1.inOut',
       scale: 1,
-    },
-    '<'
-  )
-  // Keep Bench In Shot ////////////////////
-  .to('.bench', {
-    duration: 0.25,
-    scale: 1,
-  });
-
-//fade in welcome
-gsap
-  .timeline({
-    scrollTrigger: {
-      trigger: '#home',
-      start: '50% top', //trigger element & viewport
-      toggleActions: 'play reverse play reverse',
-    },
-  })
-  .to('.welcome', {
-    duration: 1,
-    opacity: 1,
-  });
+      x: 1,
+      modifiers: {
+        x: gsap.utils.unitize((x) => {
+          let location = document
+            .querySelector(selector)
+            .getBoundingClientRect().left;
+          let modifier = location < width / 2 ? -width * 7 : width * 7;
+          return x * modifier;
+        }, 'px'),
+      },
+    });
+}
 
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
@@ -461,7 +441,7 @@ const aboutAnimations = gsap
     repeat: -1,
     scrollTrigger: {
       trigger: '#about',
-      toggleActions: 'play pause play pause',
+      toggleActions: 'play reset play reset',
     },
     defaults: {
       duration: 0.6,
@@ -611,17 +591,14 @@ const aboutAnimations = gsap
 //SKILLS///////////////////////////////////////////////////////////
 const skills = document.querySelectorAll('.skill-headings');
 skills.forEach((el) => {
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: el,
-        toggleActions: 'play none none none',
-      },
-    })
-    .from(el, {
-      opacity: 0,
-      xPercent: -50,
-    });
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      toggleActions: 'play none complete none',
+    },
+    opacity: 0,
+    xPercent: -50,
+  });
 });
 
 function fadeInBonusInfo(event) {
@@ -799,8 +776,6 @@ function enableScroll() {
   document.querySelector('body').style.overflow = 'visible';
 }
 
-//My Code////////////////////
-
 let stopTimer;
 function showPreview(el) {
   let previewTarget = el.dataset.preview;
@@ -836,6 +811,7 @@ function closePreviews() {
 const titleButtons = document.querySelectorAll('.project-title-container');
 titleButtons.forEach((el) => {
   el.addEventListener('click', showPreview.bind(this, el));
+  el.addEventListener('touchstart', showPreview.bind(this, el));
 });
 
 //hide preview on click of the clsoe button or background div
@@ -848,23 +824,116 @@ const projectPreviewsBackground = document
   .addEventListener('click', closePreviews);
 
 //WINDOW RESIZING, etc.//////////////////////////////////////////////////////////////////
+
+/* Logic Begind Interactions Based On Screen-Size: 
+Small screens are assumed to be small until proven otherwise. 
+Allow all animations to be enabled or disabled based on largest known screen size. 
+EXCEPT: City zomm-in/zoom-out animation only available if screen
+is large when page is FIRST opened (to prevent massive document-flow issues 
+  when switching from animation interaction one to the other)
+
+Small- and medium-size screens adapt to changing width but not height.
+This is to prevent jittery effects on iPhones and iPads when the browser resizes itself.
+
+If, however, they are proven to be a desktop, then the height will automatically adjust.
+*/
+
+function freezeVHSize() {
+  document.documentElement.style.setProperty('--full-height', '100%');
+  document.documentElement.style.setProperty(
+    '--full-height',
+    window.innerHeight + 'px'
+  );
+}
+
+function enableVHResizing() {
+  document.documentElement.style.setProperty('--full-height', '100vh');
+}
+
+/* Based on INTIAL screen size */
+let largestKnownScreenWidth;
+let previousScreenWidth;
+if (width < WINDOW_BREAK_POINT_SIZE) {
+  largestKnownScreenWidth = 'small';
+  freezeVHSize();
+} else if (width < LARGE_IPAD_SIZE) {
+  largestKnownScreenWidth = 'medium';
+  freezeVHSize();
+} else {
+  largestKnownScreenWidth = 'large';
+  enableVHResizing();
+
+  //Enable city animations only on desktop from the outset
+  document.querySelector('#home').style.height =
+    'calc(var(--full-height, 100vh) * 4)';
+  pinCityContainerFunction();
+  fadeOutHomeItemsFunction();
+  animateCarsFunction('pause');
+  animateCarScroll('.car1');
+  animateCarScroll('.car2');
+  animateHome();
+}
+
+/* Based on DYNAMIC screen size */
 function resize() {
   width = document.documentElement.clientWidth || window.innerWidth;
-  height = document.documentElement.clientHeight || window.innerHeight;
-  documentHeight = document.body.scrollHeight;
-  windowSize = { width, height };
 
-  //see my work button animations
-  //light up buildings right away on mobile
+  /* Current width */
   if (width < WINDOW_BREAK_POINT_SIZE) {
-    seeMyWorkButton.removeEventListener('mouseenter', seeWorkMouseEnterHandler);
-    seeMyWorkButton.removeEventListener('mouseleave', seeWorkMouseLeaveHandler);
+    currentWidth = 'small';
+  } else if (width < LARGE_IPAD_SIZE) {
+    currentWidth = 'medium';
+  } else {
+    currentWidth = 'large';
+  }
+
+  /* Any device, depending on current size */
+  if (currentWidth === 'small') {
+    //disable hover animations on skills
+    skills.forEach((el) => {
+      el.removeEventListener('mouseenter', fadeInBonusInfo);
+    });
+    gsap.to('.skills__bonus-info, .construction-building-lights', {
+      duration: 0.4,
+      opacity: 0,
+    });
+    gsap.set('.skills__bonus-info', {
+      pointerEvents: 'none',
+    });
+  } else {
+    //enable hover animations on skills
+    skills.forEach((el) => {
+      el.addEventListener('mouseenter', fadeInBonusInfo);
+      //immediately make them dissapear
+    });
+  }
+
+  /* Largest known width ////////////////////////// */
+  if (
+    width > WINDOW_BREAK_POINT_SIZE &&
+    width < LARGE_IPAD_SIZE &&
+    largestKnownScreenWidth !== 'large'
+  ) {
+    largestKnownScreenWidth = 'medium';
+  } else if (width > LARGE_IPAD_SIZE) {
+    largestKnownScreenWidth = 'large';
+  }
+
+  /* iPhones and iPads only */
+  if (largestKnownScreenWidth !== 'large') {
+    animateCarsFunction('play');
+
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
       opacity: 1,
     });
-  } else {
+  }
+
+  /* Desktop only */
+  if (largestKnownScreenWidth === 'large') {
+    enableVHResizing();
+
     //light up buildings on see my work button hover
     seeMyWorkButton.addEventListener('mouseenter', seeWorkMouseEnterHandler);
     seeMyWorkButton.addEventListener('mouseleave', seeWorkMouseLeaveHandler);
@@ -875,29 +944,7 @@ function resize() {
     });
   }
 
-  //skills bonus info animations
-  if (width < WINDOW_BREAK_POINT_SIZE) {
-    //remove hover events that trigger the bonus info
-    skills.forEach((el) => {
-      el.removeEventListener('mouseenter', fadeInBonusInfo);
-    });
-    //fade out bonus info
-    gsap.to('.skills__bonus-info, .construction-building-lights', {
-      duration: 0.4,
-      opacity: 0,
-    });
-    //disable pointer events on additional info
-    gsap.set('.skills__bonus-info', {
-      pointerEvents: 'none',
-    });
-  } else {
-    skills.forEach((el) => {
-      el.addEventListener('mouseenter', fadeInBonusInfo);
-      //immediately make them dissapear
-    });
-  }
-
-  //stuff for carousel/slider
+  //Carousel/Slider info:
   let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
 
   slideWidth = slides[0].offsetWidth;
