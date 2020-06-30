@@ -423,7 +423,7 @@ section h1 {
   height: var(--full-height, 100vh);
 
   h1 {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 }
 
@@ -441,15 +441,16 @@ section h1 {
   padding: 1rem;
   font-size: calc(var(--body-size) * 2);
   text-align: center;
+  transform: translate(-50%, -50%);
 }
 
 .restart-about-slides {
   position: absolute;
-  top: 85%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 4rem;
-  width: 4rem;
+  height: calc(var(--full-height, 100vh) * 0.075);
+  width: calc(var(--full-height, 100vh) * 0.075);
   background-color: transparent;
   border: 1px solid $light-lavender;
   border-radius: 50%;
@@ -457,17 +458,18 @@ section h1 {
 }
 
 .restart-about-slides img {
-  width: 3rem;
-  height: 3rem;
+  width: calc(var(--full-height, 100vh) * 0.05);
+  height: calc(var(--full-height, 100vh) * 0.05);
 }
 
 .border {
   content: '';
   position: absolute;
-  top: 25%;
-  left: 12.5%;
-  width: 75%;
-  height: 50%;
+  top: 50%;
+  left: 50%;
+  width: calc(70% + 2rem);
+  height: 60%;
+  transform: translate(-50%, -50%);
 }
 
 .border-left {
@@ -671,7 +673,6 @@ section h1 {
   .project-title-container {
     position: absolute;
     background-color: $light-color;
-    cursor: pointer;
   }
 
   .project-title {
@@ -680,6 +681,7 @@ section h1 {
     font-size: calc(var(--full-height, 100vh) * 0.025);
     text-transform: uppercase;
     text-decoration: underline;
+    cursor: pointer;
   }
 
   /* Project 1 React E-Commerce Site /////////////////////////// */

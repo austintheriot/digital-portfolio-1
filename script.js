@@ -2,9 +2,6 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Draggable);
 
 let width = document.documentElement.clientWidth || window.innerWidth;
-let homeSectionHeight = document.querySelector('#home').offsetHeight;
-let aboutSectionHeight = document.querySelector('#about').offsetHeight;
-let skillsSectionHeight = document.querySelector('#skills').offsetHeight;
 const WINDOW_BREAK_POINT_SIZE = 900;
 const LARGE_IPAD_SIZE = 1300;
 const DARK_COLOR = 'rgb(0, 3, 20)';
@@ -12,7 +9,6 @@ const LIGHT_COLOR = 'rgb(246, 243, 248)';
 const POP_COLOR = 'rgb(255, 214, 92)';
 
 //only pin city container on desktop
-
 function pinCityContainerFunction() {
   ScrollTrigger.create({
     trigger: '#home',
@@ -34,49 +30,6 @@ headings.forEach((el) => {
     opacity: 0,
   });
 });
-
-//GSAP's iOS bug fix
-//possible solution for old iOS bugs that don't display things inside an iframe correctly.
-//Create a --full-height CSS variable and use it instead of height: 100%
-/* function readHeight() {
-  if (ScrollTrigger.isScrolling()) {
-    console.log('wait until end...');
-    ScrollTrigger.addEventListener('scrollEnd', readHeight);
-  } else {
-    ScrollTrigger.removeEventListener('scrollEnd', readHeight);
-    window.removeEventListener('resize', readHeight);
-    let scrollFunc = ScrollTrigger.getScrollFunc(window),
-      scrollProgress = scrollFunc() / ScrollTrigger.maxScroll(window),
-      docStyle = document.documentElement.style,
-      bodyStyle = document.body.style;
-    bodyStyle.overflow = 'auto';
-    docStyle.setProperty('--full-height', '100%');
-    docStyle.setProperty('--full-height', window.innerHeight + 'px');
-    bodyStyle.overflow = 'unset';
-    setTimeout(function () {
-      window.addEventListener('resize', readHeight);
-    }, 500);
-    // With this turned on, it tends to make pinned elements fall to the bottom of the screen
-    // And also make scroll-based animations restart
-    ScrollTrigger.refresh(true);
-    scrollFunc(scrollProgress * ScrollTrigger.maxScroll(window));
-  }
-}
-readHeight(); */
-
-/* // --- can't get this to work. The browser just locks up instead every time
-const nav = document.querySelector('nav');
-nav.addEventListener('click', (event) => {
-  const target = event.target;
-  if ([...target.classList].includes('nav__link')) {
-    event.preventDefault();
-    let link = target.getAttribute('href');
-    gsap.to(window, {
-      duration: 0.25,
-      scrollTo: link,
-    });
-  }
-}); */
 
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
@@ -431,12 +384,10 @@ gsap.set('.border-top', {
   scaleX: 0,
 });
 gsap.set('.about__info', {
-  xPercent: -50,
-  yPercent: -50,
   opacity: 0,
 });
 
-const aboutAnimations = gsap
+gsap
   .timeline({
     repeat: -1,
     scrollTrigger: {
@@ -678,7 +629,7 @@ function snapX(x) {
 
 //calls the auto play function after a delay
 /////////////////////////change Infinity back to DELAY_TIME
-const timer = gsap.delayedCall(Infinity, autoPlay);
+const timer = gsap.delayedCall(SLIDE_DELAY, autoPlay);
 
 //moves all slides over by 100% -- starts out paused
 const animation = gsap.to(slides, {
@@ -750,16 +701,16 @@ const projectTitleContainers = document.querySelectorAll(
   '.project-title-container'
 );
 
-projectTitleContainers.forEach((el) => {
+projectTitles.forEach((el) => {
   el.addEventListener('mouseenter', (event) => {
-    gsap.to(event.target, {
+    gsap.to(event.target.parentElement, {
       duration: 0.2,
       backgroundColor: DARK_COLOR,
       color: LIGHT_COLOR,
     });
   });
   el.addEventListener('mouseleave', (event) => {
-    gsap.to(event.target, {
+    gsap.to(event.target.parentElement, {
       duration: 0.2,
       backgroundColor: LIGHT_COLOR,
       color: DARK_COLOR,
@@ -795,7 +746,7 @@ function showPreview(el) {
   });
 
   disableScroll();
-  stopTimer = setTimeout(() => timer.paused(true), 1500);
+  timer.kill();
 }
 
 function closePreviews() {
@@ -808,7 +759,7 @@ function closePreviews() {
 }
 
 //display preview on click of the title or about section
-const titleButtons = document.querySelectorAll('.project-title-container');
+const titleButtons = document.querySelectorAll('.project-title');
 titleButtons.forEach((el) => {
   el.addEventListener('click', showPreview.bind(this, el));
   el.addEventListener('touchstart', showPreview.bind(this, el));
