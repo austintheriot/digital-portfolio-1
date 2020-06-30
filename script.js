@@ -387,7 +387,7 @@ gsap.set('.about__info', {
   opacity: 0,
 });
 
-gsap
+const aboutAnimations = gsap
   .timeline({
     repeat: -1,
     scrollTrigger: {
