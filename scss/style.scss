@@ -639,10 +639,7 @@ section h1 {
     flex: none;
     height: 75%;
     margin: var(--h2-size) auto;
-    background-image: url('/images/Slides\ Background.svg');
-    background-repeat: no-repeat;
-    background-size: 200%;
-    background-position-y: 100%;
+    background-color: #e2e1e6;
   }
 
   .slides-inner {
@@ -650,6 +647,10 @@ section h1 {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    background-image: url('/images/Slides\ Background.svg');
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position-y: 100%;
   }
 
   .slide {

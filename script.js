@@ -1,5 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Draggable);
+gsap.registerPlugin(ScrollToPlugin);
 
 let width = document.documentElement.clientWidth || window.innerWidth;
 const WINDOW_BREAK_POINT_SIZE = 900;
@@ -665,8 +666,9 @@ function animateSlides(direction) {
 //when the outermost container is dragged, drag the proxy (basically nothing)
 //stop slideAnimation
 //updates the drag animation?
-const draggable = new Draggable(proxy, {
+const draggable = Draggable.create(proxy, {
   trigger: '.slides-container',
+  type: 'x',
   onPress: updateDraggable,
   onDrag: updateProgress,
 });
@@ -678,6 +680,8 @@ function updateDraggable() {
 }
 
 //update the slide animation to reflect the movement of the draggable
+let y = 0;
+let prevY = 0;
 function updateProgress() {
   animation.progress(
     gsap.utils.wrap(0, 1, gsap.getProperty(proxy, 'x') / wrapWidth)
