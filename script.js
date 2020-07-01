@@ -1,6 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Draggable);
-gsap.registerPlugin(ScrollToPlugin);
 
 let width = document.documentElement.clientWidth || window.innerWidth;
 const WINDOW_BREAK_POINT_SIZE = 900;
@@ -525,7 +524,7 @@ const aboutAnimations = gsap
   .to(
     '.border-top',
     {
-      duration: 4,
+      duration: 6,
       scale: 1,
       borderTopColor: `${DARK_COLOR}`,
     },
@@ -600,7 +599,7 @@ gsap.timeline({
 }); */
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const SLIDE_DELAY = 2;
+const SLIDE_DELAY = Infinity;
 const SLIDE_DURATION = 0.3;
 
 const slidesInner = document.querySelector('.slides-inner');
@@ -621,15 +620,11 @@ for (let i = 0; i < numSlides; i++) {
 //initialize proxy at 0 movement
 gsap.set(proxy, { x: 0 });
 
-//what to do on window resize (called immediately at the bottom)
-window.addEventListener('resize', resize);
-
 function snapX(x) {
   return Math.round(x / slideWidth) * slideWidth;
 }
 
 //calls the auto play function after a delay
-/////////////////////////change Infinity back to DELAY_TIME
 const timer = gsap.delayedCall(SLIDE_DELAY, autoPlay);
 
 //moves all slides over by 100% -- starts out paused
@@ -680,8 +675,6 @@ function updateDraggable() {
 }
 
 //update the slide animation to reflect the movement of the draggable
-let y = 0;
-let prevY = 0;
 function updateProgress() {
   animation.progress(
     gsap.utils.wrap(0, 1, gsap.getProperty(proxy, 'x') / wrapWidth)
@@ -779,6 +772,7 @@ const projectPreviewsBackground = document
   .addEventListener('click', closePreviews);
 
 //WINDOW RESIZING, etc.//////////////////////////////////////////////////////////////////
+window.addEventListener('resize', resize);
 
 /* Logic Begind Interactions Based On Screen-Size: 
 Small screens are assumed to be small until proven otherwise. 
