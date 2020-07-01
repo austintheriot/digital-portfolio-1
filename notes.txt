@@ -14,18 +14,10 @@ Font:
 TO DO: ////////////////////////////////////////////////////////
 
 General:
-- add prev & next button to projects for desktop
 - create Resume
 - add resume to website
-- add metadata tags to webpage
 
-- create project item in portfolio for the portfolio itself? 
-- create description of portfolio on GitHub (what technologies I used to make it)
-- check the project preview links to make sure they go where they're supposed to
-- add Inertia plug in to draggable
 - Optimize script files (convert to npm modules, minimize with Webpack, optimize compatibility with Babel, etc.)
-
-BUGS
 
 Extras:
 - turn paintings into gifs on hover

@@ -599,7 +599,7 @@ gsap.timeline({
 }); */
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const SLIDE_DELAY = Infinity;
+const SLIDE_DELAY = 2;
 const SLIDE_DURATION = 0.3;
 
 const slidesInner = document.querySelector('.slides-inner');
