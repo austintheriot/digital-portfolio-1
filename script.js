@@ -367,21 +367,22 @@ document
   .addEventListener('click', () => aboutAnimations.restart())
 
 //initialize border locations
-gsap.set('.border-left', {
-  transformOrigin: 'top',
-  scaleY: 0,
-})
-gsap.set('.border-bottom', {
+
+gsap.set('.border-top', {
   transformOrigin: 'left',
   scaleX: 0,
 })
 gsap.set('.border-right', {
-  transformOrigin: 'bottom',
+  transformOrigin: 'top',
   scaleY: 0,
 })
-gsap.set('.border-top', {
+gsap.set('.border-bottom', {
   transformOrigin: 'right',
   scaleX: 0,
+})
+gsap.set('.border-left', {
+  transformOrigin: 'bottom',
+  scaleY: 0,
 })
 gsap.set('.about__info', {
   opacity: 0,
@@ -399,10 +400,10 @@ const aboutAnimations = gsap
     },
   })
   //create labels for border animation
-  .addLabel('border-left')
-  .addLabel('border-bottom', 'border-left+=4')
-  .addLabel('border-right', 'border-bottom+=4')
-  .addLabel('border-top', 'border-right+=4')
+  .addLabel('border-top')
+  .addLabel('border-right', 'border-top+=4')
+  .addLabel('border-bottom', 'border-right+=4')
+  .addLabel('border-left', 'border-bottom+=4')
   //fade in
   .to('.about__info--1', {
     duration: 0,
@@ -423,15 +424,15 @@ const aboutAnimations = gsap
     duration: 0,
     zIndex: 0,
   })
-  //border-left animation
+  //border-top animation
   .to(
-    '.border-left',
+    '.border-top',
     {
       duration: 4,
       scale: 1,
-      borderLeftColor: `${DARK_COLOR}`,
+      borderTopColor: `${DARK_COLOR}`,
     },
-    'border-left'
+    'border-top'
   )
   //fade in
   .to('.about__info--2', {
@@ -451,35 +452,6 @@ const aboutAnimations = gsap
   .to('.about__info--2', {
     duration: 0,
     zIndex: 200,
-  })
-  //border-bottom animation
-  .to(
-    '.border-bottom',
-    {
-      duration: 4,
-      scale: 1,
-      borderBottomColor: `${DARK_COLOR}`,
-    },
-    'border-bottom'
-  )
-  //fade in
-  .to('.about__info--3', {
-    duration: 0,
-    zIndex: 200,
-  })
-  .to('.about__info--3', {
-    opacity: 1,
-  })
-  .to('.about__info--3', {
-    duration: 2,
-    opacity: 1,
-  })
-  .to('.about__info--3', {
-    opacity: 0,
-  })
-  .to('.about__info--3', {
-    duration: 0,
-    zIndex: 0,
   })
   //border-right animation
   .to(
@@ -490,6 +462,35 @@ const aboutAnimations = gsap
       borderRightColor: `${DARK_COLOR}`,
     },
     'border-right'
+  )
+  //fade in
+  .to('.about__info--3', {
+    duration: 0,
+    zIndex: 200,
+  })
+  .to('.about__info--3', {
+    opacity: 1,
+  })
+  .to('.about__info--3', {
+    duration: 2,
+    opacity: 1,
+  })
+  .to('.about__info--3', {
+    opacity: 0,
+  })
+  .to('.about__info--3', {
+    duration: 0,
+    zIndex: 0,
+  })
+  //border-bottom animation
+  .to(
+    '.border-bottom',
+    {
+      duration: 4,
+      scale: 1,
+      borderBottomColor: `${DARK_COLOR}`,
+    },
+    'border-bottom'
   )
   //change Z-index
   .to('.about__info--4', {
@@ -520,15 +521,15 @@ const aboutAnimations = gsap
     duration: 0,
     zIndex: 0,
   })
-  //border-top animation
+  //border-left animation
   .to(
-    '.border-top',
+    '.border-left',
     {
       duration: 6,
       scale: 1,
-      borderTopColor: `${DARK_COLOR}`,
+      borderLeftColor: `${DARK_COLOR}`,
     },
-    'border-top'
+    'border-left'
   )
   .to(
     '.border',
