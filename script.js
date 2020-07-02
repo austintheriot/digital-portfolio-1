@@ -696,7 +696,9 @@ let mouseOnContainer = false
 let timerAlive = true
 slidesContainer.addEventListener('mouseenter', () => timer.kill())
 slidesContainer.addEventListener('mouseleave', () => timer.restart(true))
-slidesContainer.addEventListener('toouchstart', () => timer.kill())
+slidesContainer.addEventListener('toouchstart', () => timer.kill(), {
+  passive: true,
+})
 slidesContainer.addEventListener('touchmove', () => timer.kill())
 
 const projectTitles = document.querySelectorAll('.project-title')
@@ -768,7 +770,9 @@ function closePreviews() {
 const titleButtons = document.querySelectorAll('.project-title')
 titleButtons.forEach((el) => {
   el.addEventListener('click', showPreview.bind(this, el))
-  el.addEventListener('touchstart', showPreview.bind(this, el))
+  el.addEventListener('touchstart', showPreview.bind(this, el), {
+    passive: true,
+  })
 })
 
 //hide preview on click of the clsoe button or background div
