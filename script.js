@@ -1,12 +1,12 @@
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(Draggable);
+gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(Draggable)
 
-let width = document.documentElement.clientWidth || window.innerWidth;
-const WINDOW_BREAK_POINT_SIZE = 900;
-const LARGE_IPAD_SIZE = 1300;
-const DARK_COLOR = 'rgb(0, 3, 20)';
-const LIGHT_COLOR = 'rgb(246, 243, 248)';
-const POP_COLOR = 'rgb(255, 214, 92)';
+let width = document.documentElement.clientWidth || window.innerWidth
+const WINDOW_BREAK_POINT_SIZE = 900
+const LARGE_IPAD_SIZE = 1300
+const DARK_COLOR = 'rgb(0, 3, 20)'
+const LIGHT_COLOR = 'rgb(246, 243, 248)'
+const POP_COLOR = 'rgb(255, 214, 92)'
 
 //only pin city container on desktop
 function pinCityContainerFunction() {
@@ -15,11 +15,11 @@ function pinCityContainerFunction() {
     end: 'bottom bottom',
     pin: '.city-container',
     pinSpacing: false,
-  });
+  })
 }
 
 //section heading animations
-const headings = document.querySelectorAll('.headings');
+const headings = document.querySelectorAll('.headings')
 headings.forEach((el) => {
   gsap.from(el, {
     scrollTrigger: {
@@ -28,18 +28,18 @@ headings.forEach((el) => {
     },
     yPercent: 50,
     opacity: 0,
-  });
-});
+  })
+})
 
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
 // Home ////////////////////////////////////////////////////////////////
 
-const generalButtons = document.querySelectorAll('.button');
+const generalButtons = document.querySelectorAll('.button')
 generalButtons.forEach((el) => {
-  el.addEventListener('mouseenter', buttonMouseEnterHandler);
-  el.addEventListener('mouseleave', buttonMouseLeaveHandler);
-});
+  el.addEventListener('mouseenter', buttonMouseEnterHandler)
+  el.addEventListener('mouseleave', buttonMouseLeaveHandler)
+})
 
 //General Button Animations
 function buttonMouseEnterHandler(event) {
@@ -47,7 +47,7 @@ function buttonMouseEnterHandler(event) {
     duration: 0.4,
     color: LIGHT_COLOR,
     backgroundColor: DARK_COLOR,
-  });
+  })
 }
 
 function buttonMouseLeaveHandler(event) {
@@ -55,22 +55,22 @@ function buttonMouseLeaveHandler(event) {
     duration: 0.4,
     color: DARK_COLOR,
     backgroundColor: LIGHT_COLOR,
-  });
+  })
 }
 
 //Hire me button animations
-const seeMyWorkButton = document.querySelector('.see-my-work-button');
+const seeMyWorkButton = document.querySelector('.see-my-work-button')
 
 //place button
 gsap.set('.see-my-work-button, .scroll-down, .scroll-down-arrow', {
   xPercent: -50,
   yPercent: -50,
-});
+})
 
 //add general button animations
-seeMyWorkButton.addEventListener('mouseenter', buttonMouseEnterHandler);
+seeMyWorkButton.addEventListener('mouseenter', buttonMouseEnterHandler)
 
-seeMyWorkButton.addEventListener('mouseleave', buttonMouseLeaveHandler);
+seeMyWorkButton.addEventListener('mouseleave', buttonMouseLeaveHandler)
 
 //animations specific to smaller screen sizes
 function seeWorkMouseEnterHandler() {
@@ -78,7 +78,7 @@ function seeWorkMouseEnterHandler() {
     ease: 'power4.out',
     duration: 2,
     opacity: 1,
-  });
+  })
 }
 
 function seeWorkMouseLeaveHandler() {
@@ -86,7 +86,7 @@ function seeWorkMouseLeaveHandler() {
     ease: 'power4.out',
     duration: 2,
     opacity: 0,
-  });
+  })
 }
 
 //Fade out Name, Title, Scroll title, and "Hire Me" button
@@ -134,7 +134,7 @@ function fadeOutHomeItemsFunction() {
         duration: 0,
         pointerEvents: 'none',
       }
-    );
+    )
 }
 
 // Animating HOME SECTION ////////////////////////////////////////////////////////////////////////////////////////
@@ -148,42 +148,42 @@ gsap.set(
     yPercent: -50,
   },
   '<'
-);
+)
 //Set Bench,
 gsap.set('.bench', {
   scale: 0.02,
   yPercent: -50,
   xPercent: -50,
-});
+})
 //Set Buildings
 gsap.set('.buildings', {
   scale: 1,
   yPercent: -50,
   x: 0,
-});
+})
 //Set Welcome heading,
 gsap.set('.welcome', {
   yPercent: -50,
   opacity: 0,
-});
+})
 //Set Cars
 gsap.set('.car', {
   x: 0,
   left: '125%',
   scale: 0.1,
   yPercent: -50,
-});
+})
 
 //home timeline (all city animations (besides the cars) are added to this)
 function animateHome() {
   //Animating Home Items///////////////////////////////////////////////////////////////
   //Animation speeds for buildings
-  let MOVE_PRIMARY_X = width * 2.2;
-  let MOVE_PRIMARY_SCALE = 7;
-  let MOVE_SECONDARY_X = width * 1.2;
-  let MOVE_SECONDARY_SCALE = 3;
-  let MOVE_TERTIARY_X = width * 0.5;
-  let MOVE_TERTIARY_SCALE = 2;
+  let MOVE_PRIMARY_X = width * 2.2
+  let MOVE_PRIMARY_SCALE = 7
+  let MOVE_SECONDARY_X = width * 1.2
+  let MOVE_SECONDARY_SCALE = 3
+  let MOVE_TERTIARY_X = width * 0.5
+  let MOVE_TERTIARY_SCALE = 2
   gsap
     .timeline({
       scrollTrigger: {
@@ -291,7 +291,7 @@ function animateHome() {
     .to('.bench', {
       duration: 0.25,
       scale: 1,
-    });
+    })
 
   //fade in welcome
   gsap
@@ -305,14 +305,14 @@ function animateHome() {
     .to('.welcome', {
       duration: 1,
       opacity: 1,
-    });
+    })
 }
 
 // Animating CARS ////////////////////////////////////////////////////////////////////////////////////////
-let animateCars = gsap.timeline();
+let animateCars = gsap.timeline()
 function animateCarsFunction(action) {
   //animate cars automatically
-  animateCars.kill();
+  animateCars.kill()
   animateCars = gsap
     .timeline({
       repeat: -1, //restarts indefinitely
@@ -329,7 +329,7 @@ function animateCarsFunction(action) {
       left: '-25%',
       stagger: 3,
       delay: 1, //allow scrub to catch up
-    });
+    })
 }
 
 function animateCarScroll(selector) {
@@ -348,12 +348,12 @@ function animateCarScroll(selector) {
         x: gsap.utils.unitize((x) => {
           let location = document
             .querySelector(selector)
-            .getBoundingClientRect().left;
-          let modifier = location < width / 2 ? -width * 7 : width * 7;
-          return x * modifier;
+            .getBoundingClientRect().left
+          let modifier = location < width / 2 ? -width * 7 : width * 7
+          return x * modifier
         }, 'px'),
       },
-    });
+    })
 }
 
 // About ////////////////////////////////////////////////////////////////
@@ -364,28 +364,28 @@ function animateCarScroll(selector) {
 
 document
   .querySelector('.restart-about-slides')
-  .addEventListener('click', () => aboutAnimations.restart());
+  .addEventListener('click', () => aboutAnimations.restart())
 
 //initialize border locations
 gsap.set('.border-left', {
   transformOrigin: 'top',
   scaleY: 0,
-});
+})
 gsap.set('.border-bottom', {
   transformOrigin: 'left',
   scaleX: 0,
-});
+})
 gsap.set('.border-right', {
   transformOrigin: 'bottom',
   scaleY: 0,
-});
+})
 gsap.set('.border-top', {
   transformOrigin: 'right',
   scaleX: 0,
-});
+})
 gsap.set('.about__info', {
   opacity: 0,
-});
+})
 
 const aboutAnimations = gsap
   .timeline({
@@ -537,10 +537,10 @@ const aboutAnimations = gsap
       opacity: 0,
     },
     'break-apart'
-  );
+  )
 
 //SKILLS///////////////////////////////////////////////////////////
-const skills = document.querySelectorAll('.skill-headings');
+const skills = document.querySelectorAll('.skill-headings')
 skills.forEach((el) => {
   gsap.from(el, {
     scrollTrigger: {
@@ -549,13 +549,13 @@ skills.forEach((el) => {
     },
     opacity: 0,
     xPercent: -50,
-  });
-});
+  })
+})
 
 function fadeInBonusInfo(event) {
-  let targetInfo = event.target.dataset.bonusTarget;
+  let targetInfo = event.target.dataset.bonusTarget
   let targetInfoFormatted = `.skills__bonus-info--${targetInfo},
-    .construction-building-lights--${targetInfo}`;
+    .construction-building-lights--${targetInfo}`
 
   //fade out all other infos and lights
   gsap.to(
@@ -565,26 +565,29 @@ function fadeInBonusInfo(event) {
       duration: 0.4,
       opacity: 0,
     }
-  );
+  )
   //stop pointer events on others
   gsap.set(`.skills__bonus-info:not(${targetInfo})`, {
     pointerEvents: 'none',
-  });
+  })
 
   //fade in the selected one
   gsap.to(targetInfoFormatted, {
     duration: 0.4,
     opacity: 1,
-  });
+  })
   //allow pointer events on the selected one
   gsap.set(targetInfoFormatted, {
     pointerEvents: 'auto',
-  });
+  })
 }
+skills.forEach((el) => {
+  el.addEventListener('mouseenter', fadeInBonusInfo)
+})
 
 gsap.set('.skills__bonus-info, .construction-building-lights', {
   opacity: 0,
-});
+})
 
 /* const skillsMoreInfo = document.querySelector('.skills__more-info');
 gsap.timeline({
@@ -599,33 +602,33 @@ gsap.timeline({
 }); */
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const SLIDE_DELAY = 2;
-const SLIDE_DURATION = 0.3;
+const SLIDE_DELAY = 2
+const SLIDE_DURATION = 0.3
 
-const slidesInner = document.querySelector('.slides-inner');
-const slidesContainer = document.querySelector('.slides-container');
-const slides = document.querySelectorAll('.slide');
-const proxy = document.createElement('div'); //placeholder div for dragging--the proxy tells us how far we've dragged
-const numSlides = slides.length;
-let slideAnimation = gsap.to({}, { duration: 0 }); //placeholder (to kill before undefined)
-let slideWidth;
-let wrapWidth;
+const slidesInner = document.querySelector('.slides-inner')
+const slidesContainer = document.querySelector('.slides-container')
+const slides = document.querySelectorAll('.slide')
+const proxy = document.createElement('div') //placeholder div for dragging--the proxy tells us how far we've dragged
+const numSlides = slides.length
+let slideAnimation = gsap.to({}, { duration: 0 }) //placeholder (to kill before undefined)
+let slideWidth
+let wrapWidth
 
 //initialize slides horizontally
 for (let i = 0; i < numSlides; i++) {
   gsap.set(slides[i], {
     xPercent: i * 100,
-  });
+  })
 }
 //initialize proxy at 0 movement
-gsap.set(proxy, { x: 0 });
+gsap.set(proxy, { x: 0 })
 
 function snapX(x) {
-  return Math.round(x / slideWidth) * slideWidth;
+  return Math.round(x / slideWidth) * slideWidth
 }
 
 //calls the auto play function after a delay
-const timer = gsap.delayedCall(SLIDE_DELAY, autoPlay);
+const timer = gsap.delayedCall(SLIDE_DELAY, autoPlay)
 
 //moves all slides over by 100% -- starts out paused
 const animation = gsap.to(slides, {
@@ -639,23 +642,23 @@ const animation = gsap.to(slides, {
     //offset to the left by one using wrap (so 10 starts out on the left)
     xPercent: gsap.utils.wrap(-100, (numSlides - 1) * 100),
   },
-});
+})
 
 //restart timer
 //kill the current slideAnimation. Reassign it to a new animation
 function animateSlides(direction) {
-  timer.restart(true);
-  slideAnimation.kill();
+  timer.restart(true)
+  slideAnimation.kill()
 
   //reads the proxy's position from being dragged
   //snap x position to the closest slide
-  let x = snapX(gsap.getProperty(proxy, 'x') + direction * slideWidth);
+  let x = snapX(gsap.getProperty(proxy, 'x') + direction * slideWidth)
 
   slideAnimation = gsap.to(proxy, {
     duration: SLIDE_DURATION,
     x: x,
     onUpdate: updateProgress,
-  });
+  })
 }
 
 //when the outermost container is dragged, drag the proxy (basically nothing)
@@ -666,37 +669,40 @@ const draggable = Draggable.create(proxy, {
   type: 'x',
   onPress: updateDraggable,
   onDrag: updateProgress,
-});
+})
 
 //updates the the draggable's x/y properties to reflect the target element's current position
 function updateDraggable() {
-  slideAnimation.kill();
-  this.update();
+  slideAnimation.kill()
+  this.update()
 }
 
 //update the slide animation to reflect the movement of the draggable
 function updateProgress() {
   animation.progress(
     gsap.utils.wrap(0, 1, gsap.getProperty(proxy, 'x') / wrapWidth)
-  );
+  )
 }
 
 function autoPlay() {
   if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
   } else {
-    animateSlides(-1);
+    animateSlides(-1)
   }
 }
 
 //pause carousel on mouse hover or scroll--resume when mouse leaves
-let mouseOnContainer = false;
-slidesContainer.addEventListener('mouseenter', () => timer.paused(true));
-slidesContainer.addEventListener('mouseleave', () => timer.restart(true));
+let mouseOnContainer = false
+let timerAlive = true
+slidesContainer.addEventListener('mouseenter', () => timer.kill())
+slidesContainer.addEventListener('mouseleave', () => timer.restart(true))
+slidesContainer.addEventListener('toouchstart', () => timer.kill())
+slidesContainer.addEventListener('touchmove', () => timer.kill())
 
-const projectTitles = document.querySelectorAll('.project-title');
+const projectTitles = document.querySelectorAll('.project-title')
 const projectTitleContainers = document.querySelectorAll(
   '.project-title-container'
-);
+)
 
 projectTitles.forEach((el) => {
   el.addEventListener('mouseenter', (event) => {
@@ -704,75 +710,78 @@ projectTitles.forEach((el) => {
       duration: 0.2,
       backgroundColor: DARK_COLOR,
       color: LIGHT_COLOR,
-    });
-  });
+    })
+  })
   el.addEventListener('mouseleave', (event) => {
     gsap.to(event.target.parentElement, {
       duration: 0.2,
       backgroundColor: LIGHT_COLOR,
       color: DARK_COLOR,
-    });
-  });
-});
+    })
+  })
+})
 
 // Project Previews ///////////////////////////////////////////////
 function disableScroll() {
-  document.querySelector('body').style.overflow = 'hidden';
+  document.querySelector('body').style.overflow = 'hidden'
 }
 
 function enableScroll() {
-  document.querySelector('body').style.overflow = 'visible';
+  document.querySelector('body').style.overflow = 'visible'
 }
 
-let stopTimer;
+let stopTimer
 function showPreview(el) {
-  let previewTarget = el.dataset.preview;
+  let previewTarget = el.dataset.preview
 
   //begin loading assets (lazy loading the images for each preview)
-  let previewTargetImages = document.querySelectorAll(`${previewTarget} img`);
+  let previewTargetImages = document.querySelectorAll(
+    `${previewTarget} [data-src-preview]`
+  )
   previewTargetImages.forEach((el) => {
-    el.src = el.dataset.srcPreview;
-  });
+    el.src = el.dataset.srcPreview
+  })
+  console.log(`loading ${previewTargetImages.length} imgs`)
 
   //make preview visible
   gsap.set(`${el.dataset.preview}, ${el.dataset.preview} *`, {
     visibility: 'visible',
-  });
+  })
   gsap.set('.background', {
     visibility: 'visible',
-  });
+  })
 
-  disableScroll();
-  timer.kill();
+  disableScroll()
+  timer.kill()
 }
 
 function closePreviews() {
   gsap.set('.project-previews-container, .project-previews-container *', {
     visibility: 'hidden',
-  });
-  enableScroll();
-  clearTimeout(stopTimer);
-  timer.restart(true);
+  })
+  enableScroll()
+  clearTimeout(stopTimer)
+  timer.restart(true)
 }
 
 //display preview on click of the title or about section
-const titleButtons = document.querySelectorAll('.project-title');
+const titleButtons = document.querySelectorAll('.project-title')
 titleButtons.forEach((el) => {
-  el.addEventListener('click', showPreview.bind(this, el));
-  el.addEventListener('touchstart', showPreview.bind(this, el));
-});
+  el.addEventListener('click', showPreview.bind(this, el))
+  el.addEventListener('touchstart', showPreview.bind(this, el))
+})
 
 //hide preview on click of the clsoe button or background div
-const xButtons = document.querySelectorAll('.x-button');
+const xButtons = document.querySelectorAll('.x-button')
 xButtons.forEach((el) => {
-  el.addEventListener('click', closePreviews);
-});
+  el.addEventListener('click', closePreviews)
+})
 const projectPreviewsBackground = document
   .querySelector('.background')
-  .addEventListener('click', closePreviews);
+  .addEventListener('click', closePreviews)
 
 //WINDOW RESIZING, etc.//////////////////////////////////////////////////////////////////
-window.addEventListener('resize', resize);
+window.addEventListener('resize', resize)
 
 /* Logic Begind Interactions Based On Screen-Size: 
 Small screens are assumed to be small until proven otherwise. 
@@ -788,74 +797,46 @@ If, however, they are proven to be a desktop, then the height will automatically
 */
 
 function freezeVHSize() {
-  document.documentElement.style.setProperty('--full-height', '100%');
+  document.documentElement.style.setProperty('--full-height', '100%')
   document.documentElement.style.setProperty(
     '--full-height',
     window.innerHeight + 'px'
-  );
+  )
 }
 
 function enableVHResizing() {
-  document.documentElement.style.setProperty('--full-height', '100vh');
+  document.documentElement.style.setProperty('--full-height', '100vh')
 }
 
 /* Based on INTIAL screen size */
-let largestKnownScreenWidth;
-let previousScreenWidth;
+let largestKnownScreenWidth
+let previousScreenWidth
 if (width < WINDOW_BREAK_POINT_SIZE) {
-  largestKnownScreenWidth = 'small';
-  freezeVHSize();
+  largestKnownScreenWidth = 'small'
+  freezeVHSize()
+  animateCarsFunction('play')
 } else if (width < LARGE_IPAD_SIZE) {
-  largestKnownScreenWidth = 'medium';
-  freezeVHSize();
+  largestKnownScreenWidth = 'medium'
+  freezeVHSize()
+  animateCarsFunction('play')
 } else {
-  largestKnownScreenWidth = 'large';
-  enableVHResizing();
+  largestKnownScreenWidth = 'large'
+  enableVHResizing()
 
   //Enable city animations only on desktop from the outset
   document.querySelector('#home').style.height =
-    'calc(var(--full-height, 100vh) * 4)';
-  pinCityContainerFunction();
-  fadeOutHomeItemsFunction();
-  animateCarsFunction('pause');
-  animateCarScroll('.car1');
-  animateCarScroll('.car2');
-  animateHome();
+    'calc(var(--full-height, 100vh) * 4)'
+  pinCityContainerFunction()
+  fadeOutHomeItemsFunction()
+  animateCarsFunction('pause')
+  animateCarScroll('.car1')
+  animateCarScroll('.car2')
+  animateHome()
 }
 
 /* Based on DYNAMIC screen size */
 function resize() {
-  width = document.documentElement.clientWidth || window.innerWidth;
-
-  /* Current width */
-  if (width < WINDOW_BREAK_POINT_SIZE) {
-    currentWidth = 'small';
-  } else if (width < LARGE_IPAD_SIZE) {
-    currentWidth = 'medium';
-  } else {
-    currentWidth = 'large';
-  }
-
-  /* Any device, depending on current size */
-  if (currentWidth === 'small') {
-    //disable hover animations on skills
-    skills.forEach((el) => {
-      el.removeEventListener('mouseenter', fadeInBonusInfo);
-    });
-    gsap.to('.skills__bonus-info, .construction-building-lights', {
-      duration: 0.4,
-      opacity: 0,
-    });
-    gsap.set('.skills__bonus-info', {
-      pointerEvents: 'none',
-    });
-  } else {
-    //enable hover animations on skills
-    skills.forEach((el) => {
-      el.addEventListener('mouseenter', fadeInBonusInfo);
-      //immediately make them dissapear
-    });
-  }
+  width = document.documentElement.clientWidth || window.innerWidth
 
   /* Largest known width ////////////////////////// */
   if (
@@ -863,60 +844,58 @@ function resize() {
     width < LARGE_IPAD_SIZE &&
     largestKnownScreenWidth !== 'large'
   ) {
-    largestKnownScreenWidth = 'medium';
+    largestKnownScreenWidth = 'medium'
   } else if (width > LARGE_IPAD_SIZE) {
-    largestKnownScreenWidth = 'large';
+    largestKnownScreenWidth = 'large'
   }
 
   /* iPhones and iPads only */
   if (largestKnownScreenWidth !== 'large') {
-    animateCarsFunction('play');
-
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
       opacity: 1,
-    });
+    })
   }
 
   /* Desktop only */
   if (largestKnownScreenWidth === 'large') {
-    enableVHResizing();
+    enableVHResizing()
 
     //light up buildings on see my work button hover
-    seeMyWorkButton.addEventListener('mouseenter', seeWorkMouseEnterHandler);
-    seeMyWorkButton.addEventListener('mouseleave', seeWorkMouseLeaveHandler);
+    seeMyWorkButton.addEventListener('mouseenter', seeWorkMouseEnterHandler)
+    seeMyWorkButton.addEventListener('mouseleave', seeWorkMouseLeaveHandler)
     gsap.to('.building-lights', {
       ease: 'power4.out',
       duration: 3,
       opacity: 0,
-    });
+    })
   }
 
   //Carousel/Slider info:
-  let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0;
+  let norm = gsap.getProperty(proxy, 'x') / wrapWidth || 0
 
-  slideWidth = slides[0].offsetWidth;
-  wrapWidth = slideWidth * numSlides;
+  slideWidth = slides[0].offsetWidth
+  wrapWidth = slideWidth * numSlides
 
   gsap.set(proxy, {
     x: norm * wrapWidth,
-  });
+  })
 
   gsap.set(slidesInner, {
     width: Math.min(wrapWidth - slideWidth, width),
-  });
+  })
   gsap.set(slidesContainer, {
     width: Math.min(wrapWidth - slideWidth, width),
-  });
+  })
 
-  animateSlides(0);
-  slideAnimation.progress(1);
+  animateSlides(0)
+  slideAnimation.progress(1)
 }
 
-resize(); //immediately resize window to calibrate
+resize() //immediately resize window to calibrate
 
 //unhide the CSS (so that it doesn't flicker before things are fully placed)
 gsap.to(':root', {
   visibility: 'visible',
-});
+})

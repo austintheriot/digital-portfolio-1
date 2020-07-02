@@ -493,6 +493,8 @@ section h1 {
   font-size: calc(var(--full-height, 100vh) * 0.05);
   color: #f6f3f8;
   left: 15px;
+  text-decoration: underline;
+  padding: 1rem 0;
 }
 
 .construction-building,
@@ -508,52 +510,57 @@ section h1 {
 }
 
 .web-design {
-  top: 40.3%;
+  top: 39%;
 }
 
 .animations {
-  top: 45.7%;
+  top: 44.4%;
 }
 
 .algorithms {
-  top: 51%;
+  top: 49.6%;
 }
 
 .git {
-  top: 56.3%;
+  top: 55%;
 }
 
 .react {
-  top: 61.8%;
+  top: 60.4%;
 }
 
 .javascript {
-  top: 67.2%;
+  top: 65.8%;
 }
 
 .css3 {
-  top: 72.5%;
+  top: 71.2%;
 }
 
 .html5 {
-  top: 77.9%;
+  top: 76.6%;
 }
 
 .more {
-  top: 83.3%;
+  top: 82%;
 }
 
 .skills__bonus-info-container {
   display: block;
   position: absolute;
   height: calc(var(--full-height, 100vh) * 1.04);
-  width: calc(100% - 400px);
+  width: calc(100% - var(--full-height, 100vh) * 0.3);
   top: calc(var(--full-height, 100vh) * 0.8);
-  left: calc(var(--full-height, 100vh) * 0.5);
+  left: calc(var(--full-height, 100vh) * 0.25);
 }
 
 .skills__bonus-info h3 {
   text-align: left;
+  background: lightblue;
+  background: #f6f3f8;
+  padding: 0.5rem;
+  border-radius: 3px;
+  margin: 0.2rem;
 }
 
 .skills__bonus-info {
@@ -561,18 +568,29 @@ section h1 {
   transform: translateY(-50%);
   font-size: calc(var(--full-height, 100vh) * 0.04);
   width: 80%;
+  border-radius: 3px;
 }
 
+@media (min-width: 900px) {
+  #skills h2 {
+    text-decoration: none;
+  }
+
+  .skills__bonus-info-container {
+    left: calc(var(--full-height, 100vh) * 0.5);
+    width: calc(100% - 400px);
+  }
+}
 .skills__bonus-info a {
   color: #000314;
 }
 
 .skills__bonus-info--web-design {
-  top: 5%;
+  top: 7%;
 }
 
 .skills__bonus-info--animations {
-  top: 16.5%;
+  top: 17%;
 }
 
 .skills__bonus-info--algorithms {
@@ -584,7 +602,7 @@ section h1 {
 }
 
 .skills__bonus-info--react {
-  top: 45%;
+  top: 47%;
 }
 
 .skills__bonus-info--javascript {
