@@ -517,11 +517,11 @@ section h1 {
   }
 
   h1 {
-    top: 5%;
+    top: 0%;
   }
-  @media (min-width: 900px) {
+  @media (min-width: 1200px) {
     h1 {
-      top: 25%;
+      top: 10%;
     }
   }
 }
@@ -601,10 +601,6 @@ section h1 {
 }
 
 @media (min-width: 900px) {
-  #skills h2 {
-    text-decoration: none;
-  }
-
   .skills__bonus-info-container {
     left: calc(var(--full-height, 100vh) * 0.5);
     width: calc(100% - 400px);
