@@ -431,6 +431,7 @@ section h1 {
   position: relative;
   height: var(--full-height, 100vh);
   width: 100%;
+  top: 10%;
 }
 
 .about__info {
@@ -446,7 +447,7 @@ section h1 {
 
 .restart-about-slides {
   position: absolute;
-  top: 90%;
+  top: calc(15% + var(--h1-size) * 0.7);
   left: 50%;
   transform: translate(-50%, -50%);
   height: calc(var(--full-height, 100vh) * 0.075);
@@ -455,7 +456,14 @@ section h1 {
   border: 1px solid $light-lavender;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 1;
 }
+
+/* @media (min-width: 900px) {
+  .restart-about-slides {
+    top: 22.5%;
+  }
+} */
 
 .restart-about-slides img {
   width: calc(var(--full-height, 100vh) * 0.05);
@@ -506,6 +514,15 @@ section h1 {
     left: 15px;
     text-decoration: underline;
     padding: 1rem 0;
+  }
+
+  h1 {
+    top: 5%;
+  }
+  @media (min-width: 900px) {
+    h1 {
+      top: 25%;
+    }
   }
 }
 
