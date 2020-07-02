@@ -559,28 +559,39 @@ function fadeInBonusInfo(event) {
     .construction-building-lights--${targetInfo}`
 
   //fade out all other infos and lights
-  gsap.to(
-    `.skills__bonus-info:not(${targetInfo}),
+  gsap
+    .timeline()
+    .to(
+      `.skills__bonus-info:not(${targetInfo}),
   .construction-building-lights:not(${targetInfo})`,
-    {
-      duration: 0.4,
-      opacity: 0,
-    }
-  )
-  //stop pointer events on others
-  gsap.set(`.skills__bonus-info:not(${targetInfo})`, {
-    pointerEvents: 'none',
-  })
+      {
+        duration: 0.4,
+        opacity: 0,
+      }
+    )
+    //stop pointer events on others
+    .to(`.skills__bonus-info:not(${targetInfo})`, {
+      duration: 0,
+      pointerEvents: 'none',
+      zIndex: -1000,
+    })
 
   //fade in the selected one
-  gsap.to(targetInfoFormatted, {
-    duration: 0.4,
-    opacity: 1,
-  })
-  //allow pointer events on the selected one
-  gsap.set(targetInfoFormatted, {
-    pointerEvents: 'auto',
-  })
+  gsap
+    .timeline()
+    .to(targetInfoFormatted, {
+      duration: 0.4,
+      opacity: 1,
+    })
+    //allow pointer events on the selected one
+    .to(targetInfoFormatted, {
+      duration: 0,
+      pointerEvents: 'auto',
+    })
+    .to(`.skills__bonus-info--${targetInfo}`, {
+      duration: 0,
+      zIndex: 100000,
+    })
 }
 skills.forEach((el) => {
   el.addEventListener('mouseenter', fadeInBonusInfo)
