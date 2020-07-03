@@ -15,6 +15,7 @@ $light-color: #f6f3f8;
 $pop-color: #ffd65c;
 $shadow: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.1),
   0rem 0rem 1rem rgba(0, 0, 0, 0.15);
+$min-height: 400px;
 
 :root {
   --h1-size: 2.5rem;
@@ -81,86 +82,6 @@ p {
   cursor: pointer;
 }
 
-/* Nav ////////////////////////////////////////////////////////////////// 
-
-nav {
-  position: fixed;
-  top: 65%;
-  margin: 1rem 0;
-  z-index: 100;
-  height: 30vh;
-  width: 100px;
-}
-
-.nav__link {
-  position: absolute;
-  z-index: 100;
-  height: 15px;
-  width: 15px;
-  background-color: $dark-color;
-  border: 2px solid $dark-color;
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-}
-
-.nav__link-home {
-  top: 10%;
-  opacity: 1;
-}
-.nav__link-about {
-  top: 37.6%;
-}
-.nav__link-portfolio {
-  top: 63.3%;
-}
-.nav__link-contact {
-  top: 90%;
-}
-
-.nav__link--selected {
-  background-color: $light-color;
-}
-
-.nav__vertical-line {
-  position: absolute;
-  z-index: 99;
-  height: 75%;
-  width: 1px;
-  background-color: $dark-color;
-  left: 50%;
-  top: 50%;
-}
-
-.nav__scroll-heading {
-  color: $light-lavender;
-  position: absolute;
-  top: 50%;
-  left: 80%;
-}
-
-.nav__info {
-  position: absolute;
-  left: 25%;
-  opacity: 0;
-}
-
-.nav__info-home {
-  top: 18%;
-}
-.nav__info-about {
-  top: 45%;
-}
-.nav__info-portfolio {
-  top: 69%;
-}
-.nav__info-contact {
-  top: 85%;
-}
-.nav__info--selected {
-  opacity: 1;
-} */
-
 /* Formattting ////////////////////////////////////////////////////////////////// */
 
 section h1 {
@@ -175,6 +96,7 @@ section h1 {
 .city-container {
   position: absolute;
   height: var(--full-height, 100vh);
+  min-height: $min-height;
   width: 100vw;
   overflow: hidden;
 
@@ -187,6 +109,7 @@ section h1 {
 /* Home ////////////////////////////////////////////////////////////////// */
 #home {
   height: var(--full-height, 100vh);
+  min-height: $min-height;
   position: relative;
   z-index: -1000; /* This was covering up the button hover animations */
 }
@@ -203,7 +126,7 @@ section h1 {
   left: 2%;
   text-align: left;
   color: $dark-color;
-  z-index: -1000;
+  z-index: 1000;
   font-size: calc(var(--h1-size) * 1.5);
 
   span {
@@ -219,7 +142,7 @@ section h1 {
   font-size: calc(var(--h2-size) * 0.75);
   text-align: left;
   color: $dark-lavender;
-  z-index: -1000;
+  z-index: 1000;
 }
 
 @media (min-width: 900px) {
@@ -421,15 +344,17 @@ section h1 {
   background-color: $light-color;
   position: relative;
   height: var(--full-height, 100vh);
+  min-height: $min-height;
 
   h1 {
-    margin-top: 2rem;
+    margin-top: 5%;
   }
 }
 
 .about__container {
   position: relative;
   height: var(--full-height, 100vh);
+  min-height: $min-height;
   width: 100%;
   top: 10%;
 }
@@ -445,20 +370,6 @@ section h1 {
   transform: translate(-50%, -50%);
 }
 
-.restart-about-slides {
-  position: absolute;
-  top: calc(15% + var(--h1-size) * 0.6);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: calc(var(--full-height, 100vh) * 0.075);
-  width: calc(var(--full-height, 100vh) * 0.075);
-  background-color: transparent;
-  border: 1px solid $light-lavender;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1;
-}
-
 /* @media (min-width: 900px) {
   .restart-about-slides {
     top: 22.5%;
@@ -466,8 +377,8 @@ section h1 {
 } */
 
 .restart-about-slides img {
-  width: calc(var(--full-height, 100vh) * 0.05);
-  height: calc(var(--full-height, 100vh) * 0.05);
+  width: 2rem;
+  height: 2rem;
 }
 
 .border {
@@ -501,6 +412,7 @@ section h1 {
   background-color: $light-color;
   position: relative;
   height: calc(var(--full-height, 100vh) * 2);
+  min-height: calc(400px * 2);
   overflow: hidden;
 
   h1,
@@ -509,7 +421,7 @@ section h1 {
   }
 
   h2 {
-    font-size: calc(var(--full-height, 100vh) * 0.05);
+    font-size: max(calc(var(--full-height, 100vh) * 0.05), 1rem);
     color: $light-color;
     left: 15px;
     text-decoration: underline;
@@ -535,10 +447,11 @@ section h1 {
   position: absolute;
   top: 10%;
   height: calc(var(--full-height, 100vh) * 1.81);
+  min-height: calc(400px * 1.81);
 }
 
 .construction-building-lights {
-  opacity: 0;
+  opacity: calc(var(--full-height, 100vh) * 1);
 }
 
 .web-design {
@@ -583,9 +496,10 @@ But it helps anchor them to the viewport */
   display: block;
   position: absolute;
   z-index: 0;
+  min-height: $min-height;
   height: calc(var(--full-height, 100vh) * 1.04);
   width: calc(100% - (var(--full-height, 100vh) * 0.5 + 5vw));
-  top: calc(var(--full-height, 100vh) * 0.8);
+  top: max(calc(var(--full-height, 100vh) * 0.8), calc(400px * 0.8));
 }
 
 .skills__bonus-info h3 {
@@ -600,7 +514,7 @@ But it helps anchor them to the viewport */
 .skills__bonus-info {
   position: absolute;
   transform: translateY(-50%);
-  font-size: calc(var(--full-height, 100vh) * 0.04);
+  font-size: max(calc(var(--full-height, 100vh) * 0.04), 1rem);
   width: 100%;
   border-radius: 3px;
 }
@@ -688,25 +602,30 @@ But it helps anchor them to the viewport */
 #projects {
   background-color: $light-color;
   position: relative;
-  height: var(--full-height, 100vh);
+  min-height: $min-height;
   display: flex;
   position: relative;
   flex-direction: column;
 
+  h1 {
+    position: relative;
+  }
+
   .slides-container {
     position: relative;
-    top: 25%;
     overflow: hidden;
     display: flex;
     flex: none;
-    height: 75%;
+    height: calc(var(--full-height, 100vh) * 0.75);
+    min-height: $min-height;
     margin: var(--h2-size) auto;
     background-color: #e2e1e6;
   }
 
   .slides-inner {
     position: relative;
-    height: 100%;
+    height: calc(var(--full-height, 100vh) * 0.75);
+    min-height: $min-height;
     width: 100%;
     overflow: hidden;
     background-image: url('/images/Slides\ Background.svg');
@@ -723,8 +642,8 @@ But it helps anchor them to the viewport */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(var(--full-height, 100vh) * 0.75);
-    width: calc(var(--full-height, 100vh) * 0.3);
+    height: max(calc(var(--full-height, 100vh) * 0.75), 400px);
+    width: max(calc(var(--full-height, 100vh) * 0.3), 160px);
   }
 
   /* General Project Settings */
@@ -740,8 +659,9 @@ But it helps anchor them to the viewport */
 
   .project-title {
     position: absolute;
-    transform: translateY(-50%);
-    font-size: calc(var(--full-height, 100vh) * 0.025);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: max(calc(var(--full-height, 100vh) * 0.025), 1rem);
     text-transform: uppercase;
     text-decoration: underline;
     cursor: pointer;
@@ -782,7 +702,6 @@ But it helps anchor them to the viewport */
 
     .project-title--3 {
       width: 90%;
-      left: 5%;
       top: 50%;
     }
   }
@@ -812,9 +731,7 @@ But it helps anchor them to the viewport */
     .project-title--5,
     .project-title--6 {
       width: 90%;
-      left: 5%;
       top: 50%;
-      font-size: calc(var(--full-height, 100vh) * 0.025);
     }
   }
 
@@ -837,7 +754,6 @@ But it helps anchor them to the viewport */
 
   .project-title--7 {
     top: 50%;
-    left: 6%;
   }
 }
 
@@ -851,7 +767,6 @@ But it helps anchor them to the viewport */
 
   .project-title--8 {
     top: 50%;
-    left: 15%;
   }
 }
 
@@ -865,7 +780,6 @@ But it helps anchor them to the viewport */
 
   .project-title--9 {
     top: 50%;
-    left: 0%;
   }
 }
 
@@ -980,7 +894,6 @@ But it helps anchor them to the viewport */
 #contact {
   background-color: $light-color;
   position: relative;
-  height: calc(var(--full-height, 100vh) * 1.25);
   overflow: hidden;
 
   h1,

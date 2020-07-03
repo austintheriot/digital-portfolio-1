@@ -89,6 +89,30 @@ function seeWorkMouseLeaveHandler() {
   })
 }
 
+//animate scroll down indication
+const scrollMoveAmount = 10
+gsap
+  .timeline({
+    delay: 2,
+    repeat: -1,
+  })
+  .to('.scroll-indicator', {
+    y: scrollMoveAmount,
+  })
+  .to('.scroll-indicator', {
+    y: 0,
+  })
+  .to('.scroll-indicator', {
+    y: scrollMoveAmount,
+  })
+  .to('.scroll-indicator', {
+    y: 0,
+  })
+  .to('.scroll-indicator', {
+    duration: 2,
+    y: 0,
+  })
+
 //Fade out Name, Title, Scroll title, and "Hire Me" button
 function fadeOutHomeItemsFunction() {
   gsap
@@ -361,10 +385,6 @@ function animateCarScroll(selector) {
 // About ////////////////////////////////////////////////////////////////
 
 //Animate Text Slides //////////////////////////////////////////////////
-
-document
-  .querySelector('.restart-about-slides')
-  .addEventListener('click', () => aboutAnimations.restart())
 
 //initialize border locations
 
