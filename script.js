@@ -24,6 +24,7 @@ headings.forEach((el) => {
   gsap.from(el, {
     scrollTrigger: {
       trigger: el,
+      start: '+=250px bottom',
       toggleActions: 'play none none none',
     },
     yPercent: 50,
@@ -93,6 +94,11 @@ function seeWorkMouseLeaveHandler() {
 const scrollMoveAmount = 10
 gsap
   .timeline({
+    scrollTrigger: {
+      trigger: '#home',
+      end: '50% top',
+      toggleActions: 'play pause resume pause',
+    },
     delay: 2,
     repeat: -1,
   })
