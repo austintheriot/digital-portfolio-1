@@ -6,6 +6,8 @@ const WINDOW_BREAK_POINT_SIZE = 900
 const LARGE_IPAD_SIZE = 1300
 const DARK_COLOR = 'rgb(0, 3, 20)'
 const LIGHT_COLOR = 'rgb(246, 243, 248)'
+const LIGHT_LAVENDER = 'rgb(198, 198, 198)'
+const DARK_LAVENDER = 'rgb(143, 143, 164)'
 const POP_COLOR = 'rgb(255, 214, 92)'
 
 //only pin city container on desktop
@@ -640,7 +642,7 @@ gsap.timeline({
 }); */
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const SLIDE_DELAY = 2
+const SLIDE_DELAY = Infinity
 const SLIDE_DURATION = 0.3
 
 const slidesInner = document.querySelector('.slides-inner')
@@ -744,21 +746,25 @@ const projectTitleContainers = document.querySelectorAll(
   '.project-title-container'
 )
 
+function titleMouseEnterHandler(event) {
+  gsap.to(event.target.parentElement, {
+    duration: 0.2,
+    backgroundColor: DARK_COLOR,
+    color: LIGHT_COLOR,
+  })
+}
+
+function titleMouseLeaveHandler(event) {
+  gsap.to(event.target.parentElement, {
+    duration: 0.2,
+    backgroundColor: LIGHT_COLOR,
+    color: DARK_COLOR,
+  })
+}
+
 projectTitles.forEach((el) => {
-  el.addEventListener('mouseenter', (event) => {
-    gsap.to(event.target.parentElement, {
-      duration: 0.2,
-      backgroundColor: DARK_COLOR,
-      color: LIGHT_COLOR,
-    })
-  })
-  el.addEventListener('mouseleave', (event) => {
-    gsap.to(event.target.parentElement, {
-      duration: 0.2,
-      backgroundColor: LIGHT_COLOR,
-      color: DARK_COLOR,
-    })
-  })
+  el.addEventListener('mouseenter', titleMouseEnterHandler)
+  el.addEventListener('mouseleave', titleMouseLeaveHandler)
 })
 
 // Project Previews ///////////////////////////////////////////////
@@ -793,6 +799,46 @@ function showPreview(el) {
 
   disableScroll()
   timer.kill()
+
+  //Invert picture when clicked
+  let projectImg = el.parentElement.previousElementSibling
+  if (!projectImg.dataset.srcChanged) {
+    //change img src to dark image
+    let newProjectImgSrc = projectImg.src.split('.svg').join('') + '--dark.svg'
+    projectImg.src = newProjectImgSrc
+
+    //adjust GSAP animations
+    //remove previous animations
+    el.removeEventListener('mouseenter', titleMouseEnterHandler)
+    el.removeEventListener('mouseleave', titleMouseLeaveHandler)
+
+    //set new default colors
+    gsap.set(el.parentElement, {
+      color: DARK_COLOR,
+    })
+    gsap.set(el.parentElement, {
+      backgroundColor: LIGHT_LAVENDER,
+    })
+
+    //assogn new animations
+    el.addEventListener('mouseenter', (event) => {
+      gsap.to(event.target.parentElement, {
+        duration: 0.2,
+        backgroundColor: LIGHT_COLOR,
+        color: DARK_COLOR,
+      })
+    })
+    el.addEventListener('mouseleave', (event) => {
+      gsap.to(event.target.parentElement, {
+        duration: 0.2,
+        backgroundColor: LIGHT_LAVENDER,
+        color: DARK_COLOR,
+      })
+    })
+
+    //prevent further modifications to img src
+    projectImg.dataset.srcChanged = true
+  }
 }
 
 function closePreviews() {

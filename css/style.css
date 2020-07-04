@@ -646,6 +646,7 @@ But it helps anchor them to the viewport */
 #projects .project-image {
   position: absolute;
   height: 100%;
+  z-index: -1;
 }
 #projects .project-title-container {
   position: absolute;

@@ -8,7 +8,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="Project 5.svg"
+   sodipodi:docname="Project 5--dark.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    id="svg8"
    version="1.1"
@@ -21,7 +21,7 @@
        inkscape:collect="always"
        id="linearGradient3483">
       <stop
-         style="stop-color:#c6c6c6;stop-opacity:1;"
+         style="stop-color:#8f8fa4;stop-opacity:1"
          offset="0"
          id="stop3479" />
       <stop
@@ -51,7 +51,7 @@
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
      inkscape:cy="353.53673"
-     inkscape:cx="147.44227"
+     inkscape:cx="90.873729"
      inkscape:zoom="1.4142136"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -82,11 +82,11 @@
        height="64.911156"
        width="57.235497"
        id="rect3972"
-       style="fill:#f6f3f8;fill-opacity:1;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#c6c6c6;fill-opacity:1;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        rx="0" />
     <rect
        rx="1.6837976"
-       style="fill:#f6f3f8;fill-opacity:1;stroke:url(#linearGradient3485);stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#c6c6c6;fill-opacity:1;stroke:url(#linearGradient3485);stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3922"
        width="50.850334"
        height="56.819614"
