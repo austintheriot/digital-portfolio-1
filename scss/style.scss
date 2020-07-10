@@ -547,6 +547,21 @@ section h2 {
   top: 0;
   left: 0;
 
+  .links-container {
+    border: 2px solid $light-lavender;
+    width: 400px;
+    margin: 1rem;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    h4 {
+      width: 100%;
+      margin: 1rem;
+    }
+  }
+
   .background {
     position: fixed;
     z-index: 998;
