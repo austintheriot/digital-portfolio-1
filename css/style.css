@@ -8,8 +8,10 @@
 
 /* Setting Up Custom Properties ///////////////////////////////////////////////////////// */
 :root {
-  --h1-size: 2.5rem;
-  --h2-size: 1.75rem;
+  --h1-size: 3.5rem;
+  --h2-size: 2.5rem;
+  --h3-size: 1.75rem;
+  --h4-size: 1.5rem;
   --body-size: 1rem;
   /* General Styling ///////////////////////////////////////////////////////// */
   font-family: Roboto, sans-serif;
@@ -22,8 +24,10 @@
 /* Everything bigger than 900px */
 @media (min-width: 900px) {
   :root {
-    --h1-size: 4rem;
-    --h2-size: 2.5rem;
+    --h1-size: 5rem;
+    --h2-size: 4rem;
+    --h3-size: 2.5rem;
+    --h4-size: 2.25rem;
     --body-size: 1.125rem;
   }
 }
@@ -46,6 +50,14 @@ h1 {
 
 h2 {
   font-size: var(--h2-size);
+}
+
+h3 {
+  font-size: var(--h3-size);
+}
+
+h4 {
+  font-size: var(--h4-size);
 }
 
 p {
@@ -71,7 +83,7 @@ p {
 }
 
 /* Formattting ////////////////////////////////////////////////////////////////// */
-section h1 {
+section h2 {
   position: absolute;
   z-index: 100;
   width: 100%;
@@ -113,18 +125,18 @@ section h1 {
   text-align: left;
   color: #000314;
   z-index: 1000;
-  font-size: calc(var(--h1-size) * 1.5);
+  font-size: calc(var(--h2-size) * 1.5);
 }
 .home__name span {
   position: static;
-  font-size: var(--h1-size);
+  font-size: var(--h2-size);
 }
 
 .home__title {
   margin: 0;
-  top: calc(1% + var(--h1-size) * 1.5);
+  top: calc(1% + var(--h2-size) * 1.5);
   left: 10%;
-  font-size: calc(var(--h2-size) * 0.75);
+  font-size: calc(var(--h3-size) * 0.75);
   text-align: left;
   color: #8f8fa4;
   z-index: 1000;
@@ -327,7 +339,7 @@ section h1 {
 .welcome {
   top: 40%;
   left: 60%;
-  font-size: var(--h2-size);
+  font-size: var(--h3-size);
 }
 
 /* Portfolio ////////////////////////////////////////////////////////////////// */
@@ -356,7 +368,7 @@ section h1 {
   } */
   /* Projects 5 & 6 - Generative Art & Web Particles /////////////////////////////// */
 }
-#projects h1 {
+#projects h2 {
   position: relative;
 }
 #projects .slides-container {
@@ -366,7 +378,7 @@ section h1 {
   flex: none;
   height: calc(var(--full-height, 100vh) * 0.75);
   min-height: 400px;
-  margin: var(--h2-size) auto;
+  margin: var(--h3-size) auto;
   background-color: #e2e1e6;
 }
 #projects .slides-inner {
@@ -598,7 +610,7 @@ section h1 {
   height: calc(var(--full-height, 100vh) * 1.25);
   min-height: 400px;
 }
-#about h1 {
+#about h2 {
   margin-top: 7%;
 }
 
@@ -665,11 +677,11 @@ section h1 {
   min-height: calc(400px * 2);
   overflow: hidden;
 }
-#skills h1,
-#skills h2 {
+#skills h2,
+#skills h3 {
   position: absolute;
 }
-#skills h2 {
+#skills h3 {
   font-size: max(calc(var(--full-height, 100vh) * 0.05), 1rem);
   color: #f6f3f8;
   left: 15px;
@@ -678,11 +690,11 @@ section h1 {
   text-align: left;
   width: max-content;
 }
-#skills h1 {
+#skills h2 {
   top: 2.5%;
 }
 @media (min-width: 900px) {
-  #skills h1 {
+  #skills h2 {
     top: 25%;
     left: calc(var(--full-height, 100vh) * 0.5 - 8%);
   }
@@ -748,7 +760,7 @@ But it helps anchor them to the viewport */
   top: max(calc(var(--full-height, 100vh) * 0.8), calc(400px * 0.8));
 }
 
-.skills__bonus-info h3 {
+.skills__bonus-info h4 {
   text-align: left;
   background: lightblue;
   background: #f6f3f8;
@@ -825,11 +837,11 @@ But it helps anchor them to the viewport */
 @media (min-width: 600px) {
   .construction-building-lights,
 .construction-building,
-#skills h2 {
+#skills h3 {
     left: 20vw;
   }
 
-  #skills h2 {
+  #skills h3 {
     left: calc(0.75rem + 20vw);
   }
 }
@@ -839,7 +851,7 @@ But it helps anchor them to the viewport */
     left: 0;
   }
 
-  .skills__bonus-info h3 {
+  .skills__bonus-info h4 {
     width: calc(80% - 50px);
   }
 }
@@ -849,8 +861,8 @@ But it helps anchor them to the viewport */
   position: relative;
   overflow: hidden;
 }
-#contact h1,
-#contact h2 {
+#contact h2,
+#contact h3 {
   position: static;
   width: max-content;
   margin: 2rem auto 2rem auto;
