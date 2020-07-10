@@ -683,7 +683,7 @@ function closeBonusInfo(event) {
 }
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const SLIDE_DELAY = 1.5
+const SLIDE_DELAY = 2
 const SLIDE_DURATION = 0.3
 
 const slidesInner = document.querySelector('.slides-inner')
