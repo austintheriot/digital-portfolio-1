@@ -339,6 +339,301 @@ section h1 {
   font-size: var(--h2-size);
 }
 
+/* Portfolio ////////////////////////////////////////////////////////////////// */
+#projects {
+  background-color: $light-color;
+  position: relative;
+  min-height: $min-height;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  h1 {
+    position: relative;
+  }
+
+  .slides-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex: none;
+    height: calc(var(--full-height, 100vh) * 0.75);
+    min-height: $min-height;
+    margin: var(--h2-size) auto;
+    background-color: #e2e1e6;
+  }
+
+  .slides-inner {
+    position: relative;
+    height: calc(var(--full-height, 100vh) * 0.75);
+    min-height: $min-height;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('/images/Slides\ Background.svg');
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position-y: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    font-size: 90px;
+    font-weight: 700;
+    color: $dark-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: max(calc(var(--full-height, 100vh) * 0.75), 400px);
+    width: max(calc(var(--full-height, 100vh) * 0.3), 160px);
+  }
+
+  /* General Project Settings */
+  .project-image {
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .project-title-container {
+    position: absolute;
+    background-color: $light-color;
+  }
+
+  .project-title {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: max(calc(var(--full-height, 100vh) * 0.025), 1rem);
+    text-transform: uppercase;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* Project 1 React E-Commerce Site /////////////////////////// */
+  .project-title-container--1 {
+    width: 70%;
+    height: 50%;
+    left: 15%;
+    top: 10%;
+
+    .project-title--1 {
+      top: 50%;
+    }
+  }
+
+  /* Project 2 Business Landing Page /////////////////////////////// */
+  .project-title-container--2 {
+    width: 70%;
+    height: 30%;
+    left: 15%;
+    top: 40%;
+    border-radius: 3px;
+
+    .project-title--2 {
+      top: 50%;
+    }
+  }
+
+  /* Project 3 3D Particle Application/////////////////////////////// */
+
+  .project-title-container--3 {
+    width: 76%;
+    height: 43%;
+    left: 12%;
+    top: 10%;
+
+    .project-title--3 {
+      width: 90%;
+      top: 50%;
+    }
+  }
+
+  /* Project 4 Yevgeniy's Website /////////////////////////////// */
+  /*  .project-title-container--4 {
+    width: 58%;
+    height: 33%;
+    left: 22%;
+    top: 4%;
+
+    .project-title--4 {
+      top: 50%;
+      left: 6%;
+    }
+  } */
+
+  /* Projects 5 & 6 - Generative Art & Web Particles /////////////////////////////// */
+
+  .project-title-container--5,
+  .project-title-container--6 {
+    width: 75%;
+    height: 31%;
+    left: 12%;
+    border-radius: 3px;
+
+    .project-title--5,
+    .project-title--6 {
+      width: 90%;
+      top: 50%;
+    }
+  }
+
+  .project-title-container--5 {
+    top: 20%;
+  }
+
+  .project-title-container--6 {
+    top: 62.5%;
+  }
+}
+
+/* Project 7 - Computer Assisted Composition /////////////////////////////// */
+.project-title-container--7 {
+  width: 73%;
+  height: 42%;
+  left: 14%;
+  top: 27.5%;
+  border-radius: 20px;
+
+  .project-title--7 {
+    top: 50%;
+  }
+}
+
+/* Project 8 - Digital Art /////////////////////////////// */
+.project-title-container--8 {
+  width: 72%;
+  height: 22%;
+  left: 15%;
+  top: 26%;
+  border-radius: 2px;
+
+  .project-title--8 {
+    top: 50%;
+  }
+}
+
+.preview-paragraph--art {
+  max-width: 600px;
+}
+
+/* Project 9 - Developer Portfolio /////////////////////////////// */
+.project-title-container--9 {
+  width: 69%;
+  height: 16%;
+  left: 15%;
+  top: 52%;
+  border-radius: 5px;
+
+  .project-title--9 {
+    top: 50%;
+  }
+}
+
+/* Project Previews //////////// */
+.project-previews-container {
+  .background {
+    position: fixed;
+    z-index: 998;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 3, 20, 0.5);
+    visibility: hidden;
+  }
+
+  .individal-container--outer {
+    position: fixed;
+    left: 5%;
+    top: 5%;
+    z-index: 1000;
+    height: 90vh;
+    width: 90vw;
+    background-color: $light-color;
+    visibility: hidden;
+  }
+
+  .x-button {
+    position: absolute;
+    top: 10px;
+    left: calc(100% - 10px);
+    transform: translateX(-100%);
+    cursor: pointer;
+    height: 2.5%;
+  }
+
+  .individal-container--inner {
+    position: relative;
+    left: 5%;
+    top: 5%;
+    z-index: 1001;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: scroll;
+
+    .gif-container {
+      height: 75%;
+      width: 50%;
+      min-width: 300px;
+      margin: 0 auto;
+
+      .gif {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    /* Art Gallery Settings */
+    .preview-title--art {
+      margin: 2rem;
+      width: 100%;
+    }
+
+    .art {
+      display: block;
+      max-height: 75vh;
+      max-width: 75vw;
+      margin: 1rem;
+    }
+
+    .individal-container__text-and-buttons {
+      position: relative;
+      margin: 0 auto;
+      min-width: 250px;
+      width: 50%;
+      height: max-content;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .preview-title {
+        width: 100%;
+        margin: 1rem;
+        text-align: left;
+      }
+
+      p,
+      a,
+      ol {
+        margin: 1rem;
+      }
+
+      p {
+        width: 100%;
+      }
+    }
+  }
+}
+
 /* About ////////////////////////////////////////////////////////////////// */
 #about {
   background-color: $light-color;
@@ -595,302 +890,6 @@ But it helps anchor them to the viewport */
   }
   .skills__bonus-info h3 {
     width: calc(80% - 50px);
-  }
-}
-
-/* Portfolio ////////////////////////////////////////////////////////////////// */
-#projects {
-  background-color: $light-color;
-  position: relative;
-  min-height: $min-height;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-
-  h1 {
-    position: relative;
-  }
-
-  .slides-container {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex: none;
-    height: calc(var(--full-height, 100vh) * 0.75);
-    min-height: $min-height;
-    margin: var(--h2-size) auto;
-    background-color: #e2e1e6;
-  }
-
-  .slides-inner {
-    position: relative;
-    height: calc(var(--full-height, 100vh) * 0.75);
-    min-height: $min-height;
-    width: 100%;
-    overflow: hidden;
-    background-image: url('/images/Slides\ Background.svg');
-    background-repeat: no-repeat;
-    background-size: 200%;
-    background-position-y: 100%;
-  }
-
-  .slide {
-    position: absolute;
-    font-size: 90px;
-    font-weight: 700;
-    color: $dark-color;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: max(calc(var(--full-height, 100vh) * 0.75), 400px);
-    width: max(calc(var(--full-height, 100vh) * 0.3), 160px);
-  }
-
-  /* General Project Settings */
-  .project-image {
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-  }
-
-  .project-title-container {
-    position: absolute;
-    background-color: $light-color;
-  }
-
-  .project-title {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    font-size: max(calc(var(--full-height, 100vh) * 0.025), 1rem);
-    text-transform: uppercase;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  /* Project 1 React E-Commerce Site /////////////////////////// */
-  .project-title-container--1 {
-    width: 70%;
-    height: 50%;
-    left: 15%;
-    top: 10%;
-
-    .project-title--1 {
-      top: 50%;
-    }
-  }
-
-  /* Project 2 Business Landing Page /////////////////////////////// */
-  .project-title-container--2 {
-    width: 70%;
-    height: 30%;
-    left: 15%;
-    top: 40%;
-    border-radius: 3px;
-
-    .project-title--2 {
-      top: 50%;
-    }
-  }
-
-  /* Project 3 3D Particle Application/////////////////////////////// */
-
-  .project-title-container--3 {
-    width: 76%;
-    height: 43%;
-    left: 12%;
-    top: 10%;
-
-    .project-title--3 {
-      width: 90%;
-      top: 50%;
-    }
-  }
-
-  /* Project 4 Yevgeniy's Website /////////////////////////////// */
-  /*  .project-title-container--4 {
-    width: 58%;
-    height: 33%;
-    left: 22%;
-    top: 4%;
-
-    .project-title--4 {
-      top: 50%;
-      left: 6%;
-    }
-  } */
-
-  /* Projects 5 & 6 - Generative Art & Web Particles /////////////////////////////// */
-
-  .project-title-container--5,
-  .project-title-container--6 {
-    width: 75%;
-    height: 31%;
-    left: 12%;
-    border-radius: 3px;
-
-    .project-title--5,
-    .project-title--6 {
-      width: 90%;
-      top: 50%;
-    }
-  }
-
-  .project-title-container--5 {
-    top: 20%;
-  }
-
-  .project-title-container--6 {
-    top: 62.5%;
-  }
-}
-
-/* Project 7 - Computer Assisted Composition /////////////////////////////// */
-.project-title-container--7 {
-  width: 73%;
-  height: 42%;
-  left: 14%;
-  top: 27.5%;
-  border-radius: 20px;
-
-  .project-title--7 {
-    top: 50%;
-  }
-}
-
-/* Project 8 - Digital Art /////////////////////////////// */
-.project-title-container--8 {
-  width: 72%;
-  height: 22%;
-  left: 15%;
-  top: 26%;
-  border-radius: 2px;
-
-  .project-title--8 {
-    top: 50%;
-  }
-}
-
-.preview-paragraph--art {
-  max-width: 600px;
-}
-
-/* Project 9 - Developer Portfolio /////////////////////////////// */
-.project-title-container--9 {
-  width: 69%;
-  height: 16%;
-  left: 15%;
-  top: 52%;
-  border-radius: 5px;
-
-  .project-title--9 {
-    top: 50%;
-  }
-}
-
-/* Project Previews //////////// */
-
-.project-previews-container {
-  .background {
-    position: fixed;
-    z-index: 998;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 3, 20, 0.5);
-    visibility: hidden;
-  }
-
-  .individal-container--outer {
-    position: fixed;
-    left: 5%;
-    top: 5%;
-    z-index: 1000;
-    height: 90vh;
-    width: 90vw;
-    background-color: $light-color;
-    visibility: hidden;
-  }
-
-  .x-button {
-    position: absolute;
-    top: 10px;
-    left: calc(100% - 10px);
-    transform: translateX(-100%);
-    cursor: pointer;
-    height: 2.5%;
-  }
-
-  .individal-container--inner {
-    position: relative;
-    left: 5%;
-    top: 5%;
-    z-index: 1001;
-    height: 90%;
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    overflow: scroll;
-
-    .gif-container {
-      height: 75%;
-      width: 50%;
-      min-width: 300px;
-      margin: 0 auto;
-
-      .gif {
-        display: block;
-        position: relative;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 100%;
-        max-height: 100%;
-      }
-    }
-
-    /* Art Gallery Settings */
-    .preview-title--art {
-      margin: 2rem;
-      width: 100%;
-    }
-
-    .art {
-      display: block;
-      max-height: 75vh;
-      max-width: 75vw;
-      margin: 1rem;
-    }
-
-    .individal-container__text-and-buttons {
-      position: relative;
-      margin: 0 auto;
-      min-width: 250px;
-      width: 50%;
-      height: max-content;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .preview-title {
-        width: 100%;
-        margin: 1rem;
-        text-align: left;
-      }
-
-      p,
-      a,
-      ol {
-        margin: 1rem;
-      }
-
-      p {
-        width: 100%;
-      }
-    }
   }
 }
 

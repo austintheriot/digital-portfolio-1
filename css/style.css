@@ -330,258 +330,6 @@ section h1 {
   font-size: var(--h2-size);
 }
 
-/* About ////////////////////////////////////////////////////////////////// */
-#about {
-  background-color: #f6f3f8;
-  position: relative;
-  height: calc(var(--full-height, 100vh) * 1.25);
-  min-height: 400px;
-}
-#about h1 {
-  margin-top: 7%;
-}
-
-.about__container {
-  position: relative;
-  height: var(--full-height, 100vh);
-  min-height: 400px;
-  width: 100%;
-  top: 10%;
-}
-
-.about__info {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  width: 70%;
-  padding: 1rem;
-  font-size: calc(var(--body-size) * 2);
-  text-align: center;
-  transform: translate(-50%, -50%);
-}
-
-/* @media (min-width: 900px) {
-  .restart-about-slides {
-    top: 22.5%;
-  }
-} */
-.restart-about-slides img {
-  width: 2rem;
-  height: 2rem;
-}
-
-.border {
-  content: "";
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  width: calc(70% + 2rem);
-  height: 65%;
-  transform: translate(-50%, -50%);
-}
-
-.border-left {
-  border-left: 4px solid #c6c6c6;
-}
-
-.border-bottom {
-  border-bottom: 4px solid #c6c6c6;
-}
-
-.border-right {
-  border-right: 4px solid #c6c6c6;
-}
-
-.border-top {
-  border-top: 4px solid #c6c6c6;
-}
-
-/* Skills /////////////////////////////////////////////////////////////////// */
-#skills {
-  background-color: #f6f3f8;
-  position: relative;
-  height: calc(var(--full-height, 100vh) * 2);
-  min-height: calc(400px * 2);
-  overflow: hidden;
-}
-#skills h1,
-#skills h2 {
-  position: absolute;
-}
-#skills h2 {
-  font-size: max(calc(var(--full-height, 100vh) * 0.05), 1rem);
-  color: #f6f3f8;
-  left: 15px;
-  text-decoration: underline;
-  padding: 1rem 0;
-  text-align: left;
-  width: max-content;
-}
-#skills h1 {
-  top: 2.5%;
-}
-@media (min-width: 900px) {
-  #skills h1 {
-    top: 25%;
-    left: calc(var(--full-height, 100vh) * 0.5 - 8%);
-  }
-}
-
-.construction-building,
-.construction-building-lights {
-  position: absolute;
-  top: 10%;
-  height: calc(var(--full-height, 100vh) * 1.81);
-  min-height: calc(400px * 1.81);
-}
-
-.construction-building-lights {
-  opacity: calc(var(--full-height, 100vh) * 1);
-}
-
-.web-design {
-  top: 39%;
-}
-
-.animations {
-  top: 44.4%;
-}
-
-.algorithms {
-  top: 49.6%;
-}
-
-.git {
-  top: 55%;
-}
-
-.react {
-  top: 60.4%;
-}
-
-.javascript {
-  top: 65.8%;
-}
-
-.css3 {
-  top: 71.2%;
-}
-
-.html5 {
-  top: 76.6%;
-}
-
-.more {
-  top: 82%;
-}
-
-/* Contains the bonus skill headings -- headings float around & outside it, 
-But it helps anchor them to the viewport */
-.skills__bonus-info-container {
-  display: block;
-  position: absolute;
-  z-index: 0;
-  min-height: 400px;
-  height: calc(var(--full-height, 100vh) * 1.04);
-  width: calc(100% - (var(--full-height, 100vh) * 0.5 + 5vw));
-  top: max(calc(var(--full-height, 100vh) * 0.8), calc(400px * 0.8));
-}
-
-.skills__bonus-info h3 {
-  text-align: left;
-  background: lightblue;
-  background: #f6f3f8;
-  padding: 0.5rem;
-  border-radius: 3px;
-  width: 55vw;
-}
-
-.skills__bonus-info {
-  position: absolute;
-  transform: translateY(-50%);
-  font-size: max(calc(var(--full-height, 100vh) * 0.04), 1rem);
-  width: 100%;
-  border-radius: 3px;
-}
-
-.skills__bonus-info a {
-  color: #000314;
-}
-
-.skills__bonus-info--web-design {
-  top: 5%;
-}
-
-.skills__bonus-info--animations {
-  top: 17%;
-}
-
-.skills__bonus-info--algorithms {
-  top: 24%;
-}
-
-.skills__bonus-info--git {
-  top: 34%;
-}
-
-.skills__bonus-info--react {
-  top: 45%;
-}
-
-.skills__bonus-info--javascript {
-  top: 58%;
-}
-
-.skills__bonus-info--css3 {
-  top: 66%;
-}
-
-.skills__bonus-info--html5 {
-  top: 77%;
-}
-
-.skills__bonus-info--more {
-  top: 87%;
-}
-
-.github-logo,
-.resume,
-.codewars,
-.linkedin {
-  margin-right: 1rem;
-}
-
-/* LEFT Positioning */
-.skills__bonus-info-container {
-  left: calc(var(--full-height, 100vh) * 0.5 + 20vw);
-}
-
-.skills__bonus-info {
-  left: calc(90% - 70vw);
-}
-
-/* Very small sizes (Mobile) */
-@media (min-width: 600px) {
-  .construction-building-lights,
-.construction-building,
-#skills h2 {
-    left: 20vw;
-  }
-
-  #skills h2 {
-    left: calc(0.75rem + 20vw);
-  }
-}
-/* Desktop Sizes */
-@media (min-width: 900px) {
-  .skills__bonus-info {
-    left: 0;
-  }
-
-  .skills__bonus-info h3 {
-    width: calc(80% - 50px);
-  }
-}
 /* Portfolio ////////////////////////////////////////////////////////////////// */
 #projects {
   background-color: #f6f3f8;
@@ -843,6 +591,258 @@ But it helps anchor them to the viewport */
   width: 100%;
 }
 
+/* About ////////////////////////////////////////////////////////////////// */
+#about {
+  background-color: #f6f3f8;
+  position: relative;
+  height: calc(var(--full-height, 100vh) * 1.25);
+  min-height: 400px;
+}
+#about h1 {
+  margin-top: 7%;
+}
+
+.about__container {
+  position: relative;
+  height: var(--full-height, 100vh);
+  min-height: 400px;
+  width: 100%;
+  top: 10%;
+}
+
+.about__info {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 70%;
+  padding: 1rem;
+  font-size: calc(var(--body-size) * 2);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+/* @media (min-width: 900px) {
+  .restart-about-slides {
+    top: 22.5%;
+  }
+} */
+.restart-about-slides img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.border {
+  content: "";
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: calc(70% + 2rem);
+  height: 65%;
+  transform: translate(-50%, -50%);
+}
+
+.border-left {
+  border-left: 4px solid #c6c6c6;
+}
+
+.border-bottom {
+  border-bottom: 4px solid #c6c6c6;
+}
+
+.border-right {
+  border-right: 4px solid #c6c6c6;
+}
+
+.border-top {
+  border-top: 4px solid #c6c6c6;
+}
+
+/* Skills /////////////////////////////////////////////////////////////////// */
+#skills {
+  background-color: #f6f3f8;
+  position: relative;
+  height: calc(var(--full-height, 100vh) * 2);
+  min-height: calc(400px * 2);
+  overflow: hidden;
+}
+#skills h1,
+#skills h2 {
+  position: absolute;
+}
+#skills h2 {
+  font-size: max(calc(var(--full-height, 100vh) * 0.05), 1rem);
+  color: #f6f3f8;
+  left: 15px;
+  text-decoration: underline;
+  padding: 1rem 0;
+  text-align: left;
+  width: max-content;
+}
+#skills h1 {
+  top: 2.5%;
+}
+@media (min-width: 900px) {
+  #skills h1 {
+    top: 25%;
+    left: calc(var(--full-height, 100vh) * 0.5 - 8%);
+  }
+}
+
+.construction-building,
+.construction-building-lights {
+  position: absolute;
+  top: 10%;
+  height: calc(var(--full-height, 100vh) * 1.81);
+  min-height: calc(400px * 1.81);
+}
+
+.construction-building-lights {
+  opacity: calc(var(--full-height, 100vh) * 1);
+}
+
+.web-design {
+  top: 39%;
+}
+
+.animations {
+  top: 44.4%;
+}
+
+.algorithms {
+  top: 49.6%;
+}
+
+.git {
+  top: 55%;
+}
+
+.react {
+  top: 60.4%;
+}
+
+.javascript {
+  top: 65.8%;
+}
+
+.css3 {
+  top: 71.2%;
+}
+
+.html5 {
+  top: 76.6%;
+}
+
+.more {
+  top: 82%;
+}
+
+/* Contains the bonus skill headings -- headings float around & outside it, 
+But it helps anchor them to the viewport */
+.skills__bonus-info-container {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  min-height: 400px;
+  height: calc(var(--full-height, 100vh) * 1.04);
+  width: calc(100% - (var(--full-height, 100vh) * 0.5 + 5vw));
+  top: max(calc(var(--full-height, 100vh) * 0.8), calc(400px * 0.8));
+}
+
+.skills__bonus-info h3 {
+  text-align: left;
+  background: lightblue;
+  background: #f6f3f8;
+  padding: 0.5rem;
+  border-radius: 3px;
+  width: 55vw;
+}
+
+.skills__bonus-info {
+  position: absolute;
+  transform: translateY(-50%);
+  font-size: max(calc(var(--full-height, 100vh) * 0.04), 1rem);
+  width: 100%;
+  border-radius: 3px;
+}
+
+.skills__bonus-info a {
+  color: #000314;
+}
+
+.skills__bonus-info--web-design {
+  top: 5%;
+}
+
+.skills__bonus-info--animations {
+  top: 17%;
+}
+
+.skills__bonus-info--algorithms {
+  top: 24%;
+}
+
+.skills__bonus-info--git {
+  top: 34%;
+}
+
+.skills__bonus-info--react {
+  top: 45%;
+}
+
+.skills__bonus-info--javascript {
+  top: 58%;
+}
+
+.skills__bonus-info--css3 {
+  top: 66%;
+}
+
+.skills__bonus-info--html5 {
+  top: 77%;
+}
+
+.skills__bonus-info--more {
+  top: 87%;
+}
+
+.github-logo,
+.resume,
+.codewars,
+.linkedin {
+  margin-right: 1rem;
+}
+
+/* LEFT Positioning */
+.skills__bonus-info-container {
+  left: calc(var(--full-height, 100vh) * 0.5 + 20vw);
+}
+
+.skills__bonus-info {
+  left: calc(90% - 70vw);
+}
+
+/* Very small sizes (Mobile) */
+@media (min-width: 600px) {
+  .construction-building-lights,
+.construction-building,
+#skills h2 {
+    left: 20vw;
+  }
+
+  #skills h2 {
+    left: calc(0.75rem + 20vw);
+  }
+}
+/* Desktop Sizes */
+@media (min-width: 900px) {
+  .skills__bonus-info {
+    left: 0;
+  }
+
+  .skills__bonus-info h3 {
+    width: calc(80% - 50px);
+  }
+}
 /* Contact ////////////////////////////////////////////////////////////////// */
 #contact {
   background-color: #f6f3f8;
