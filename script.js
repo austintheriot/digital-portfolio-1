@@ -569,6 +569,11 @@ const aboutAnimations = gsap
   )
 
 //SKILLS///////////////////////////////////////////////////////////
+//Make sure bonus info and lights are opacity: 0 to begin with
+//make sure clicks are not prevented at start-up
+fadeOutInfoAndLights(null, 0) //immediately set the zIndex & opacity
+
+//add slide-in animation to all skill headings
 const skills = document.querySelectorAll('.skill-headings')
 skills.forEach((el) => {
   gsap.from(el, {
@@ -581,65 +586,83 @@ skills.forEach((el) => {
   })
 })
 
-function fadeInBonusInfo(event) {
-  let targetInfo = event.target.dataset.bonusTarget
-  let targetInfoFormatted = `.skills__bonus-info--${targetInfo},
-    .construction-building-lights--${targetInfo}`
-
-  //fade out all other infos and lights
+function fadeOutInfoAndLights(targetInfo, duration) {
+  //fade out all non-selected info and lights
   gsap
     .timeline()
     .to(
       `.skills__bonus-info:not(${targetInfo}),
-  .construction-building-lights:not(${targetInfo})`,
+        .construction-building-lights:not(${targetInfo})`,
       {
-        duration: 0.4,
+        duration: duration || 0.4,
         opacity: 0,
       }
     )
-    //stop pointer events on others
+    //stop pointer events on non-selected info and lights
     .to(`.skills__bonus-info:not(${targetInfo})`, {
-      duration: 0,
+      duration: duration || 0,
       pointerEvents: 'none',
       zIndex: -1000,
     })
+}
 
-  //fade in the selected one
+function fadeInInfoAndLights(bonusInfoAndLights, bonusInfo) {
+  //fade in the selected info and lights
   gsap
     .timeline()
-    .to(targetInfoFormatted, {
+    .to(bonusInfoAndLights, {
       duration: 0.4,
       opacity: 1,
     })
     //allow pointer events on the selected one
-    .to(targetInfoFormatted, {
+    .to(bonusInfoAndLights, {
       duration: 0,
       pointerEvents: 'auto',
     })
-    .to(`.skills__bonus-info--${targetInfo}`, {
+    .to(bonusInfo, {
       duration: 0,
       zIndex: 100000,
     })
 }
+
+//global variables to give to the click listener on the skills section
+let bonusInfo
+let targetInfo
+function fadeInBonusInfo(event) {
+  targetInfo = event.target.dataset.bonusTarget
+  bonusInfo = `.skills__bonus-info--${targetInfo}`
+  lights = `.construction-building-lights--${targetInfo}`
+  let bonusInfoAndLights = `${bonusInfo}, ${lights}`
+  //fade out all other infos and lights
+  fadeOutInfoAndLights(targetInfo)
+  //fade in the selected one
+  fadeInInfoAndLights(bonusInfoAndLights, bonusInfo)
+
+  bonusInfo = document.querySelector(bonusInfo)
+}
+
+//fade out non-selected bonus info and fade in selected bonus info on mouseenter
 skills.forEach((el) => {
   el.addEventListener('mouseenter', fadeInBonusInfo)
 })
 
-gsap.set('.skills__bonus-info, .construction-building-lights', {
-  opacity: 0,
-})
+// Close open bonus info on click or touch
+const skillsSection = document.querySelector('#skills')
+skillsSection.addEventListener('click', (event) => closeBonusInfo(event))
+skillsSection.addEventListener('touch', (event) => closeBonusInfo(event))
 
-/* const skillsMoreInfo = document.querySelector('.skills__more-info');
-gsap.timeline({
-  scrollTrigger: {
-    trigger: skillsMoreInfo,
-    start: `top top`,
-    end: `${skillsSectionHeight} bottom`,
-    pin: true,
-    pinSpacing: false,
-    markers: true,
-  },
-}); */
+function closeBonusInfo(event) {
+  let classListArray = [...event.target.classList]
+  if (
+    (event.target === skillsSection ||
+      classListArray.includes('construction-building') ||
+      classListArray.includes('construction-building-lights') ||
+      classListArray.includes('skills__bonus-info-container')) &&
+    event.target !== bonusInfo
+  ) {
+    fadeOutInfoAndLights(targetInfo)
+  }
+}
 
 //PORTFOLIO///////////////////////////////////////////////////////////
 const SLIDE_DELAY = 1.5
