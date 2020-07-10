@@ -666,15 +666,27 @@ section h2 {
   top: 10%;
 }
 
-.about__info {
+.about__container main {
   position: absolute;
+  height: 65%;
+  width: 70%;
+  padding: 1rem;
   top: 70%;
   left: 50%;
-  width: 70%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.about__info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
   padding: 1rem;
   font-size: calc(var(--body-size) * 2);
   text-align: center;
   transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 /* @media (min-width: 900px) {

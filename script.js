@@ -392,8 +392,26 @@ function animateCarScroll(selector) {
 // About ////////////////////////////////////////////////////////////////
 // About ////////////////////////////////////////////////////////////////
 
-//Animate Text Slides //////////////////////////////////////////////////
+function speedUpAboutAnimation() {
+  aboutInfoContainer.style.cursor = `url('../images/fast-forward.svg'), pointer`
+  aboutAnimations.timeScale(5)
+}
 
+function normalSpeedAboutAnimation() {
+  aboutInfoContainer.style.cursor = `pointer`
+  aboutAnimations.timeScale(1)
+}
+
+//allow speed up/slow down on mousedown/touch start
+const aboutInfoContainer = document.querySelector('.about__container main')
+aboutInfoContainer.addEventListener('mousedown', speedUpAboutAnimation)
+aboutInfoContainer.addEventListener('mouseup', normalSpeedAboutAnimation)
+aboutInfoContainer.addEventListener('touchstart', speedUpAboutAnimation, {
+  passive: true,
+})
+aboutInfoContainer.addEventListener('touchend', normalSpeedAboutAnimation)
+
+//Animate Text Slides //////////////////////////////////////////////////
 //initialize border locations
 
 gsap.set('.border-top', {
