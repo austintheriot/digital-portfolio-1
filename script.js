@@ -872,21 +872,21 @@ function showPreview(el) {
       color: DARK_COLOR,
     })
     gsap.set(el.parentElement, {
-      backgroundColor: LIGHT_LAVENDER,
+      backgroundColor: 'rgb(226, 225, 230)',
     })
 
-    //assogn new animations
+    //assign new animations
     el.addEventListener('mouseenter', (event) => {
       gsap.to(event.target.parentElement, {
         duration: 0.2,
-        backgroundColor: LIGHT_COLOR,
-        color: DARK_COLOR,
+        backgroundColor: DARK_COLOR,
+        color: LIGHT_COLOR,
       })
     })
     el.addEventListener('mouseleave', (event) => {
       gsap.to(event.target.parentElement, {
         duration: 0.2,
-        backgroundColor: LIGHT_LAVENDER,
+        backgroundColor: 'rgb(226, 225, 230)',
         color: DARK_COLOR,
       })
     })
