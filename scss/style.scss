@@ -343,11 +343,11 @@ section h1 {
 #about {
   background-color: $light-color;
   position: relative;
-  height: var(--full-height, 100vh);
+  height: calc(var(--full-height, 100vh) * 1.25);
   min-height: $min-height;
 
   h1 {
-    margin-top: 5%;
+    margin-top: 7%;
   }
 }
 
@@ -361,7 +361,7 @@ section h1 {
 
 .about__info {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   width: 70%;
   padding: 1rem;
@@ -384,7 +384,7 @@ section h1 {
 .border {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   width: calc(70% + 2rem);
   height: 65%;
@@ -769,6 +769,10 @@ But it helps anchor them to the viewport */
   .project-title--8 {
     top: 50%;
   }
+}
+
+.preview-paragraph--art {
+  max-width: 600px;
 }
 
 /* Project 9 - Developer Portfolio /////////////////////////////// */

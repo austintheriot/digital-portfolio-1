@@ -642,7 +642,7 @@ gsap.timeline({
 }); */
 
 //PORTFOLIO///////////////////////////////////////////////////////////
-const SLIDE_DELAY = Infinity
+const SLIDE_DELAY = 1.5
 const SLIDE_DURATION = 0.3
 
 const slidesInner = document.querySelector('.slides-inner')
@@ -687,8 +687,10 @@ const animation = gsap.to(slides, {
 //restart timer
 //kill the current slideAnimation. Reassign it to a new animation
 function animateSlides(direction) {
-  timer.restart(true)
-  slideAnimation.kill()
+  if (previewClosed) {
+    timer.restart(true)
+    slideAnimation.kill()
+  }
 
   //reads the proxy's position from being dragged
   //snap x position to the closest slide
@@ -732,14 +734,26 @@ function autoPlay() {
 }
 
 //pause carousel on mouse hover or scroll--resume when mouse leaves
-let mouseOnContainer = false
-let timerAlive = true
-slidesContainer.addEventListener('mouseenter', () => timer.kill())
-slidesContainer.addEventListener('mouseleave', () => timer.restart(true))
-slidesContainer.addEventListener('toouchstart', () => timer.kill(), {
-  passive: true,
+slidesContainer.addEventListener('mouseenter', () => {
+  timer.pause()
 })
-slidesContainer.addEventListener('touchmove', () => timer.kill())
+slidesContainer.addEventListener('mouseleave', () => {
+  if (previewClosed) {
+    timer.restart(true)
+  }
+})
+slidesContainer.addEventListener(
+  'toouchstart',
+  () => {
+    timer.pause()
+  },
+  {
+    passive: true,
+  }
+)
+slidesContainer.addEventListener('touchmove', () => {
+  timer.pause()
+})
 
 const projectTitles = document.querySelectorAll('.project-title')
 const projectTitleContainers = document.querySelectorAll(
@@ -776,7 +790,7 @@ function enableScroll() {
   document.querySelector('body').style.overflow = 'visible'
 }
 
-let stopTimer
+let previewClosed = true
 function showPreview(el) {
   let previewTarget = el.dataset.preview
 
@@ -839,6 +853,8 @@ function showPreview(el) {
     //prevent further modifications to img src
     projectImg.dataset.srcChanged = true
   }
+
+  previewClosed = false
 }
 
 function closePreviews() {
@@ -846,8 +862,8 @@ function closePreviews() {
     visibility: 'hidden',
   })
   enableScroll()
-  clearTimeout(stopTimer)
   timer.restart(true)
+  previewClosed = true
 }
 
 //display preview on click of the title or about section
