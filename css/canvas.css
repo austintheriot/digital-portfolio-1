@@ -3,17 +3,34 @@
 *::after {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
-body {
-  background: #222;
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
-canvas {
-  background: #fff;
-  position: fixed;
-  z-index: -100;
+h2 {
+  width: 100%;
+  margin: 1rem 1.5rem;
+  text-align: left;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  width: 100%;
+  margin: 1rem 1.5rem;
+  text-align: left;
+}
+
+li.last {
+  margin-bottom: 2rem;
+}
+
+a {
+  color: black;
 }
 
 /*Hamburger*/
@@ -21,16 +38,21 @@ canvas {
 
 .hamburger {
   position: absolute;
-  top: 15px;
+  top: 20px;
   left: 20px;
   cursor: pointer;
+  opacity: 0.75;
   transition: 0.1s;
+}
+
+.hamburger:hover {
+  opacity: 1;
 }
 
 .hamburger span {
   width: 30px;
   height: 4px;
-  background: #000;
+  background: #fff;
   display: block;
   border-radius: 2px;
 }

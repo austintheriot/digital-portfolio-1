@@ -367,6 +367,7 @@ section h2 {
     }
   } */
   /* Projects 5 & 6 - Generative Art & Web Particles /////////////////////////////// */
+  /* (Project 6 no longer exists independently (Web Particles)*/
 }
 #projects h2 {
   position: relative;
@@ -450,25 +451,18 @@ section h2 {
   width: 90%;
   top: 50%;
 }
-#projects .project-title-container--5,
-#projects .project-title-container--6 {
+#projects .project-title-container--5 {
   width: 75%;
   height: 31%;
   left: 12%;
   border-radius: 3px;
 }
-#projects .project-title-container--5 .project-title--5,
-#projects .project-title-container--5 .project-title--6,
-#projects .project-title-container--6 .project-title--5,
-#projects .project-title-container--6 .project-title--6 {
+#projects .project-title-container--5 .project-title--5 {
   width: 90%;
   top: 50%;
 }
 #projects .project-title-container--5 {
   top: 20%;
-}
-#projects .project-title-container--6 {
-  top: 62.5%;
 }
 
 /* Project 7 - Computer Assisted Composition /////////////////////////////// */
@@ -531,6 +525,9 @@ section h2 {
   width: 100%;
   margin: 1rem;
 }
+.project-previews-container .links-container .button {
+  margin: 1rem 0;
+}
 .project-previews-container .background {
   position: fixed;
   z-index: 998;
@@ -555,7 +552,8 @@ section h2 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .project-previews-container .x-button {
   position: fixed;
@@ -565,6 +563,8 @@ section h2 {
   width: 30px;
   z-index: 1005;
   cursor: pointer;
+  background-color: #f6f3f8;
+  border-radius: 2px;
 }
 .project-previews-container .x-button__line--1,
 .project-previews-container .x-button__line--2 {
@@ -574,6 +574,7 @@ section h2 {
   width: 30px;
   border-radius: 5px;
   background-color: #000314;
+  top: 64px;
 }
 .project-previews-container .x-button__line--1 {
   transform: rotate(45deg);
